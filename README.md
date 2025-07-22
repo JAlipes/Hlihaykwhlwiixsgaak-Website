@@ -72,14 +72,20 @@
 
 ### Frontend
 
+- `src/components/ui`
+  Reusable Small React components E.g Forms, Heading with Texts etc.
+
 - `src/components/`  
-  Reusable React components.
+  Reusable React components. E.g HeroSection, ImageTextSection. A combination of small components
 
 - `src/layouts/`  
   Page layout components (if any).
 
 - `src/pages`
   Page components corresponding to routes or views.
+
+- `src/servces`
+  Code that contains fetching from backend. 
 
 - `src/utils/`  
   Utility functions and helpers for frontend logic.
