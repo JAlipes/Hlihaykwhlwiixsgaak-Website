@@ -2,22 +2,29 @@
 
 ## Project Coding Conventions
 
-### Folder & File Naming
+### Folder & File Naming (Both frontend & Backend)
 
-- **Folders and files:**  
-  Use **lowercase** and **kebab-case**  
+- **Folders**  
+  Use **lowercase** and **kebab-case**   
   _Examples:_  
-  `user-controller.ts`, `auth-middleware.ts`, `image-uploader.ts`
+  `components`, `pages`, `assets`
 
-- **Variables and functions:**  
+- **Files**
+  Use **PascalCase**
+  _Examples:_  
+  `MainPage`, `SectionHeader`, `Navbar`
+
+### Variables, Classes & Functions
+
+- **Variables**  
   Use **camelCase**  
   _Examples:_  
   `handleLogin`, `updateImageSection`, `validateUser`
 
-- **Classes, Types, Interfaces:**  
+- **Classes, Types, Interfaces & Functions:**  
   Use **PascalCase**  
   _Examples:_  
-  `UserModel`, `IImageData`, `AuthMiddleware`
+  `UserModel`, `ImageData`, `AuthMiddleware`
 
 - **Constants:**  
   Use **UPPER_SNAKE_CASE**  
@@ -45,7 +52,7 @@
 
 ## Folder Structure Overview
 
-### Backend
+### Backend (To be reviewed)
 
 - `src/controllers/`  
   Handles incoming requests and returns responses.
@@ -70,10 +77,7 @@
 
 ---
 
-### Frontend
-
-- `src/components/ui`
-  Reusable Small React components E.g Forms, Heading with Texts etc.
+### Frontend (To be reviewd)
 
 - `src/components/`  
   Reusable React components. E.g HeroSection, ImageTextSection. A combination of small components
@@ -84,7 +88,7 @@
 - `src/pages`
   Page components corresponding to routes or views.
 
-- `src/servces`
+- `src/services`
   Code that contains fetching from backend. 
 
 - `src/utils/`  
