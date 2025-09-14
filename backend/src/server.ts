@@ -1,12 +1,19 @@
-// src/server.ts
+import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+
 import app from './app'; // Import the configured Express app
 import mongoose from 'mongoose'; // For database connection
 
-// Import utils
-import { seedUser } from './utils/SeedUser';
+// Import utils & shared-functions
+import { SeedUser } from './utils/SeedUser';
+import { GetEnvVarOrFail } from './utils/GetEnvVarOrFail';
 
-const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/my_onepager';
+// Load dotenv directory
+
+
+const PORT = Number(GetEnvVarOrFail('BACKEND_PORT'));
+const MONGODB_URI = GetEnvVarOrFail('MONGODB_URI');
 
 // Database Connection
 mongoose.connect(MONGODB_URI)
@@ -14,7 +21,7 @@ mongoose.connect(MONGODB_URI)
         console.log('MongoDB Connected Successfully!');
         
         //seed user
-        await seedUser();    
+        await SeedUser();    
 
         app.listen(PORT, () => {
             // Seed the user.

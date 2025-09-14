@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 
 // Import routes
-import authRoutes from './routes/authRoutes';
+import AuthRouter from './routes/AuthRoutes';
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // API Routes
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', AuthRouter);
 
 // Global Error Handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
