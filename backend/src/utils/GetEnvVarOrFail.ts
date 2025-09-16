@@ -1,7 +1,6 @@
 import { config } from 'dotenv';
-import path from 'path';
 
-config({ path: path.resolve(__dirname, '../../.env') }); // adjust to point to root
+config(); // Automatic .env Load backend
 
 export const getEnvVar = (varName: string): string | undefined => process.env[varName];
 

@@ -1,7 +1,3 @@
-import path from 'path';
-import dotenv from 'dotenv';
-dotenv.config({ path: path.resolve(__dirname, '../../.env') });
-
 import app from './app'; // Import the configured Express app
 import mongoose from 'mongoose'; // For database connection
 
@@ -24,7 +20,6 @@ mongoose.connect(MONGODB_URI)
         await SeedUser();    
 
         app.listen(PORT, () => {
-            // Seed the user.
             console.log(`Server running on port ${PORT}`);
             console.log(`Access at: http://localhost:${PORT}`);
         });

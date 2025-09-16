@@ -15,17 +15,17 @@ export default function LoginModal() {
         e.preventDefault();
 
         const body: LoginRequest = { email, password };
-
+        console.log(import.meta.env);
         const res = await fetch(`${GetEnvVarOrFail('VITE_BACKEND_URL')}/api/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
+            credentials: 'include'
         });
 
         const data: LoginResponse = await res.json();
 
         if (res.ok) {
-            localStorage.setItem("token", data.token);
             navigate("/"); // close modal
         } else {
             alert(data?.message || "Login failed");
