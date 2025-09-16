@@ -1,0 +1,43 @@
+import React from "react";
+
+export default function MissionSection() {
+    return (
+        <section className="bg-white text-gray-800 py-16 px-6 md:px-20 lg:px-32">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                {/* Image (left) */}
+                <div className="flex justify-center md:justify-start">
+                    <img
+                        src="../src/assets/red-feather.png" 
+                        alt="Our Mission"
+                        className="w-full max-w-[500px] rounded-lg shadow-lg object-cover"
+                    />
+                </div>
+
+                {/* Text (right) */}
+                <div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-red-600 text-center">
+                        Our Mission
+                    </h2>
+                    <div className="w-64 h-[2px] bg-black mt-3 mb-8 mx-auto" />
+
+                    <p className="text-lg leading-relaxed mb-6">
+                        Hli Haykwhl Ẃii Xsgaak Consulting is an Indigenous owned and
+                        matriarch-led corporation dedicated to advancing the 94 Calls to
+                        Action of the Truth and Reconciliation Commission. Our mission is to
+                        guide, empower, and inspire people and organizations to be allies
+                        and agents for change while making transformational community
+                        impact.
+                    </p>
+
+                    <p className="text-lg leading-relaxed">
+                        Led by Melanie Mark, a dynamic changemaker with over 30 years of
+                        experience across nonprofit, public service, and private sectors.
+                        Known for her relentless advocacy and ability to turn complex ideas
+                        into actionable results, Melanie is a trusted ally who prioritizes
+                        rights, relationships, and results.
+                    </p>
+                </div>
+            </div>
+        </section>
+    );
+}
