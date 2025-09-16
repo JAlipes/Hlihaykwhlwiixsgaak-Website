@@ -5,8 +5,6 @@ import mongoose from 'mongoose'; // For database connection
 import { SeedUser } from './utils/SeedUser';
 import { GetEnvVarOrFail } from './utils/GetEnvVarOrFail';
 
-// Load dotenv directory
-
 
 const PORT = Number(GetEnvVarOrFail('BACKEND_PORT'));
 const MONGODB_URI = GetEnvVarOrFail('MONGODB_URI');

@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { UserModel } from "../models/UserSchema";
 
+// Import Utils
 import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 
 const JWT_SECRET = GetEnvVarOrFail('JWT_SECRET') as string;
@@ -27,7 +28,6 @@ export async function Login(req: Request, res: Response) {
             { expiresIn: "1h" }
         );
 
-        console.log(`Auth Token: `, authToken);
         res.cookie("authToken", authToken, {
             httpOnly: true,
             secure: false,
@@ -38,6 +38,20 @@ export async function Login(req: Request, res: Response) {
         return res.status(200).json({ message: 'Welcome'});
     } catch (e) {
         console.log('Login Failed');
-        return res.status(500).json({ message: "Login failed", error: e });
+        return res.status(500).json({ message: 'Login Failed', error: e });
+    }
+}
+
+export async function Logout(req: Request, res: Response){
+    try {
+        res.clearCookie('authToken', {
+            httpOnly: true,
+            secure: false,
+            sameSite: 'lax'
+        });
+
+        return res.status(200).json({ message : 'Logged out Succesfully' });
+    } catch (e) {
+        return res.status(500).json({ message: 'Logout Failed', error: e });
     }
 }

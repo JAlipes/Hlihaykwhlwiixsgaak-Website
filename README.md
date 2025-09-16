@@ -37,14 +37,14 @@
 
 - Use **4 spaces** for indentation.
 - Always end statements with **semicolons**.
-- Use **single quotes** for strings.
+- Use **single quotes** for strings e.g **''** or **``**.
 - Prefer **async/await** over `.then()` for promises.
 - Handle errors cleanly using `try/catch` or error middleware.
 - Keep functions small and focused on a single task.
 - Write modular, reusable code.
 - Add JSDoc comments for complex logic or types.
 - Keep types and interfaces organized (use `shared-types` folder if needed).
-- Store secrets and configuration in the **root `.env` file**.
+- Store secrets and configuration in the **corresponding `.env` files**.
 - Use environment variables in both frontend and backend via appropriate config.
 
 
@@ -125,4 +125,11 @@ Run these commands separately in each folder:
 cd folder_name
 npm i
 
+```
 
+### Running Project
+
+```bash
+npm run dev
+
+```
