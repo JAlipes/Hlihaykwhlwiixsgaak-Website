@@ -2,15 +2,19 @@
 import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import TestTailwind from "../components/TestTailwind";
+import Divider from "../components/Divider";
 
 export default function MainPage() {
     return (
         <main className="flex flex-col">
             <TestTailwind />
 
-            <div className="h-4 bg-red-600 w-full" /> {/* divider bar */}
+            <Divider />
+
             <MissionSection />
-            <div className="h-4 bg-red-600 w-full" /> {/* divider bar */}
+
+            <Divider />
+            
             <AboutMelanieMark />
         </main>
     );
