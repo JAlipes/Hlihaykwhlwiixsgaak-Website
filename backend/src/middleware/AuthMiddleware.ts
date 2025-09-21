@@ -7,7 +7,6 @@ import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 const JWT_SECRET = GetEnvVarOrFail('JWT_SECRET') as string;
 
 export function Authenticate(req: Request, res: Response, next: NextFunction) {
-    // Make sure cookie-parser middleware is used before this
     const token = req.cookies?.authToken;
 
     if (!token) {

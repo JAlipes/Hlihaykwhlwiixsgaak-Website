@@ -5,30 +5,39 @@ import { GetEnvVarOrFail } from '../utils/GetEnvVarOrFail';
 // Import Types
 import type { LoginRequest, LoginResponse } from '../../../shared-types/AuthTypes';
 
+// Import Hooks
+import { UseAuth } from '../hooks/UseAuth';
+
 export default function LoginModal() {
     const navigate = useNavigate(); 
+    const { setIsAuthenticated } = UseAuth();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
 
     const HandleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
+        try{
+            e.preventDefault();
 
-        const body: LoginRequest = { email, password };
-        console.log(import.meta.env);
-        const res = await fetch(`${GetEnvVarOrFail('VITE_BACKEND_URL')}/api/auth/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body),
-            credentials: 'include'
-        });
+            const body: LoginRequest = { email, password };
 
-        const data: LoginResponse = await res.json();
+            const res = await fetch(`${GetEnvVarOrFail('VITE_BACKEND_URL')}/api/auth/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+                credentials: 'include'
+            });
 
-        if (res.ok) {
-            navigate("/"); // close modal
-        } else {
-            alert(data?.message || "Login failed");
+            const data: LoginResponse = await res.json();
+
+            if (res.ok) {
+                setIsAuthenticated(true);
+                navigate("/"); // close modal
+            } else {
+                alert(data?.message || 'Login failed');
+            }
+        }catch(err){
+            console.error('Error During Login Process', err);
         }
     };
 

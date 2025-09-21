@@ -28,6 +28,7 @@ export async function Login(req: Request, res: Response) {
             { expiresIn: "1h" }
         );
 
+        console.log('Successful login'); // Testing
         res.cookie("authToken", authToken, {
             httpOnly: true,
             secure: false,
@@ -36,9 +37,9 @@ export async function Login(req: Request, res: Response) {
         })
 
         return res.status(200).json({ message: 'Welcome'});
-    } catch (e) {
+    } catch (err) {
         console.log('Login Failed');
-        return res.status(500).json({ message: 'Login Failed', error: e });
+        return res.status(500).json({ message: '500 Login Error', error: err });
     }
 }
 
@@ -50,8 +51,18 @@ export async function Logout(req: Request, res: Response){
             sameSite: 'lax'
         });
 
+        console.log('Logout Successful');
         return res.status(200).json({ message : 'Logged out Succesfully' });
-    } catch (e) {
-        return res.status(500).json({ message: 'Logout Failed', error: e });
+    } catch (err) {
+        return res.status(500).json({ message : '500 Logout Error', error: err})
+    }
+
+}
+
+export async function verify(req: Request, res: Response){
+    try {
+        return res.status(200).json({ message: 'Succesful verification' , authenticated: true });
+    } catch (err) {
+        return res.status(500).json({ message: '500 Error Verifying user ', error: err});
     }
 }
