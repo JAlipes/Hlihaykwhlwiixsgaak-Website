@@ -1,18 +1,25 @@
 // Import boilercode
 import express from 'express';
 import cors from 'cors';
-
+import cookieParser from 'cookie-parser';
 // Import routes
-import authRoutes from './routes/authRoutes';
+import AuthRouter from './routes/AuthRoutes';
+
+// Import Utils Functions
+import { GetEnvVarOrFail } from './utils/GetEnvVarOrFail';
 
 const app = express();
 
-// Middleware
+// Core Middleware
+app.use(cors({
+    origin: GetEnvVarOrFail('FRONTEND_URL'),
+    credentials: true
+}));
 app.use(express.json()); 
-app.use(cors());
+app.use(cookieParser());
 
-// API Routes
-app.use('/api/auth', authRoutes);
+// API Routes + Custom Middleware
+app.use('/api/auth', AuthRouter);
 
 // Global Error Handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
