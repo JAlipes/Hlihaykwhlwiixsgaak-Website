@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function AboutMelanieMark() {
     return (
         <section className="bg-gray-100 text-gray-800 py-16 px-6 md:px-20 lg:px-32">
