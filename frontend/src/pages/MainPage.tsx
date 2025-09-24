@@ -3,7 +3,7 @@ import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import TestTailwind from "../components/TestTailwind";
 import Divider from "../components/Divider";
-import Services from "../components/Services";
+import Services from "../components/ServicesSection";
 
 export default function MainPage() {
     return (

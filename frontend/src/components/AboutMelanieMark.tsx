@@ -1,3 +1,5 @@
+import headshot from '../assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg';
+
 export default function AboutMelanieMark() {
     return (
         <section className="bg-gray-100 text-gray-800 py-16 px-6 md:px-20 lg:px-32">
@@ -45,7 +47,7 @@ export default function AboutMelanieMark() {
                 {/* Image (right) */}
                 <div className="flex justify-center md:justify-end">
                     <img
-                        src="../src/assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg"
+                        src={headshot}
                         alt="Melanie Mark standing with Canadian and Indigenous flags"
                         className="w-full max-w-[500px] rounded-lg shadow-lg object-cover"
                     />

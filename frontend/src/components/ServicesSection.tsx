@@ -1,9 +1,11 @@
-export default function JourneyBanner() {
+import groupImage from '../assets/BCFS_Keynote_Group.jpg';
+
+export default function ServicesSection() {
     return (
         <section className="relative w-full">
             {/* Background Image */}
             <img
-                src="../src/assets/BCFS_Keynote_Group.jpg"
+                src={groupImage}
                 alt="Group of people together"
                 className="w-full h-auto mb-20 rounded-b-[100px] shadow-2xl shadow-black/50"
             />

@@ -1,3 +1,5 @@
+import feather from '../assets/red-feather.png';
+
 export default function MissionSection() {
     return (
         <section className="bg-white text-gray-800 py-16 px-6 md:px-20 lg:px-32">
@@ -5,7 +7,7 @@ export default function MissionSection() {
                 {/* Image (left) */}
                 <div className="flex justify-center md:justify-start">
                     <img
-                        src="../src/assets/red-feather.png" 
+                        src={feather}
                         alt="Our Mission"
                         className="w-full max-w-[500px] rounded-lg shadow-lg object-cover"
                     />
