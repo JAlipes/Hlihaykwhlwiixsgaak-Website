@@ -1,17 +1,29 @@
 // Import utilities
 // import React from "react";
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, useLocation} from "react-router-dom";
 
-// Import pages
+// Import pages & components
 import MainPage from "./pages/MainPage";
 import ResumePage from "./pages/ResumePage";
+import LoginModal from "./components/LoginModal";
 
 function App() {
+    const location = useLocation();
+    const isLoginRoute = location.pathname =="/login";
+
     return (
-        <Routes>
-            <Route path='/' element={<MainPage/>}/>
-            <Route path='resume' element={<ResumePage/>}/>
-        </Routes>
+        <div className="relative min-h-screen">
+
+            {/* Your main routes */}
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="resume" element={<ResumePage />} />
+            </Routes>
+
+            {/* Conditional Render */}
+            {isLoginRoute && <LoginModal />}
+            
+        </div>
     );
 }
 
