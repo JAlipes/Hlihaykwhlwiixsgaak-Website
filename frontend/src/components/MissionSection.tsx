@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 // Import Assets
 import feather from '../assets/red-feather.png';
@@ -6,7 +6,12 @@ import feather from '../assets/red-feather.png';
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';
 
+// Import Utils
+import { HandleSaveSectionData } from '../utils/HandleSaveSectionData';
+import { HandleGetSectionData } from '../utils/HandleGetSectionData';
+
 export default function MissionSection() {
+    const sectionName: string = `mission`;
     const { isAuthenticated } = useContext(AuthContext);
 
     const [missionText, setMissionText] = useState<string>(
@@ -14,10 +19,16 @@ export default function MissionSection() {
     );
     const [missionImage, setMissionImage] = useState<any>(feather);
 
-    const HandleSaveText = () => {
-        // TODO: save missionText to backend
-        console.log('Saved text:', missionText);
-    };
+    useEffect(() => {
+        const fetchSectionData = async () => {
+            const data = await HandleGetSectionData(sectionName);
+            if (data) {
+                setMissionText(data.text);
+                setMissionImage(data.image);
+            }
+        };
+        fetchSectionData();
+    }, []);
 
     return (
         <section className='bg-white text-gray-800 py-16 px-6 md:px-20 lg:px-32'>
@@ -54,7 +65,10 @@ export default function MissionSection() {
                     {/* Save button shows only if authenticated */}
                     {isAuthenticated && (
                         <button
-                            onClick={HandleSaveText}
+                            onClick={() => {
+                                HandleSaveSectionData(sectionName, missionText, missionImage)
+                            }}
+                            
                             className='bg-red-600 text-white px-4 py-2 rounded'
                         >
                             Save
