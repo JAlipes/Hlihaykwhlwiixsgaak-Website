@@ -7,9 +7,6 @@ import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import Divider from "../components/Divider";
 import Services from "../components/ServicesSection";
-
-//Import Hooks
-import { UseAuth } from '../hooks/UseAuth';
         
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';

@@ -5,9 +5,6 @@ import { GetEnvVarOrFail } from '../utils/GetEnvVarOrFail';
 // Import Types
 import type { LoginRequest, LoginResponse } from '../../../shared-types/AuthTypes';
 
-// Import Hooks
-import { UseAuth } from '../hooks/UseAuth';
-
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext'
 

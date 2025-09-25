@@ -4,6 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 // Import routes
 import AuthRouter from './routes/AuthRoutes';
+import SectionRouter from './routes/SectionRoutes';
 
 // Import Utils Functions
 import { GetEnvVarOrFail } from './utils/GetEnvVarOrFail';
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 // API Routes + Custom Middleware
 app.use('/api/auth', AuthRouter);
+app.use('/api/section', SectionRouter);
 
 // Global Error Handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
