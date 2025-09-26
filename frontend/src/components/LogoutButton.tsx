@@ -7,7 +7,7 @@ import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 export default function LogoutButton(){
     const navigate = useNavigate();
 
-    const HandleLogout = async (e: React.FormEvent) => {
+    const HandleLogout = async () => {
         try {
             const res = await fetch(`${GetEnvVarOrFail('VITE_BACKEND_URL')}/api/auth/logout`, {
                 method: 'POST',

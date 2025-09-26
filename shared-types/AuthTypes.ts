@@ -6,3 +6,8 @@ export interface LoginRequest{
 export interface LoginResponse {
     message: string;
 }
+
+export interface AuthContextType {
+  isAuthenticated: boolean;
+  setIsAuthenticated: (auth: boolean) => void;
+}
