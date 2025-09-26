@@ -7,6 +7,7 @@ import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import Divider from "../components/Divider";
 import Services from "../components/ServicesSection";
+import ReconciliationSection from "../components/ReconciliationSection";
         
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';
@@ -25,6 +26,7 @@ export default function MainPage() {
             <Divider />
             <Services />
             <Divider />
+            <ReconciliationSection />
         </main>
     );
 }
