@@ -1,11 +1,17 @@
 // Import Built In'semibold
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
 // Import Utils
 import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 
+// Import Context
+import { AuthContext } from '../contexts/AuthContext'
+
 export default function LogoutButton(){
     const navigate = useNavigate();
+
+    const { setIsAuthenticated } = useContext(AuthContext);
 
     const HandleLogout = async () => {
         try {
@@ -16,13 +22,13 @@ export default function LogoutButton(){
 
             if (res.ok){
                 // Add Success Modal
-                navigate('/login')
+                setIsAuthenticated(false);
+                navigate('/')
             } else {
                 // Add Failed Modal
                 console.error('Logout Failed');
             }
 
-            
         } catch (err){
             console.error('Error During Logout Process', err);
         }

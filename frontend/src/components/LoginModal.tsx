@@ -12,10 +12,10 @@ export default function LoginModal() {
     const navigate = useNavigate(); 
     const { setIsAuthenticated } = useContext(AuthContext);
 
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
+    const [ email, setEmail ] = useState<string>('');
+    const [ password, setPassword ] = useState<string>('');
 
-    const HandleLogin = async (e: React.FormEvent) => {
+    const HandleLogin = async (e: React.FormEvent): Promise<void> => {
         try{
             e.preventDefault();
 
