@@ -7,6 +7,8 @@ import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import Divider from "../components/Divider";
 import Services from "../components/ServicesSection";
+import CanoeSection from '../components/CanoeSection';
+import ExperienceSection from '../components/ExperienceSection';
         
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';
@@ -25,6 +27,10 @@ export default function MainPage() {
             <Divider />
             <Services />
             <Divider />
+            
+            <CanoeSection />
+            <ExperienceSection />
+
         </main>
     );
 }
