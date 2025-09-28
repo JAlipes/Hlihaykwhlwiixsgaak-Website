@@ -3,6 +3,9 @@ import { Request, Response } from 'express';
 // Import models
 import { SectionModel } from '../models/SectionDataSchema';
 
+// Import Utils
+import { UploadToCloudinary } from '../utils/UploadToCloudinary';
+
 export async function GetData(req: Request, res: Response){
     try { 
         const { sectionName } = req.query;
@@ -28,22 +31,23 @@ export async function GetData(req: Request, res: Response){
 export async function SaveData(req: Request, res: Response){
     // use both saveText and saveImage helpers in here
     try {
-        const {sectionName, text, image} = req.body;
+        const { sectionName, text } = req.body;
 
         if(!sectionName){
             return res.status(400).json({message : `Section Name Is Required`})
         }
 
-        //let imageUrl = image;
+        let imageUrl = req.body.image;
 
-        // // If the frontend sent a base64 image or file object, upload to S3
-        // if (image && image.startsWith('data:')) {
-        //     imageUrl = await uploadToS3(image, sectionName);
-        // }
+
+        // if file uploaded, replace with new S3 URL
+        if (req.file) {
+            imageUrl = await UploadToCloudinary(req.file, sectionName);
+        }
 
         const updateSectionData = await SectionModel.findOneAndUpdate(
             { sectionName },
-            { text, image },
+            { text, imageUrl },
             { upsert: true, new : true}
         )
 

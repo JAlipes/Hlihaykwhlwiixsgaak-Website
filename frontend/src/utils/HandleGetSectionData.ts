@@ -1,6 +1,9 @@
 // Import Utils
-import type { SectionDataType } from "../../../shared-types/SectionTypes";
 import { GetEnvVarOrFail } from "./GetEnvVarOrFail";
+
+// Import Types
+import type { SectionDataType } from "../../../shared-types/SectionTypes";
+
 
 export const HandleGetSectionData = async (sectionName : string): Promise<SectionDataType | null> => {
     try {
