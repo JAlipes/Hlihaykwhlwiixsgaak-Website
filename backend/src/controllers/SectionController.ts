@@ -44,14 +44,13 @@ export async function SaveData(req: Request, res: Response){
         if (req.file) {
             imageUrl = await UploadToCloudinary(req.file, sectionName);
         }
-
+        console.log(`(SaveData function) Image URL: ${imageUrl}`)
         const updateSectionData = await SectionModel.findOneAndUpdate(
             { sectionName },
-            { text, imageUrl },
+            { text, image: imageUrl },
             { upsert: true, new : true}
         )
 
-        console.log(`Succesfully Saved Section Data`, sectionName);
         res.status(200).json({message : `Saved Section Data Succesfully`, updateSectionData});
     } catch (err) {
         console.error(`Error Saving Section Data`, err);

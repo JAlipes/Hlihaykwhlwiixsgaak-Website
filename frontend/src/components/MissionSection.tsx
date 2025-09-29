@@ -17,7 +17,7 @@ export default function MissionSection() {
     const [missionText, setMissionText] = useState<string>(
         'Hli Haykwhl Ẃii Xsgaak Consulting is an Indigenous owned and matriarch-led corporation dedicated to advancing the 94 Calls to Action of the Truth and Reconciliation Commission. Our mission is to guide, empower, and inspire people and organizations to be allies and agents for change while making transformational community impact.\n\nLed by Melanie Mark, a dynamic changemaker with over 30 years of experience across nonprofit, public service, and private sectors. Known for her relentless advocacy and ability to turn complex ideas into actionable results, Melanie is a trusted ally who prioritizes rights, relationships, and results.'
     );
-    const [missionImage, setMissionImage] = useState<any>(feather);
+    const [missionImage, setMissionImage] = useState<string>(feather);
     const [selectedFile, setSelectedFile] = useState<File | null>(null); // testing
 
     useEffect(() => {

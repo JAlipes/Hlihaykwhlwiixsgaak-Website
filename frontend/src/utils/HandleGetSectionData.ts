@@ -15,6 +15,7 @@ export const HandleGetSectionData = async (sectionName : string): Promise<Sectio
         if (res.ok) {
             const data : SectionDataType = await res.json();
             console.log('Succesfully retrieved section data');
+            console.log(`(HandleGetSectionData) ${data.image}`)
             return data;
         } else {
             const error = await res.json();
