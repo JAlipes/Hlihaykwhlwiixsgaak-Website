@@ -9,6 +9,10 @@ import { AuthContext } from '../contexts/AuthContext';
 // Import Utils
 import { HandleSaveSectionData } from '../utils/HandleSaveSectionData';
 import { HandleGetSectionData } from '../utils/HandleGetSectionData';
+import { HandleImageChangeFactory } from '../utils/HandleImageChangeFactory';
+
+// Import Components
+import EditableImage  from '../components/EditableImage';
 
 export default function MissionSection() {
     const sectionName: string = `mission`;
@@ -18,7 +22,7 @@ export default function MissionSection() {
         'Hli Haykwhl Ẃii Xsgaak Consulting is an Indigenous owned and matriarch-led corporation dedicated to advancing the 94 Calls to Action of the Truth and Reconciliation Commission. Our mission is to guide, empower, and inspire people and organizations to be allies and agents for change while making transformational community impact.\n\nLed by Melanie Mark, a dynamic changemaker with over 30 years of experience across nonprofit, public service, and private sectors. Known for her relentless advocacy and ability to turn complex ideas into actionable results, Melanie is a trusted ally who prioritizes rights, relationships, and results.'
     );
     const [missionImage, setMissionImage] = useState<string>(feather);
-    const [selectedFile, setSelectedFile] = useState<File | null>(null); // testing
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     useEffect(() => {
         const fetchSectionData = async () => {
@@ -33,39 +37,21 @@ export default function MissionSection() {
 
 
     // Handle image selection //testing
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            setSelectedFile(file);
-            setMissionImage(URL.createObjectURL(file)); // preview
-        }
-    };
+    const handleMissionImageChange = HandleImageChangeFactory(setSelectedFile, setMissionImage);
 
     return (
         <section className='bg-white text-gray-800 py-16 px-6 md:px-20 lg:px-32'>
             <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
                 {/* Image (left) */}
-                <div className='flex flex-col items-center md:items-start'>
-                    <img
-                        src={missionImage}
-                        alt='Our Mission'
-                        className='w-full max-w-[500px] rounded-lg shadow-lg object-cover cursor-pointer'
-                        onClick={() => {
-                            if (isAuthenticated) {
-                                document.getElementById("missionImageUpload")?.click();
-                            }
-                        }}
-                    />
-                    {isAuthenticated && (
-                        <input
-                            id="missionImageUpload"
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageChange}
-                            className="hidden"
-                        />
-                    )}
-                </div>
+                <EditableImage 
+                    src={missionImage}
+                    alt='Our Mission Image'
+                    wrapperClassName='flex flex-col items-center md:items-start'
+                    imageClassName='w-full max-w-[500px] rounded-lg shadow-lg object-cover cursor-pointer'
+                    isAuthenticated={isAuthenticated}
+                    inputIdString='missionImageUpload'
+                    onChangeFunction={handleMissionImageChange}
+                />
 
                 {/* Text (right) */}
                 <div>
