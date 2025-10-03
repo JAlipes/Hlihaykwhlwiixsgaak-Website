@@ -13,6 +13,8 @@ import { HandleImageChangeFactory } from '../utils/HandleImageChangeFactory';
 
 // Import Components
 import EditableImage  from '../components/EditableImage';
+import SaveEditsButton from './SaveEditsButton';
+import EditableText from './EditableText';
 
 export default function MissionSection() {
     const sectionName: string = `mission`;
@@ -61,29 +63,21 @@ export default function MissionSection() {
                     <div className='w-64 h-[2px] bg-black mt-3 mb-8 mx-auto' />
 
                     {/* Single editable contentEditable div */}
-                    <div
-                        contentEditable={isAuthenticated}
-                        suppressContentEditableWarning={true}
-                        onBlur={(e) =>
-                            setMissionText((e.target as HTMLDivElement).innerText)
-                        }
-                        className={`w-full mb-4 p-2 text-lg rounded whitespace-pre-wrap ${!isAuthenticated ? 'cursor-auto' : 'bg-white'}`
-                        }
-                    >
-                        {missionText}
-                    </div>
+                    <EditableText
+                        isAuthenticated={isAuthenticated}
+                        setText={setMissionText}
+                        text={missionText}
+                    />
 
                     {/* Save button shows only if authenticated */}
                     {isAuthenticated && (
-                        <button
-                            onClick={() => {
-                                HandleSaveSectionData({sectionName, text: missionText, image: selectedFile ?? missionImage});
-                            }}
-                            
-                            className='bg-red-600 text-white px-4 py-2 rounded'
-                        >
-                            Save
-                        </button>
+                        <SaveEditsButton 
+                            onClickFunction={
+                                () => {
+                                    HandleSaveSectionData({sectionName, text: missionText, image: selectedFile ?? missionImage})
+                                }
+                            }
+                        />
                     )}
                 </div>
             </div>

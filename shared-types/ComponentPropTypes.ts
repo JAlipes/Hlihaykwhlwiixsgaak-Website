@@ -7,3 +7,9 @@ export interface EditableImagePropType {
     inputIdString : string; 
     onChangeFunction: (e: React.ChangeEvent<HTMLInputElement>) => void; 
 }
+
+export interface EditableTextPropType {
+    isAuthenticated : boolean;
+    setText : (text : string) => void;
+    text : string;
+}
