@@ -1,6 +1,9 @@
 // Import Utils
-import type { SectionDataType } from "../../../shared-types/SectionTypes";
 import { GetEnvVarOrFail } from "./GetEnvVarOrFail";
+
+// Import Types
+import type { SectionDataType } from "../../../shared-types/SectionTypes";
+
 
 export const HandleGetSectionData = async (sectionName : string): Promise<SectionDataType | null> => {
     try {
@@ -12,6 +15,7 @@ export const HandleGetSectionData = async (sectionName : string): Promise<Sectio
         if (res.ok) {
             const data : SectionDataType = await res.json();
             console.log('Succesfully retrieved section data');
+            console.log(`(HandleGetSectionData) ${data.image}`)
             return data;
         } else {
             const error = await res.json();

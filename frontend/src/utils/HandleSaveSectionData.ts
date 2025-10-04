@@ -5,21 +5,33 @@ import { HandleGetSectionData } from './HandleGetSectionData';
 // Import Types
 import type { SectionDataType } from '../../../shared-types/SectionTypes';
 
+interface SectionFormType extends Omit<SectionDataType, 'image'> {
+    image : string | File
+}
 
-export const HandleSaveSectionData = async (sectionName : string, text: string, image: string) => {
+export const HandleSaveSectionData = async (sectionData : SectionFormType): Promise<undefined | void> => {
     try {
-        const body: SectionDataType = {sectionName, text, image};
+        const formData = new FormData();
+        formData.append('sectionName', sectionData.sectionName);
+        formData.append('text', sectionData.text)
+        
+        if (sectionData.image instanceof File) {
+            // send new file
+            formData.append('image', sectionData.image);
+        } else {
+            // send existing image url
+            formData.append('image', sectionData.image);
+        }
 
-        const res = await fetch(`${GetEnvVarOrFail('VITE_BACKEND_URL')}/api/section/save`, {
+        const res: Response = await fetch(`${GetEnvVarOrFail('VITE_BACKEND_URL')}/api/section/save`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
+            body: formData,
             credentials: 'include'
         });
         
         if (res.ok) {
             console.log('Successfully saved section data');
-            HandleGetSectionData(sectionName);
+            HandleGetSectionData(sectionData.sectionName);
         } else {
             const error = await res.json();
             console.error('Failed to save section data', error.message)
