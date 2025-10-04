@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
+import { LuVolume2 } from 'react-icons/lu';
 
 // Import Assets
 import aboutHeader from '../assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg'
@@ -32,7 +33,12 @@ export default function LandingSection(){
         fetchSectionData();
     }, []);
 
-    const handleLandingImageChange = HandleImageChangeFactory(setSelectedFile, setLandingImage);
+    const HandleLandingImageChange = HandleImageChangeFactory(setSelectedFile, setLandingImage);
+
+    const audioUrl = '';
+    const HandlePlayAudio = () => {
+        console.log('Audio played');
+    };
 
     return(
         <section className="h-auto md:h-screen w-full bg-white flex flex-col md:flex-row">
@@ -43,6 +49,13 @@ export default function LandingSection(){
                     <h1 className="text-brandRed text-3xl md:text-5xl font-thin mb-4">
                         Hli Haykwhl Ẃii X̲sgaak <br />
                         Consulting
+                        <button
+                            onClick={HandlePlayAudio}
+                            className="inline-flex items-center justify-center w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer"
+                            aria-label="Play pronunciation"
+                        >
+                            <LuVolume2 size={24} color='#374151' />
+                        </button>
                     </h1>
                     <br />
                     <p className="text-base md:text-lg">
@@ -60,7 +73,7 @@ export default function LandingSection(){
                 imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl"
                 isAuthenticated={isAuthenticated}
                 inputIdString="landingImageUpload"
-                onChangeFunction={handleLandingImageChange}
+                onChangeFunction={HandleLandingImageChange}
                 />
 
                 {/* Save button (overlay on image, shows only if authenticated) */}
