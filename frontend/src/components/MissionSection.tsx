@@ -30,8 +30,8 @@ export default function MissionSection() {
         const fetchSectionData = async () => {
             const data = await HandleGetSectionData(sectionName);
             if (data) {
-                setMissionText(data.text);
-                setMissionImage(data.image);
+                setMissionText(data.text ?? ""); // fallback value if text is undefined
+                setMissionImage(data.image ?? ""); // fallback value if image is undefined
             }
         };
         fetchSectionData();
