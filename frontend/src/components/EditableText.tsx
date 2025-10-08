@@ -20,12 +20,11 @@ export default function EditableText({isAuthenticated, setText, text} : Editable
             contentEditable={isAuthenticated}
             suppressContentEditableWarning={true}
             onBlur={(e) =>
-                setText((e.target as HTMLDivElement).innerText)
+                setText((e.target as HTMLDivElement).innerHTML)
             }
             className={`w-full mb-4 p-2 text-lg rounded whitespace-pre-wrap ${!isAuthenticated ? 'cursor-auto' : 'bg-white'}`
             }
-        >
-            {text}
-        </div>
+            dangerouslySetInnerHTML={{ __html: text }}
+        />
     );
 }
