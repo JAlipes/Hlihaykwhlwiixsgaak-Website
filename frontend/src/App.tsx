@@ -1,6 +1,6 @@
-// Import utilities
-// import React from "react";
+// Import React from "react";
 import {Routes, Route, useLocation} from "react-router-dom";
+import 'react-quill/dist/quill.snow.css';
 
 // Import pages & components
 import MainPage from "./pages/MainPage";
