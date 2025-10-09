@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Ensure Quill editor uses the same text styles as your site */
+.ql-editor {
+    @apply text-lg leading-relaxed text-gray-800;
+    white-space: normal;
+}
+
+/* Match padding to your editor container */
+.ql-container {
+    @apply p-2 rounded;
+}
+
+/* Remove border & background for readonly mode KEEP*/
+.ql-container.ql-disabled {
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+/* Matches tool bar with the website */
+.ql-toolbar {
+    @apply bg-gray-50 border border-gray-200 rounded mb-2;
+}
+
+/* Alignment for non-editable text KEEP*/
+.ql-align-right {text-align: right;}
+.ql-align-center {text-align: center;}
+.ql-align-left {text-align: left; /* optional: default */}
+.ql-align-justify {text-align: justify;}
+
+/* Bullets */
+.ql-editor ul {
+    list-style-type: disc;
+    padding-left: 1.25rem; /* spacing from left */
+    margin: 0 0 1em 0;
+}
+
+/* Numbered lists */
+.ql-editor ol {
+    list-style-type: decimal;
+    padding-left: 1.25rem;
+    margin: 0 0 1em 0;
+}
+
+/* Optional: spacing between list items */
+.ql-editor li {
+    margin-bottom: 0.5em;
+}
