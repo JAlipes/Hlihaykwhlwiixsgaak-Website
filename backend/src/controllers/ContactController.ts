@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { sendEmail, generateEmailTemplate } from '../utils/Mailer';
 import { GetEnvVarOrFail } from '../utils/GetEnvVarOrFail';
+import { verifyTurnstileToken } from '../utils/VerifyTurnstile';
 
 // Basic validation helper
 const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
@@ -10,7 +11,7 @@ const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v
 // For now, this just validates input and returns 202 Accepted; wiring to Nodemailer will come next.
 export async function SubmitContact(req: Request, res: Response) {
   try {
-    const { fullName, company, email, phone, requestType, message } = req.body ?? {};
+  const { fullName, company, email, phone, requestType, message, captchaToken } = req.body ?? {};
 
     // Required fields check
     if (!isNonEmptyString(fullName) || !isNonEmptyString(email) || !isNonEmptyString(requestType) || !isNonEmptyString(message)) {
@@ -22,7 +23,14 @@ export async function SubmitContact(req: Request, res: Response) {
       return res.status(400).json({ message: 'Please provide a valid email address.' });
     }
 
-    // TODO: rate limit and captcha verification
+    // Captcha verification (Cloudflare Turnstile)
+    if (!isNonEmptyString(captchaToken)) {
+      return res.status(400).json({ message: 'Captcha verification failed. Please try again.' });
+    }
+    const captcha = await verifyTurnstileToken(captchaToken, req.ip);
+    if (!captcha.success) {
+      return res.status(400).json({ message: 'Captcha verification failed.' });
+    }
 
     // Build email
     const to = GetEnvVarOrFail('CONTACT_TO');

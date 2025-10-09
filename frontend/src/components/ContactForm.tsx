@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 
 // Import Assets
 import feather from '../assets/red-feather.png';
 
 export default function ContactForm() {
+  // Captcha
+  const [captchaToken, setCaptchaToken] = useState<string>("");
+  const [captchaSolved, setCaptchaSolved] = useState<boolean>(false);
+  const [enableCaptcha, setEnableCaptcha] = useState<boolean>(false); // lazy-load gate
+  const captchaContainerRef = useRef<HTMLDivElement | null>(null);
+  const captchaWidgetIdRef = useRef<any>(null);
+  const turnstileSiteKey = GetEnvVarOrFail('VITE_TURNSTILE_SITE_KEY');
+
   const [formData, setFormData] = useState({
     fullName: "",
     company: "",
@@ -16,10 +24,81 @@ export default function ContactForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (!enableCaptcha) setEnableCaptcha(true); // enable captcha after first interaction
   };
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [error, setError] = useState('');
+
+  // Load and render Turnstile captcha (lazy by enableCaptcha)
+  useEffect(() => {
+    if (!enableCaptcha) return;
+    const w = window as any;
+
+    function renderWidget() {
+      if (!captchaContainerRef.current || !w.turnstile) return;
+      // Clear any previous render
+      captchaContainerRef.current.innerHTML = '';
+      captchaWidgetIdRef.current = w.turnstile.render(captchaContainerRef.current, {
+        sitekey: turnstileSiteKey,
+        callback: (token: string) => {
+          setCaptchaToken(token);
+          setCaptchaSolved(true);
+        },
+        'expired-callback': () => {
+          setCaptchaToken("");
+          setCaptchaSolved(false);
+        },
+        'error-callback': () => {
+          setCaptchaToken("");
+          setCaptchaSolved(false);
+          setError('Captcha error. Please try again.');
+        },
+      });
+    }
+
+    if (w.turnstile) {
+      renderWidget();
+      return;
+    }
+
+    const scriptId = 'cf-turnstile-script';
+    if (!document.getElementById(scriptId)) {
+      const s = document.createElement('script');
+      s.id = scriptId;
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad';
+      s.async = true;
+      s.defer = true;
+      (window as any).onTurnstileLoad = () => renderWidget();
+      document.body.appendChild(s);
+    } else {
+      // If script already present but turnstile not ready yet, set a short poll
+      const t = setInterval(() => {
+        if ((window as any).turnstile) {
+          clearInterval(t);
+          renderWidget();
+        }
+      }, 200);
+      return () => clearInterval(t);
+    }
+  }, [turnstileSiteKey, enableCaptcha]);
+
+  // Also enable captcha when its container scrolls into view
+  useEffect(() => {
+    if (enableCaptcha) return;
+    const el = captchaContainerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0) {
+          setEnableCaptcha(true);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [enableCaptcha]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,11 +106,14 @@ export default function ContactForm() {
     setError('');
 
     try {
+      if (!captchaToken) {
+        throw new Error('Please complete the captcha.');
+      }
       const res = await fetch(`${GetEnvVarOrFail('VITE_BACKEND_URL')}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, captchaToken }),
       });
 
       if (!res.ok) {
@@ -41,6 +123,13 @@ export default function ContactForm() {
 
       setStatus('success');
       setFormData({ fullName: '', company: '', email: '', phone: '', requestType: '', message: '' });
+      setCaptchaToken("");
+      setCaptchaSolved(false);
+      // Reset captcha widget
+      const w = window as any;
+      if (w.turnstile && captchaWidgetIdRef.current) {
+        try { w.turnstile.reset(captchaWidgetIdRef.current); } catch {}
+      }
     } catch (err: any) {
       setError(err.message || 'Unexpected error');
       setStatus('error');
@@ -161,9 +250,14 @@ export default function ContactForm() {
                 <p className="text-red-600 text-sm text-center">Error: {error}</p>
               )}
 
+              {/* Captcha */}
+              <div className="pt-2">
+                <div ref={captchaContainerRef} />
+              </div>
+
               <button
                 type="submit"
-                disabled={status === 'loading'}
+                disabled={status === 'loading' || !captchaSolved}
                 className="bg-red-500 text-white  px-10 py-4 rounded hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60"
               >
                 {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
