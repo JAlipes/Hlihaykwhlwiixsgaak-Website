@@ -1,14 +1,15 @@
 import { Request, Response } from 'express';
-import { sendEmail, generateEmailTemplate } from '../utils/Mailer';
+import { SendEmail, GenerateEmailTemplate } from '../utils/Mailer';
 import { GetEnvVarOrFail } from '../utils/GetEnvVarOrFail';
-import { verifyTurnstileToken } from '../utils/VerifyTurnstile';
+import { VerifyTurnstileToken } from '../utils/VerifyTurnstile';
 
 // Basic validation helper
 const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
 
-// POST /api/contact
-// Accepts JSON body with: fullName*, company, email*, phone, requestType*, message*
-// For now, this just validates input and returns 202 Accepted; wiring to Nodemailer will come next.
+/**
+ * SubmitContact
+ * POST /api/contact — validates payload, (optionally) verifies captcha, and emails the details.
+ */
 export async function SubmitContact(req: Request, res: Response) {
   try {
     const { fullName, company, email, phone, requestType, message, captchaToken } = req.body ?? {};
@@ -29,7 +30,7 @@ export async function SubmitContact(req: Request, res: Response) {
       if (!isNonEmptyString(captchaToken)) {
         return res.status(400).json({ message: 'Captcha verification failed. Please try again.' });
       }
-      const captcha = await verifyTurnstileToken(captchaToken, req.ip);
+  const captcha = await VerifyTurnstileToken(captchaToken, req.ip);
       if (!captcha.success) {
         return res.status(400).json({ message: 'Captcha verification failed.' });
       }
@@ -49,9 +50,9 @@ export async function SubmitContact(req: Request, res: Response) {
       message,
     ];
 
-    const html = generateEmailTemplate('New Contact Request', bodyLines);
+    const html = GenerateEmailTemplate('New Contact Request', bodyLines);
 
-    await sendEmail({
+    await SendEmail({
       to,
       subject,
       text: bodyLines.join('\n'),

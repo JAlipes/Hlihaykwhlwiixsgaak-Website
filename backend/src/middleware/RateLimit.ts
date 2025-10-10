@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 
 type Store = Map<string, number[]>; // ip -> request timestamps (ms)
 
+/** Options for the in-memory IP-based rate limiter. */
 export interface RateLimitOptions {
   windowMs: number; // time window in ms
   max: number; // max requests per window per IP
@@ -10,7 +11,11 @@ export interface RateLimitOptions {
 
 const store: Store = new Map();
 
-export function rateLimit(options: RateLimitOptions) {
+/**
+ * RateLimit
+ * Simple in-memory per-IP limiter. Not for multi-instance deployments.
+ */
+export function RateLimit(options: RateLimitOptions) {
   const { windowMs, max, message = 'Too many requests, please try again later.' } = options;
 
   return (req: Request, res: Response, next: NextFunction) => {

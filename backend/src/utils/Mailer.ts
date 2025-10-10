@@ -13,6 +13,7 @@ const transporter = nodemailer.createTransport({
   pool: true,
 });
 
+/** Options for sending a simple email. */
 export interface EmailOptions {
   to: string | string[];
   subject: string;
@@ -22,8 +23,12 @@ export interface EmailOptions {
   cc?: string | string[];
 }
 
-// Unified email sender with sane defaults
-export async function sendEmail(opts: EmailOptions) {
+/**
+ * SendEmail
+ * Sends an email using the shared transporter.
+ * From header is chosen from CONTACT_FROM -> SMTP_FROM -> SMTP_USER.
+ */
+export async function SendEmail(opts: EmailOptions) {
   const from = process.env.CONTACT_FROM || process.env.SMTP_FROM || GetEnvVarOrFail('SMTP_USER');
   await transporter.sendMail({
     from,
@@ -38,8 +43,11 @@ export async function sendEmail(opts: EmailOptions) {
   console.log(`✉️  Mail sent to ${ opts.to } (check inbox)`);
 }
 
-// Small utility for consistent HTML emails
-export function generateEmailTemplate(title: string, bodyLines: string[]): string {
+/**
+ * GenerateEmailTemplate
+ * Minimal HTML wrapper for consistent email formatting.
+ */
+export function GenerateEmailTemplate(title: string, bodyLines: string[]): string {
   const escape = (s: string) =>
     s
       .replace(/&/g, '&amp;')

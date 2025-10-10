@@ -1,11 +1,16 @@
 import { GetEnvVarOrFail } from './GetEnvVarOrFail';
 
+/** API response shape for Turnstile verification. */
 export interface TurnstileVerifyResult {
   success: boolean;
   'error-codes'?: string[];
 }
 
-export async function verifyTurnstileToken(token: string, remoteip?: string): Promise<TurnstileVerifyResult> {
+/**
+ * VerifyTurnstileToken
+ * Calls Cloudflare's siteverify to validate a token.
+ */
+export async function VerifyTurnstileToken(token: string, remoteip?: string): Promise<TurnstileVerifyResult> {
   const secret = GetEnvVarOrFail('TURNSTILE_SECRET');
   const body = new URLSearchParams();
   body.append('secret', secret);
