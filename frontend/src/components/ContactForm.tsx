@@ -5,6 +5,7 @@ import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 import feather from '../assets/red-feather.png';
 
 export default function ContactForm() {
+  const USE_CAPTCHA = false; // Toggle captcha on/off
   // Captcha
   const [captchaToken, setCaptchaToken] = useState<string>("");
   const [captchaSolved, setCaptchaSolved] = useState<boolean>(false);
@@ -24,7 +25,7 @@ export default function ContactForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (!enableCaptcha) setEnableCaptcha(true); // enable captcha after first interaction
+    if (USE_CAPTCHA && !enableCaptcha) setEnableCaptcha(true); // enable captcha after first interaction
   };
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -32,7 +33,7 @@ export default function ContactForm() {
 
   // Load and render Turnstile captcha (lazy by enableCaptcha)
   useEffect(() => {
-    if (!enableCaptcha) return;
+    if (!USE_CAPTCHA || !enableCaptcha) return;
     const w = window as any;
 
     function renderWidget() {
@@ -85,7 +86,7 @@ export default function ContactForm() {
 
   // Also enable captcha when its container scrolls into view
   useEffect(() => {
-    if (enableCaptcha) return;
+    if (!USE_CAPTCHA || enableCaptcha) return;
     const el = captchaContainerRef.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
     const obs = new IntersectionObserver((entries) => {
@@ -106,14 +107,14 @@ export default function ContactForm() {
     setError('');
 
     try {
-      if (!captchaToken) {
+      if (USE_CAPTCHA && !captchaToken) {
         throw new Error('Please complete the captcha.');
       }
       const res = await fetch(`${GetEnvVarOrFail('VITE_BACKEND_URL')}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ ...formData, captchaToken }),
+        body: JSON.stringify(USE_CAPTCHA ? { ...formData, captchaToken } : formData),
       });
 
       if (!res.ok) {
@@ -123,12 +124,14 @@ export default function ContactForm() {
 
       setStatus('success');
       setFormData({ fullName: '', company: '', email: '', phone: '', requestType: '', message: '' });
-      setCaptchaToken("");
-      setCaptchaSolved(false);
-      // Reset captcha widget
-      const w = window as any;
-      if (w.turnstile && captchaWidgetIdRef.current) {
-        try { w.turnstile.reset(captchaWidgetIdRef.current); } catch {}
+      if (USE_CAPTCHA) {
+        setCaptchaToken("");
+        setCaptchaSolved(false);
+        // Reset captcha widget
+        const w = window as any;
+        if (w.turnstile && captchaWidgetIdRef.current) {
+          try { w.turnstile.reset(captchaWidgetIdRef.current); } catch {}
+        }
       }
     } catch (err: any) {
       setError(err.message || 'Unexpected error');
@@ -250,14 +253,16 @@ export default function ContactForm() {
                 <p className="text-red-600 text-sm text-center">Error: {error}</p>
               )}
 
-              {/* Captcha */}
-              <div className="pt-2">
-                <div ref={captchaContainerRef} />
-              </div>
+              {/* Captcha (disabled unless USE_CAPTCHA = true) */}
+              {USE_CAPTCHA && (
+                <div className="pt-2">
+                  <div ref={captchaContainerRef} />
+                </div>
+              )}
 
               <button
                 type="submit"
-                disabled={status === 'loading' || !captchaSolved}
+                disabled={status === 'loading' || (USE_CAPTCHA && !captchaSolved)}
                 className="bg-red-500 text-white  px-10 py-4 rounded hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60"
               >
                 {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
