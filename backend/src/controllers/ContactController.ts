@@ -11,7 +11,8 @@ const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v
 // For now, this just validates input and returns 202 Accepted; wiring to Nodemailer will come next.
 export async function SubmitContact(req: Request, res: Response) {
   try {
-  const { fullName, company, email, phone, requestType, message, captchaToken } = req.body ?? {};
+    const { fullName, company, email, phone, requestType, message, captchaToken } = req.body ?? {};
+    const requireCaptcha = (process.env.CONTACT_REQUIRE_CAPTCHA || 'false').toLowerCase() === 'true';
 
     // Required fields check
     if (!isNonEmptyString(fullName) || !isNonEmptyString(email) || !isNonEmptyString(requestType) || !isNonEmptyString(message)) {
@@ -23,13 +24,15 @@ export async function SubmitContact(req: Request, res: Response) {
       return res.status(400).json({ message: 'Please provide a valid email address.' });
     }
 
-    // Captcha verification (Cloudflare Turnstile)
-    if (!isNonEmptyString(captchaToken)) {
-      return res.status(400).json({ message: 'Captcha verification failed. Please try again.' });
-    }
-    const captcha = await verifyTurnstileToken(captchaToken, req.ip);
-    if (!captcha.success) {
-      return res.status(400).json({ message: 'Captcha verification failed.' });
+    // Captcha verification (Cloudflare Turnstile) — optional via CONTACT_REQUIRE_CAPTCHA
+    if (requireCaptcha) {
+      if (!isNonEmptyString(captchaToken)) {
+        return res.status(400).json({ message: 'Captcha verification failed. Please try again.' });
+      }
+      const captcha = await verifyTurnstileToken(captchaToken, req.ip);
+      if (!captcha.success) {
+        return res.status(400).json({ message: 'Captcha verification failed.' });
+      }
     }
 
     // Build email
