@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 // Import Component Sections
+import LandingSection from '../components/LandingSection';
 import TestTailwind from '../components/TestTailwind';
 import LogoutButton from '../components/LogoutButton';
 import AboutMelanieMark from "../components/AboutMelanieMark";
@@ -17,7 +18,7 @@ export default function MainPage() {
     return ( 
         <main className="flex flex-col">
             {isAuthenticated && <LogoutButton/>} {/* Temporary */}
-            <TestTailwind />
+            <LandingSection />
             <Divider />
             <MissionSection />
             <Divider />
