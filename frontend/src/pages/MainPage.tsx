@@ -2,13 +2,13 @@ import { useContext } from 'react';
 
 // Import Component Sections
 import LandingSection from '../components/LandingSection';
-import TestTailwind from '../components/TestTailwind';
 import LogoutButton from '../components/LogoutButton';
 import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import Divider from "../components/Divider";
 import Services from "../components/ServicesSection";
-        
+import Footer from '../components/Footer';
+
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -17,6 +17,8 @@ export default function MainPage() {
     
     return (
         <main className="flex flex-col">
+            {/* Navbar */}
+
             {isAuthenticated && <LogoutButton/>} {/* Temporary */}
             <LandingSection />
             <Divider />
@@ -26,6 +28,9 @@ export default function MainPage() {
             <Divider />
             <Services />
             <Divider />
+
+            {/* Footer */}
+            <Footer/>
         </main>
     );
 }
