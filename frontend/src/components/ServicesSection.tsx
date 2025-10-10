@@ -1,11 +1,17 @@
+import { LuYoutube } from 'react-icons/lu'
+
 // Import Assets
 import groupImage from '../assets/BCFS_Keynote_Group.jpg'
 import headshot from "../assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg"
-import workshopImage from '../assets/Fora_Workshop_Screenshot_June13_2025 PM.png';
+import workshopImage from '../assets/serviceWorkshopImageCropped.png';
 import publicSpeakingImage from '../assets/WORTH_Keynote_2025_Summit.jpg';
 
+// Import Components
 import ServiceImageLeftSection from "./ServiceImageLeftSection";
 import ServiceImageRightSection from "./ServiceImageRightSection";
+
+// Import Text
+import { serviceAdvisoryText, servicePublicSpeakText, serviceWorkshopText } from '../lang/en/englishText';
 
 export default function ServicesSection() {
     return (
@@ -15,7 +21,7 @@ export default function ServicesSection() {
                 <img
                     src={groupImage}
                     alt="Group of people together"
-                    className="w-full h-auto rounded-b-[100px] shadow-2xl shadow-black/50"
+                    className="min-h-screen w-full h-auto rounded-b-[100px] shadow-2xl shadow-black/50"
                 />
                 <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-8 py-4 rounded-full shadow-lg w-[90%] max-w-4xl border border-gray-200">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center text-[#C32148] tracking-wide">
@@ -37,49 +43,53 @@ export default function ServicesSection() {
 
             {/* Editable Service Sections */}
             <ServiceImageLeftSection
-    sectionName="advisory"
-    defaultTitle="Advisory & Public Relations"
-    defaultImage={headshot}
-    defaultContent={`
-<b class='block font-bold text-xl mb-2'>Governmental and Non-Partisan Political Relations</b>
-<ul class='list-disc list-inside space-y-2 text-lg'>
-  <li>I’ll offer high-level strategic advice to guide you through complex systems and successfully implement change.</li>
-  <li>I’ll direct you to the right organization, decision makers, government body, business, public institution, or First Nation to advance your ideas.</li>
-  <li>I’ll support you in narrowing your 30 big ideas into 3 attainable outcomes.</li>
-  <li>I’ll review your draft documents and provide advice on how to prepare, approach, and engage with the B.C. public service, B.C. MLAs, Official Opposition, Cabinet Ministers, First Nations Leadership, and other stakeholders.</li>
-  <li>I’ll keep your approach focused and efficient, ensuring your time is used wisely.</li>
-</ul>`}
-    imagePosition="left"
-/>
+                sectionName="servicesAdvisory"
+                defaultTitle="Advisory & Public Relations"
+                defaultImage={headshot}
+                defaultContent={serviceAdvisoryText}
+            />
 
-<ServiceImageRightSection
-    sectionName="services-leadership"
-    defaultTitle="Leadership Development & Workshops"
-    defaultImage={workshopImage}
-    defaultContent={`
-<b class='block font-bold text-xl mb-2'>Building Capacity & Empowerment</b>
-<ul class='list-disc list-inside space-y-2 text-lg'>
-  <li>Customized training for leadership and reconciliation goals.</li>
-  <li>Hands-on workshops to strengthen organizational collaboration.</li>
-  <li>Focused discussions on building equity and understanding across teams.</li>
-</ul>`}
-/>
+            <ServiceImageRightSection
+                sectionName="servicesWorkshop"
+                defaultTitle="Workshops and Training"
+                defaultImage={workshopImage}
+                defaultContent={serviceWorkshopText}
+            />
 
-<ServiceImageLeftSection
-    sectionName="services-community"
-    defaultTitle="Community Engagement"
-    defaultImage={publicSpeakingImage}
-    defaultContent={`
-<b class='block font-bold text-xl mb-2'>Strengthening Relationships</b>
-<ul class='list-disc list-inside space-y-2 text-lg'>
-  <li>Facilitating meaningful dialogue between diverse communities.</li>
-  <li>Encouraging shared action toward sustainable reconciliation.</li>
-  <li>Supporting inclusive initiatives that celebrate Indigenous culture and leadership.</li>
-</ul>`}
-    imagePosition="left"
-/>
+            <ServiceImageLeftSection
+                sectionName="servicesPublicSpeaking"
+                defaultTitle="Public Speaking"
+                defaultImage={publicSpeakingImage}
+                defaultContent={servicePublicSpeakText}
+            />
 
             {/* Added Embeded Video Section */}
+            {/* Embedded Video CTA */}
+            <div className="flex justify-center mt-20 px-6">
+                <div className="w-full max-w-3xl border-4 border-[#C32148] rounded-3xl py-10 px-6 text-center bg-white shadow-lg">
+                    <h3 className="text-lg md:text-3xl mb-6">
+                        Watch Melanie Mark’s previous speeches on YouTube
+                    </h3>
+
+                    <button
+                        className="
+                            flex items-center justify-center gap-3 
+                            mx-auto 
+                            border-4 border-[#C32148] 
+                            text-[#C32148]
+                            font-semibold text-lg
+                            rounded-full 
+                            px-8 py-3 
+                            hover:bg-[#C32148]/10 
+                            transition-all duration-300
+                        "
+                        onClick={() => window.open('https://www.youtube.com/@melaniejmark', '_blank')}
+                    >
+                        Click Here
+                        <LuYoutube className="w-6 h-6" />
+                    </button>
+                </div>
+            </div>
         </section>
     );
 }
