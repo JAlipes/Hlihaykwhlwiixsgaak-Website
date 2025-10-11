@@ -1,10 +1,5 @@
 import { GetEnvVarOrFail } from './GetEnvVarOrFail';
-
-/** API response shape for Turnstile verification. */
-export interface TurnstileVerifyResult {
-  success: boolean;
-  'error-codes'?: string[];
-}
+import type { TurnstileVerifyResult } from '../types/nodemailer';
 
 /**
  * VerifyTurnstileToken

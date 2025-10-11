@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { GetEnvVarOrFail } from './GetEnvVarOrFail';
+import type { EmailOptions } from '../types/nodemailer';
 
 // Create a single reusable transporter (connection pool enabled)
 const transporter = nodemailer.createTransport({
@@ -13,23 +14,14 @@ const transporter = nodemailer.createTransport({
   pool: true,
 });
 
-/** Options for sending a simple email. */
-export interface EmailOptions {
-  to: string | string[];
-  subject: string;
-  text?: string;
-  html?: string;
-  replyTo?: string;
-  cc?: string | string[];
-}
+
 
 /**
  * SendEmail
  * Sends an email using the shared transporter.
- * From header is chosen from CONTACT_FROM -> SMTP_FROM -> SMTP_USER.
  */
 export async function SendEmail(opts: EmailOptions) {
-  const from = process.env.CONTACT_FROM || process.env.SMTP_FROM || GetEnvVarOrFail('SMTP_USER');
+  const from = GetEnvVarOrFail('CONTACT_FROM');
   await transporter.sendMail({
     from,
     to: opts.to,
