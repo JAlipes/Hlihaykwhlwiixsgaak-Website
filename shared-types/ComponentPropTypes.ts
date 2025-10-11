@@ -13,3 +13,10 @@ export interface EditableTextPropType {
     setText : (text : string) => void;
     text : string;
 }
+
+export interface MiniServiceSectionProps {
+    sectionName: string;
+    defaultTitle: string; // static title
+    defaultContent: string; // HTML editable (list of items)
+    defaultImage: string;
+}

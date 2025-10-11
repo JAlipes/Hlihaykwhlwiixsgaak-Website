@@ -15,7 +15,7 @@ import { AuthContext } from '../contexts/AuthContext';
 export default function MainPage() {
     const { isAuthenticated } = useContext(AuthContext)
     
-    return (
+    return ( 
         <main className="flex flex-col">
             {isAuthenticated && <LogoutButton/>} {/* Temporary */}
             <LandingSection />
