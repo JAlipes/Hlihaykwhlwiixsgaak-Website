@@ -13,3 +13,8 @@ export interface EditableTextPropType {
     setText : (text : string) => void;
     text : string;
 }
+
+export interface RedBannerProps {
+  rightContent?: React.ReactNode;
+  leftContent?: React.ReactNode;
+}

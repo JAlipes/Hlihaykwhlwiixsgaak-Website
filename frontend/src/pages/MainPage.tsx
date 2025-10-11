@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 // Import Component Sections
+import Navbar from '../components/Navbar';
 import LandingSection from '../components/LandingSection';
 import LogoutButton from '../components/LogoutButton';
 import AboutMelanieMark from "../components/AboutMelanieMark";
@@ -18,7 +19,7 @@ export default function MainPage() {
     return (
         <main className="flex flex-col">
             {/* Navbar */}
-
+            <Navbar/>
             {isAuthenticated && <LogoutButton/>} {/* Temporary */}
             <LandingSection />
             <Divider />
