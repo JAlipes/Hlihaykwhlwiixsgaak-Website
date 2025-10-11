@@ -5,6 +5,7 @@ import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import Divider from "../components/Divider";
 import Services from "../components/ServicesSection";
+import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 
 export default function MainPage() {    
@@ -24,6 +25,8 @@ export default function MainPage() {
             
             <Services />
             <Divider />
+
+            <ContactForm />
 
             <Footer/>
         </main>
