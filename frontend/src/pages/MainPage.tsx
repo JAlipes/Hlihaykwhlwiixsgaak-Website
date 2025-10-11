@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 // Import Component Sections
+import LandingSection from '../components/LandingSection';
 import TestTailwind from '../components/TestTailwind';
 import LogoutButton from '../components/LogoutButton';
 import AboutMelanieMark from "../components/AboutMelanieMark";
@@ -9,6 +10,8 @@ import Divider from "../components/Divider";
 import Services from "../components/ServicesSection";
 import CanoeSection from '../components/CanoeSection';
 import ExperienceSection from '../components/ExperienceSection';
+
+import ContactForm from '../components/ContactForm';
         
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';
@@ -16,10 +19,10 @@ import { AuthContext } from '../contexts/AuthContext';
 export default function MainPage() {
     const { isAuthenticated } = useContext(AuthContext)
     
-    return (
+    return ( 
         <main className="flex flex-col">
             {isAuthenticated && <LogoutButton/>} {/* Temporary */}
-            <TestTailwind />
+            <LandingSection />
             <Divider />
             <MissionSection />
             <Divider />
@@ -31,6 +34,8 @@ export default function MainPage() {
             <CanoeSection />
             <ExperienceSection />
 
+
+            <ContactForm />
         </main>
     );
 }
