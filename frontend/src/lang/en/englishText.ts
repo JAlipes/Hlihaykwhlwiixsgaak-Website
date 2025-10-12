@@ -1,3 +1,4 @@
+// Services Texts
 export const serviceAdvisoryText = `<b class='block font-bold text-xl mb-2'>Governmental and Non-Partisan Political Relations</b>
 <ul class='list-disc list-inside space-y-2 text-lg'>
     <li>I’ll offer high-level strategic advice to guide you through complex systems and successfully implement change.</li>
@@ -35,3 +36,36 @@ export const servicePublicSpeakText = `<b class='block font-bold text-xl mb-2'>M
     <li>I’ll commit to sparking new conversations that inspire change, boost morale, and encourage actionable steps towards reconciliation.</li>
     <li>I’ll respect your time and your audience, ensuring I prioritize your unique event goals and individual budget.</li>
 </ul>`;
+
+
+// Experience Text
+export const defaultExperienceText = `
+<ul className="list-disc list-outside space-y-4 text-lg leading-relaxed">
+    <li>
+        A results-oriented, charismatic, determined, knowledgeable, and
+        experienced First Nation’s matriarch with re<strong>MARK</strong>able leadership,
+        strategic thinking, advocacy, public speaking, communication,
+        facilitation, and interpersonal skills.
+    </li>
+    <li>
+        A pragmatic visionary leader, with a strong acumen navigating
+        complex systems and public relations, supported by a solid track
+        record of advancing public policy, programs, and provincial
+        legislation.
+    </li>
+    <li>
+        An Elder-in-training, with a deep understanding of colonialism and
+        the devastating impacts of the Indian residential schools; actively
+        cultivating personal/Indigenous people’s history, cultural
+        practices, protocols, customs, and traditions through family,
+        community, post-secondary education, and professional teachings.
+    </li>
+    <li>
+        Spent three decades building respectful and meaningful
+        relationships with local xʷməθkʷəy̓əm (Musqueam), Sḵwx̱wú7mesh
+        (Squamish), and səlilwətaɬ (Tsleil-Waututh) Nations and
+        elected/hereditary First Nation leaders across B.C. based on the
+        principles of Rights, Recognition, and Respect.
+    </li>
+</ul>
+`;

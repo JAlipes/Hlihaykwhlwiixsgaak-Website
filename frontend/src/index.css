@@ -34,9 +34,10 @@
 
 /* Bullets */
 .ql-editor ul {
-    list-style-type: disc;
-    padding-left: 1.25rem; /* spacing from left */
-    margin: 0 0 1em 0;
+    list-style-type: disc; /*Solid Round bullet points*/
+    padding-left : 0rem;
+    /* padding-left: 1.25rem; */
+    /* margin: 0 0 1em 0; */
 }
 
 /* Numbered lists */

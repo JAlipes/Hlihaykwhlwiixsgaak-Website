@@ -17,7 +17,7 @@ function App() {
             {/* Your main routes */}
             <Routes>
                 <Route path="/" element={<MainPage />} />
-                <Route path="resume" element={<ResumePage />} />
+                <Route path="/resume" element={<ResumePage />} />
             </Routes>
 
             {/* Conditional Render */}
