@@ -41,7 +41,7 @@ export default function LandingSection(){
     };
 
     return(
-        <section className="h-auto md:h-screen w-full bg-white flex flex-col md:flex-row">
+        <section id='home' className="h-auto md:h-screen w-full bg-white flex flex-col md:flex-row">
             {/* Left Text */}
 
             <div className="flex-1 md:flex-[1.3] flex items-center justify-center p-8">
