@@ -9,7 +9,7 @@ import SaveEditsButton from "./SaveEditsButton";
 import type { TestimonialType } from "../../../shared-types/SectionTypes";
 import { UploadTestimonialImage } from "../utils/UploadTestimonialImage.ts";
 import { DeleteTestimonial } from "../utils/DeleteTestimonial.ts";
-import { resizeImageFile } from "../utils/ResizeImage.ts";
+import { ResizeImageFile } from "../utils/ResizeImage.ts";
 
 export default function ReconciliationSection() {
     const { isAuthenticated } = useContext(AuthContext);
@@ -73,7 +73,7 @@ export default function ReconciliationSection() {
         const file = e.target.files?.[0];
         if (!file) return;
         // Try to resize/compress to stay under 10MB (Cloudinary free limit)
-        const processed = await resizeImageFile(file, { maxWidth: 1920, maxHeight: 1920, quality: 0.8 });
+    const processed = await ResizeImageFile(file, { maxWidth: 1920, maxHeight: 1920, quality: 0.8 });
         const url = URL.createObjectURL(processed);
         if (isSkeleton) {
             setDraftSlide((prev) => ({ ...prev, image: url }));

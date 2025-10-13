@@ -5,14 +5,14 @@ type ResizeOptions = {
     targetMaxBytes?: number; // soft cap; will try to reduce quality/size
 };
 
-const defaultOpts: Required<ResizeOptions> = {
+const DEFAULT_RESIZE_OPTIONS: Required<ResizeOptions> = {
     maxWidth: 1920,
     maxHeight: 1920,
     quality: 0.8,
     targetMaxBytes: 9.5 * 1024 * 1024, // 9.5 MB safety margin
 };
 
-function readFileAsDataURL(file: File): Promise<string> {
+function ReadFileAsDataURL(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve(reader.result as string);
@@ -21,7 +21,7 @@ function readFileAsDataURL(file: File): Promise<string> {
     });
 }
 
-function loadImage(src: string): Promise<HTMLImageElement> {
+function LoadImage(src: string): Promise<HTMLImageElement> {
     return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => resolve(img);
@@ -30,11 +30,11 @@ function loadImage(src: string): Promise<HTMLImageElement> {
     });
 }
 
-export async function resizeImageFile(file: File, options: ResizeOptions = {}): Promise<File> {
-    const opts = { ...defaultOpts, ...options };
+export async function ResizeImageFile(file: File, options: ResizeOptions = {}): Promise<File> {
+    const opts = { ...DEFAULT_RESIZE_OPTIONS, ...options };
     try {
-        const dataUrl = await readFileAsDataURL(file);
-        const img = await loadImage(dataUrl);
+        const dataUrl = await ReadFileAsDataURL(file);
+        const img = await LoadImage(dataUrl);
 
         // Compute initial scale to fit within bounds
         const scale = Math.min(1, opts.maxWidth / img.width, opts.maxHeight / img.height);
@@ -76,7 +76,7 @@ export async function resizeImageFile(file: File, options: ResizeOptions = {}): 
 
         // If still too large after attempts, return the last produced file anyway;
         // server may reject, but we tried.
-        const fallbackBlob: Blob | null = await new Promise((resolve) =>
+            const fallbackBlob: Blob | null = await new Promise((resolve) =>
             canvas.toBlob(resolve, 'image/jpeg', Math.max(0.5, opts.quality - 0.3))
         );
         if (fallbackBlob) {
