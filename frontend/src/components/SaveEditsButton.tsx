@@ -1,19 +1,43 @@
 /**
- * A resuable save button component
- * 
- * Executes provided onClickFunction when save button is clicked
- * 
- * @param onClickFunction Function to run when the button is clicked
- * 
+ * Reusable save button component
+ * - Executes provided onClickFunction when clicked
+ * - Optional styling variants and simple loading/success states
  */
-export default function SaveEditsButton({onClickFunction} : {onClickFunction: () => void}){
-    return(
+type SaveEditsButtonProps = {
+    onClickFunction: () => void | Promise<void>;
+    color?: 'red' | 'dark-red' | 'gray';
+    isLoading?: boolean;
+    showSuccess?: boolean;
+    label?: string;
+    successLabel?: string;
+    disabled?: boolean;
+};
+
+export default function SaveEditsButton({
+    onClickFunction,
+    color = 'red',
+    isLoading = false,
+    showSuccess = false,
+    label = 'Save',
+    successLabel = 'Saved',
+    disabled = false,
+}: SaveEditsButtonProps) {
+    const base = 'text-white px-4 py-2 rounded transition-colors';
+    const colorClass =
+        color === 'gray'
+            ? 'bg-gray-600 hover:bg-gray-700'
+            : color === 'dark-red'
+            ? 'bg-red-800 hover:bg-red-900'
+            : 'bg-red-600 hover:bg-red-700';
+    const stateClass = disabled || isLoading ? ' opacity-60 cursor-not-allowed' : '';
+
+    return (
         <button
             onClick={onClickFunction}
-            
-            className='bg-red-600 text-white px-4 py-2 rounded'
+            className={`${base} ${colorClass}${stateClass}`}
+            disabled={disabled || isLoading}
         >
-            Save
+            {isLoading ? 'Saving…' : showSuccess ? successLabel : label}
         </button>
     );
 }

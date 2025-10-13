@@ -12,6 +12,7 @@ export interface EditableTextPropType {
     isAuthenticated : boolean;
     setText : (text : string) => void;
     text : string;
+    placeholder?: string;
 }
 
 export interface MiniServiceSectionProps {

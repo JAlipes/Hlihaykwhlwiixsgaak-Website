@@ -25,7 +25,7 @@ export default function MainPage() {
             <Divider />
             
             <Services />
-            <Divider />
+            {/* <Divider /> */}
             <ReconciliationSection />
 
             <ContactForm />

@@ -5,21 +5,12 @@ import type { SectionDataType } from '../../../shared-types/SectionTypes'
 
 interface SectionDocument extends SectionDataType, Document {}
 
-// A section can be either:
-// 1. Basic: text + image
-// 2. Slides: array of testimonial slides (when slides[] is non-empty)
-// We keep text/image optional to allow switching modes without a second collection.
+// A section stores basic content: text + image.
+// Testimonials/slides have been moved to their own collection.
 const sectionDataSchema = new Schema<SectionDocument>({
     sectionName : {type : String, required: true, unique: true},
     text: {type: String},          // used only for basic sections
-    image: {type: String},         // used only for basic sections
-    slides: [{                     // when present acts as testimonial carousel
-        image: String,
-        title: String,
-        text: String,
-        author: String,
-        org: String,
-    }]
+    image: {type: String}         // used only for basic sections
 });
 
 export const SectionModel = model<SectionDocument>('SectionData', sectionDataSchema);

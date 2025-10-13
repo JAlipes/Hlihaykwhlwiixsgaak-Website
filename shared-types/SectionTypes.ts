@@ -1,14 +1,12 @@
-export interface SlideType {
-  image: string;
-  title: string;
-  text: string;
-  author: string;
-  org: string;
+export interface TestimonialType {
+    image: string;
+    title: string;
+    text: string; // Quill content (HTML or Delta serialized)
+    order?: number;
 }
 
 export interface SectionDataType {
-  sectionName: string;
-  text?: string;
-  image?: string;
-  slides?: SlideType[]; // Only used for ReconciliationSection
+    sectionName: string;
+    text?: string;
+    image?: string;
 }
