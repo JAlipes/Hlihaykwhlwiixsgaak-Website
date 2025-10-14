@@ -1,5 +1,7 @@
+import { GetEnvVarOrFail } from './GetEnvVarOrFail';
+
 export async function HandleGetTestimonials() {
-    const base = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+    const base = GetEnvVarOrFail('VITE_BACKEND_URL');
     const res = await fetch(`${base}/api/testimonials`, {
         credentials: 'include',
     });

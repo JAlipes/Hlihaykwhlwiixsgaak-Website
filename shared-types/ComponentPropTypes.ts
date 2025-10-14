@@ -27,3 +27,12 @@ export interface RedBannerProps {
   rightContent?: React.ReactNode;
   leftContent?: React.ReactNode;
 }
+
+// Props for the generic SaveEdits button component
+export interface SaveEditsButtonProps {
+    onClickFunction: () => void | Promise<void>;
+    color?: 'red' | 'dark-red' | 'gray';
+    isLoading?: boolean;
+    label?: string;
+    disabled?: boolean;
+}

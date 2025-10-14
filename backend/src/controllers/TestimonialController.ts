@@ -14,7 +14,7 @@ export async function GetTestimonials(_req: Request, res: Response) {
 
 export async function SaveTestimonials(req: Request, res: Response) {
     try {
-        const { testimonials } = req.body as { testimonials: Array<{ image?: string; title?: string; text: string; order?: number }> };
+        const { testimonials } = req.body as { testimonials: Array<{ image?: string; text: string; order?: number }> };
         if (!Array.isArray(testimonials)) {
             return res.status(400).json({ message: 'Invalid payload: testimonials must be an array' });
         }
@@ -23,7 +23,6 @@ export async function SaveTestimonials(req: Request, res: Response) {
         await TestimonialModel.deleteMany({});
         const docs = await TestimonialModel.insertMany(testimonials.map((t, idx) => ({
             image: t.image ?? '',
-            title: t.title ?? 'Testimonial',
             text: t.text,
             order: typeof t.order === 'number' ? t.order : idx,
         })));

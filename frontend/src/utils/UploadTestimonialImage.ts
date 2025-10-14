@@ -1,5 +1,7 @@
+import { GetEnvVarOrFail } from './GetEnvVarOrFail';
+
 export async function UploadTestimonialImage(file: File) {
-    const base = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+    const base = GetEnvVarOrFail('VITE_BACKEND_URL');
     const form = new FormData();
     form.append('image', file);
     const res = await fetch(`${base}/api/testimonials/upload-image`, {

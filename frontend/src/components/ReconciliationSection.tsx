@@ -19,7 +19,7 @@ export default function ReconciliationSection() {
     // Track per-slide image files; only defined entries will be uploaded on Save
     const [slideImageFiles, setSlideImageFiles] = useState<(File | null)[]>([]);
     // Draft skeleton slide (only used when authenticated)
-    const [draftSlide, setDraftSlide] = useState<TestimonialType>({ image: "", title: "", text: "" });
+    const [draftSlide, setDraftSlide] = useState<TestimonialType>({ image: "", text: "" });
     const [draftFile, setDraftFile] = useState<File | null>(null);
     // Lightweight toast feedback
     const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
@@ -118,11 +118,10 @@ export default function ReconciliationSection() {
 
     // Save slides to backend
     const [isSaving, setIsSaving] = useState(false);
-    const [saveSuccess, setSaveSuccess] = useState(false);
     const saveSlides = async () => {
         try {
             setIsSaving(true);
-            setSaveSuccess(false);
+            // toast feedback handles success state
             // Upload any selected files and replace the corresponding image URLs
             const updated = [...slides];
             for (let i = 0; i < updated.length; i++) {
@@ -134,14 +133,14 @@ export default function ReconciliationSection() {
             }
             // If draft has any content, append it (upload its image if present)
             const quillPlain = draftSlide.text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
-            const hasDraft = !!(draftSlide.title.trim() || quillPlain || draftSlide.image);
+            const hasDraft = !!(quillPlain || draftSlide.image);
             if (hasDraft) {
                 let draftImageUrl = draftSlide.image;
                 if (draftFile instanceof File) {
                     const { url } = await UploadTestimonialImage(draftFile);
                     draftImageUrl = url;
                 }
-                updated.push({ image: draftImageUrl, title: draftSlide.title || 'New Testimonial', text: draftSlide.text || '' });
+                updated.push({ image: draftImageUrl, text: draftSlide.text || '' });
             }
             const result = await HandleSaveTestimonials({ testimonials: updated.map((s, i) => ({ ...s, order: i })) });
             const saved = (result && result.testimonials) ? result.testimonials : updated;
@@ -149,13 +148,11 @@ export default function ReconciliationSection() {
             setSlideImageFiles(new Array(saved.length).fill(null));
             setSlides(saved);
             if (hasDraft) {
-                setDraftSlide({ image: '', title: '', text: '' });
+                setDraftSlide({ image: '', text: '' });
                 setDraftFile(null);
                 // After creating a new slide from draft, jump to it
                 setCurrent(saved.length - 1);
             }
-            setSaveSuccess(true);
-            setTimeout(() => setSaveSuccess(false), 1500);
             showToast('Saved testimonials', 'success');
         } catch (err) {
             console.error('[Testimonials] save failed', err);
@@ -173,19 +170,15 @@ export default function ReconciliationSection() {
             {/* Show different content based on whether it's the add slide or a real slide */}
             {/* Single rendering path: real slide or skeleton draft */}
             <div className="mb-10 md:mb-14">
-                <EditableText
-                    key={`title-${isSkeleton ? 'draft' : current}`}
-                    isAuthenticated={isAuthenticated}
-                    setText={(val) => updateSlide("title", val)}
-                    text={isSkeleton ? (draftSlide.title ?? "") : (slides[current]?.title ?? "")}
-                    placeholder="Add a testimonial title"
-                />
+                <h1 className="text-4xl md:text-4xl">
+                    Reconciliation in Action
+                </h1>
             </div>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-7xl">
                 {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
                     <EditableImage
                         src={isSkeleton ? (draftSlide.image) : (slides[current]?.image as string)}
-                        alt={isSkeleton ? (draftSlide.title ?? "") : (slides[current]?.title ?? "")}
+                        alt={"Testimonial image"}
                         wrapperClassName="flex-shrink-0"
                         imageClassName="rounded-3xl shadow-xl w-auto h-[32rem] object-cover mx-auto cursor-pointer"
                         isAuthenticated={isAuthenticated}
@@ -257,8 +250,7 @@ export default function ReconciliationSection() {
                         onClickFunction={saveSlides}
                         color="dark-red"
                         isLoading={isSaving}
-                        showSuccess={saveSuccess}
-                        successLabel="Saved!"
+                        label="Save"
                     />
                 </div>
             )}
@@ -268,8 +260,6 @@ export default function ReconciliationSection() {
                         onClickFunction={saveSlides}
                         color="dark-red"
                         isLoading={isSaving}
-                        showSuccess={saveSuccess}
-                        successLabel="Saved!"
                         label="Save New Slide"
                     />
                 </div>

@@ -1,6 +1,5 @@
 export interface TestimonialType {
     image: string;
-    title: string;
     text: string; // Quill content (HTML or Delta serialized)
     order?: number;
 }

@@ -1,25 +1,15 @@
 /**
  * Reusable save button component
  * - Executes provided onClickFunction when clicked
- * - Optional styling variants and simple loading/success states
+ * - Optional styling variants and simple loading state
  */
-type SaveEditsButtonProps = {
-    onClickFunction: () => void | Promise<void>;
-    color?: 'red' | 'dark-red' | 'gray';
-    isLoading?: boolean;
-    showSuccess?: boolean;
-    label?: string;
-    successLabel?: string;
-    disabled?: boolean;
-};
+import type { SaveEditsButtonProps } from '../../../shared-types/ComponentPropTypes';
 
 export default function SaveEditsButton({
     onClickFunction,
     color = 'red',
     isLoading = false,
-    showSuccess = false,
     label = 'Save',
-    successLabel = 'Saved',
     disabled = false,
 }: SaveEditsButtonProps) {
     const base = 'text-white px-4 py-2 rounded transition-colors';
@@ -37,7 +27,7 @@ export default function SaveEditsButton({
             className={`${base} ${colorClass}${stateClass}`}
             disabled={disabled || isLoading}
         >
-            {isLoading ? 'Saving…' : showSuccess ? successLabel : label}
+            {isLoading ? 'Saving…' : label}
         </button>
     );
 }

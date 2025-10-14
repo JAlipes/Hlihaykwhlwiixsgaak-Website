@@ -1,5 +1,7 @@
-export async function HandleSaveTestimonials(payload: { testimonials: Array<{ image: string; title: string; text: string; order?: number }> }) {
-    const base = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+import { GetEnvVarOrFail } from './GetEnvVarOrFail';
+
+export async function HandleSaveTestimonials(payload: { testimonials: Array<{ image: string; text: string; order?: number }> }) {
+    const base = GetEnvVarOrFail('VITE_BACKEND_URL');
     const res = await fetch(`${base}/api/testimonials/save-all`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
