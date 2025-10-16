@@ -41,7 +41,7 @@ export default function LandingSection(){
     };
 
     return(
-        <section id='home' className="h-auto md:h-screen w-full bg-white flex flex-col md:flex-row">
+        <section id='home' className="h-auto md:h-screen w-full bg-white flex flex-col md:flex-row pt-20">
             {/* Left Text */}
 
             <div className="flex-1 md:flex-[1.3] flex items-center justify-center p-8">
@@ -69,7 +69,7 @@ export default function LandingSection(){
             </div>
 
             {/* Right Image */}
-            <div className="flex-1 relative flex items-center justify-center">
+            <div className="flex-1 relative flex items-center justify-center pt-5">
                 <EditableImage
                     src={landingImage}
                     alt="Landing Image"
