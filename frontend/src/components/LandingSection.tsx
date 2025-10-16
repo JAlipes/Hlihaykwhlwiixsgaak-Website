@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from 'react';
 import { LuVolume2 } from 'react-icons/lu';
 
 // Import Assets
-import aboutHeader from '../assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg'
+import aboutHeader from '../assets/Melanie_KingCharlesAward2024.jpg'
 
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';
