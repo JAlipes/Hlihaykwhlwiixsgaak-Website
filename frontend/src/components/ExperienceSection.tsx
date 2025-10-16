@@ -46,31 +46,33 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="min-h-screen bg-gray-100 text-gray-800 flex flex-col py-12 px-6 md:px-20 lg:px-32">
+        <section id="experience" className="min-h-screen bg-gray-100 text-gray-800 flex flex-col pt-20 py-12 px-6 md:px-20 lg:px-32">
             {/* Title */}
             <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-5xl font-bold text-red-600 mt-12">
+                <h2 className="text-3xl md:text-5xl text-brandRed mt-12">
                     Experience
                 </h2>
                 <div className="w-48 h-[2px] bg-black mt-3 mx-auto" />
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="flex flex-col md:flex-row items-center justify-center flex-1 gap-12">
+            <div className="flex flex-col md:flex-row justify-center items-center flex-1 pt-12 md:pt-0 h-auto md:h-[490px]">
                 {/* Image */}
-                <EditableImage
-                    src={experienceImage}
-                    alt='Experience Image'
-                    wrapperClassName='w-full md:w-1/2 flex justify-center'
-                    imageClassName='w-full max-w-[500px] h-[500px] object-cover rounded-3xl shadow-lg'
-                    isAuthenticated={isAuthenticated}
-                    inputIdString='experienceImageUpload'
-                    onChangeFunction={HandleExperienceImageChange}
-                />
+                <div className="w-full md:w-1/2 flex justify-center h-auto md:h-full pb-10 md:pb-0 md:p-10">
+                    <EditableImage
+                        src={experienceImage}
+                        alt="Experience Image"
+                        wrapperClassName="w-full h-full"
+                        imageClassName="w-full h-full object-cover rounded-3xl shadow-lg"
+                        isAuthenticated={isAuthenticated}
+                        inputIdString="experienceImageUpload"
+                        onChangeFunction={HandleExperienceImageChange}
+                    />
+                </div>
 
                 {/* Text */}
-                <div className="w-full md:w-1/2 flex flex-col justify-center">
-                    <h3 className="text-2xl font-light text-red-600 mb-6 text-center">
+                <div className="w-full md:w-1/2 flex flex-col justify-center h-full sm:mt-10">
+                    <h3 className="text-2xl font-light text-brandRed text-center">
                         Profile Summary
                     </h3>
                     <EditableText
@@ -79,20 +81,25 @@ export default function ExperienceSection() {
                         text={experienceText}
                     />
 
-                    {/* Save button shows only if authenticated */}
                     {isAuthenticated && (
-                        <SaveEditsButton 
-                            onClickFunction={
-                                () => {
-                                    HandleSaveSectionData({sectionName, text: experienceText, image: selectedFile ?? experienceImage})
-                                }
-                            }
-                        />
+                        <div className="mt-4 flex justify-center">
+                            <SaveEditsButton
+                                onClickFunction={() => {
+                                    HandleSaveSectionData({
+                                        sectionName,
+                                        text: experienceText,
+                                        image: selectedFile ?? experienceImage,
+                                    });
+                                }}
+                            />
+                        </div>
                     )}
 
-                    {/* Button Redirects to the ResumePage*/}
-                    <div className="mt-8 flex justify-center">
-                        <button onClick={HandleResumeRedirect} className="bg-red-600 text-white px-6 py-2 rounded-full shadow-md hover:bg-red-700 transition">
+                    <div className="flex justify-center mt-4">
+                        <button
+                            onClick={HandleResumeRedirect}
+                            className="bg-red-600 text-white px-6 py-2 rounded-full shadow-md hover:bg-red-700 transition"
+                        >
                             Explore more
                         </button>
                     </div>
