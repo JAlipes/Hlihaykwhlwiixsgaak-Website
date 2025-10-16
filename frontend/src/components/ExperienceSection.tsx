@@ -56,14 +56,14 @@ export default function ExperienceSection() {
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="flex flex-col md:flex-row justify-center items-center flex-1 pt-12 md:pt-0 h-auto md:h-[490px]">
+            <div className="flex flex-col md:flex-row justify-center items-center flex-1 pt-12 pb-14 md:pt-0 h-auto md:h-[490px]">
                 {/* Image */}
-                <div className="w-full md:w-1/2 flex justify-center h-auto md:h-full pb-10 md:pb-0 md:p-10">
+                <div className="w-full md:w-1/2 flex justify-center h-auto md:h-full pt-10 pb-10 pl-10 pr-0">
                     <EditableImage
                         src={experienceImage}
                         alt="Experience Image"
                         wrapperClassName="w-full h-full"
-                        imageClassName="w-full h-full object-cover rounded-3xl shadow-lg"
+                        imageClassName="w-full h-full object-cover rounded-[75px]"
                         isAuthenticated={isAuthenticated}
                         inputIdString="experienceImageUpload"
                         onChangeFunction={HandleExperienceImageChange}
@@ -98,7 +98,7 @@ export default function ExperienceSection() {
                     <div className="flex justify-center mt-4">
                         <button
                             onClick={HandleResumeRedirect}
-                            className="bg-red-600 text-white px-6 py-2 rounded-full shadow-md hover:bg-red-700 transition"
+                            className="bg-brandRed text-white text-lg py-2 px-3 rounded-lg shadow-md hover:bg-red-700 transition border border-black"
                         >
                             Explore more
                         </button>
