@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import headshot from '../assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg';
+import familyPhoto from '../assets/Family_Experience_Photo.jpg';
 
 // Import components
 import EditableText from './EditableText';
@@ -12,7 +12,7 @@ import SaveEditsButton from './SaveEditsButton';
 import { AuthContext } from '../contexts/AuthContext';
 
 // Import Texts
-import { defaultExperienceText } from '../lang/en/englishText';
+import { defaultExperienceText } from '../lang/en/EnglishText';
 
 // Import Utils
 import { HandleGetSectionData } from '../utils/HandleGetSectionData';
@@ -25,7 +25,7 @@ export default function ExperienceSection() {
     const navigate = useNavigate();
 
     const [experienceText, setExperienceText] = useState<string>(defaultExperienceText);
-    const [experienceImage, setExperienceImage] = useState<string>(headshot);
+    const [experienceImage, setExperienceImage] = useState<string>(familyPhoto);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     useEffect(() => {
@@ -39,14 +39,14 @@ export default function ExperienceSection() {
         fetchSectionData();
     }, []);
 
-    const HandleMissionImageChange = HandleImageChangeFactory(setSelectedFile, setExperienceImage);
+    const HandleExperienceImageChange = HandleImageChangeFactory(setSelectedFile, setExperienceImage);
 
     const HandleResumeRedirect = () => {
         navigate("/resume")
     }
 
     return (
-        <section className="min-h-screen bg-gray-100 text-gray-800 flex flex-col py-12 px-6 md:px-20 lg:px-32">
+        <section id="experience" className="min-h-screen bg-gray-100 text-gray-800 flex flex-col py-12 px-6 md:px-20 lg:px-32">
             {/* Title */}
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-red-600 mt-12">
@@ -59,13 +59,13 @@ export default function ExperienceSection() {
             <div className="flex flex-col md:flex-row items-center justify-center flex-1 gap-12">
                 {/* Image */}
                 <EditableImage
-                    src={headshot}
+                    src={experienceImage}
                     alt='Experience Image'
                     wrapperClassName='w-full md:w-1/2 flex justify-center'
                     imageClassName='w-full max-w-[500px] h-[500px] object-cover rounded-3xl shadow-lg'
                     isAuthenticated={isAuthenticated}
                     inputIdString='experienceImageUpload'
-                    onChangeFunction={HandleMissionImageChange}
+                    onChangeFunction={HandleExperienceImageChange}
                 />
 
                 {/* Text */}

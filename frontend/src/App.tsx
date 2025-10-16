@@ -7,6 +7,9 @@ import MainPage from "./pages/MainPage";
 import ResumePage from "./pages/ResumePage";
 import LoginModal from "./components/LoginModal";
 
+// Import Layouts
+import MainLayout from './layouts/MainLayout'
+
 function App() {
     const location = useLocation();
     const isLoginRoute = location.pathname =="/login";
@@ -16,8 +19,10 @@ function App() {
 
             {/* Your main routes */}
             <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="/resume" element={<ResumePage />} />
+                <Route element={<MainLayout/>}>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/resume" element={<ResumePage />} />
+                </Route>
             </Routes>
 
             {/* Conditional Render */}
