@@ -1,6 +1,3 @@
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-
 // Import Component Sections
 import LandingSection from '../components/LandingSection';
 import AboutMelanieMark from "../components/AboutMelanieMark";

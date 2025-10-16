@@ -19,6 +19,7 @@ export default function Navbar() {
         { name: "About", id: "about" },
         { name: "Services", id: "services" },
         { name: "Testimonials", id: "testimonials" },
+        { name: "Rising Tides", id: "canoe"},
         { name: "Experience", id: "experience" },
         { name: "Contact Us", id: "contact" },
     ]

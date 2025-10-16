@@ -1,29 +1,29 @@
-import featherLogo from "../assets/red-feather.png"; // temp
+import featherLogo from "../assets/Melanie_Feather_Logo_W_removebg_free.png"; // temp
 import canoeImage from "../assets/Cedar Hat red Canoe Journey 2024.jpg";
+
 
 export default function CanoeSection() {
     return (
-        <section className="bg-red-600 text-white w-full h-screen flex">
+        <section id='canoe' className="bg-brandRed text-white w-full h-screen flex">
             {/* Left (w-3/5) */}
             <div className="w-3/5 flex flex-col justify-center px-12 py-8">
                 {/* Feather Logo */}
                 <img
                     src={featherLogo}
                     alt="Feather Logo"
-                    className="w-24 h-auto mb-8"
+                    className="w-32 h-auto mb-8"
                 />
 
                 {/* Text */}
-                <h2 className="text-5xl font-light leading-snug">A RISING TIDE</h2>
+                <h2 className="text-[96px] font-light leading-tight">A RISING TIDE</h2>
 
-                {/* <h2 className="text-5xl font-extrabold leading-snug">LIFTS ALL CANOES</h2> */}
-                <h2 className="text-5xl leading-snug">
+                <h2 className="text-[96px] leading-tight">
                     <span className="font-extrabold">LIFTS ALL </span>
                     <span className="font-light">CANOES</span>
                 </h2>
 
-                <h2 className="text-5xl font-extrabold leading-snug">PADDLE TOGETHER</h2>
-                <p className="mt-2 text-4xl">- HLI HAYKWHL WII XSGAAK</p>
+                <h2 className="text-[96px] font-extrabold leading-tight">PADDLE TOGETHER</h2>
+                <p className="mt-4 text-[64px]">- HLI HAYKWHL WII XSGAAK</p>
             </div>
 
             {/* Right (w-2/5) */}
