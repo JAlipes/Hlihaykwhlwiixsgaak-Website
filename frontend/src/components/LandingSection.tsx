@@ -3,7 +3,7 @@ import { LuVolume2 } from 'react-icons/lu';
 
 // Import Assets
 import aboutHeader from '../assets/Melanie_KingCharlesAward2024.jpg'
-
+import pronunciationAudio from '../assets/HlihaykwhlwiixsgaakTrimmedConveted.mp4'
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -35,9 +35,11 @@ export default function LandingSection(){
 
     const HandleLandingImageChange = HandleImageChangeFactory(setSelectedFile, setLandingImage);
 
-    const audioUrl = '';
     const HandlePlayAudio = () => {
-        console.log('Audio played');
+        const audio = new Audio(pronunciationAudio);
+        audio.play()
+            .then(() => console.log('Audio played'))
+            .catch((err) => console.error('Error playing audio:', err));
     };
 
     return(
