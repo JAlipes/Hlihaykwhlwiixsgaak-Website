@@ -10,6 +10,7 @@ import type { TestimonialType } from "../../../shared-types/SectionTypes";
 import { UploadTestimonialImage } from "../utils/UploadTestimonialImage.ts";
 import { DeleteTestimonial } from "../utils/DeleteTestimonial.ts";
 import { ResizeImageFile } from "../utils/ResizeImage.ts";
+import { DEFAULT_TESTIMONIALS } from "../utils/DefaultTestimonials";
 
 export default function ReconciliationSection() {
     const { isAuthenticated } = useContext(AuthContext);
@@ -31,10 +32,17 @@ export default function ReconciliationSection() {
     // Load slides from backend
     useEffect(() => {
         const fetchData = async () => {
-            const data = await HandleGetTestimonials();
-            if (data && data.testimonials) {
-                setSlides(data.testimonials);
-                setSlideImageFiles(new Array(data.testimonials.length).fill(null));
+            try {
+                const data = await HandleGetTestimonials();
+                const list = (data && Array.isArray(data.testimonials) && data.testimonials.length > 0)
+                    ? data.testimonials
+                    : DEFAULT_TESTIMONIALS;
+                setSlides(list);
+                setSlideImageFiles(new Array(list.length).fill(null));
+            } catch {
+                // On error, fall back to defaults
+                setSlides(DEFAULT_TESTIMONIALS);
+                setSlideImageFiles(new Array(DEFAULT_TESTIMONIALS.length).fill(null));
             }
         };
         fetchData();
