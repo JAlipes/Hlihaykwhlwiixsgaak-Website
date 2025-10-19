@@ -28,8 +28,9 @@ export async function GetData(req: Request, res: Response){
     }
 }  
 
+// SaveData handles basic (non-slides) sections where a single text + image are stored.
+// Image upload (if any) is processed via multer single('image') middleware.
 export async function SaveData(req: Request, res: Response){
-    // use both saveText and saveImage helpers in here
     try {
         const { sectionName, text } = req.body;
 
@@ -57,5 +58,9 @@ export async function SaveData(req: Request, res: Response){
         res.status(500).json({message: `Failed to save section data`});
     }
 }
+
+// (Currently unused externally) Generic update endpoint that can switch a section
+// between slides or basic mode depending on payload. Retained for potential future use.
+// Note: Slides logic removed. Testimonials now live in their own collection.
 
 

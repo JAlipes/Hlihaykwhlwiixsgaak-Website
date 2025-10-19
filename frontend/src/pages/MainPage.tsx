@@ -5,6 +5,7 @@ import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import Divider from "../components/Divider";
 import Services from "../components/ServicesSection";
+import ReconciliationSection from "../components/ReconciliationSection";
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 
@@ -24,7 +25,8 @@ export default function MainPage() {
             <Divider />
             
             <Services />
-            <Divider />
+            {/* <Divider /> */}
+            <ReconciliationSection />
 
             <ContactForm />
 
