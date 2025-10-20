@@ -7,6 +7,7 @@ import Services from "../components/ServicesSection";
 import CanoeSection from '../components/CanoeSection';
 import ExperienceSection from '../components/ExperienceSection';
 
+import ReconciliationSection from "../components/ReconciliationSection";
 import ContactForm from '../components/ContactForm';
 
 export default function MainPage() {    
@@ -26,6 +27,8 @@ export default function MainPage() {
             
             <CanoeSection />
             <ExperienceSection />
+            {/* <Divider /> */}
+            <ReconciliationSection />
 
             <Divider/>
             <ContactForm />

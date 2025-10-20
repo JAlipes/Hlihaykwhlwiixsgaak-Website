@@ -5,21 +5,23 @@ import { HandleGetSectionData } from './HandleGetSectionData';
 // Import Types
 import type { SectionDataType } from '../../../shared-types/SectionTypes';
 
+// SectionFormType adapts the shared SectionDataType for saving purposes.
+// For basic sections we allow image to be a File or an existing URL string.
 interface SectionFormType extends Omit<SectionDataType, 'image'> {
-    image : string | File
+    image: string | File;
 }
 
-export const HandleSaveSectionData = async (sectionData : SectionFormType): Promise<undefined | void> => {
+export const HandleSaveSectionData = async (sectionData: SectionFormType): Promise<undefined | void> => {
     try {
+        // Basic section branch (Mission, Landing, Services, etc)
         const formData = new FormData();
         formData.append('sectionName', sectionData.sectionName);
-        formData.append('text', sectionData.text)
-        
+        formData.append('text', sectionData.text ?? "");
+
+        // If a new file provided, append File; else keep existing URL as string
         if (sectionData.image instanceof File) {
-            // send new file
             formData.append('image', sectionData.image);
         } else {
-            // send existing image url
             formData.append('image', sectionData.image);
         }
 
@@ -28,7 +30,7 @@ export const HandleSaveSectionData = async (sectionData : SectionFormType): Prom
             body: formData,
             credentials: 'include'
         });
-        
+
         if (res.ok) {
             console.log('Successfully saved section data');
             HandleGetSectionData(sectionData.sectionName);
@@ -36,7 +38,6 @@ export const HandleSaveSectionData = async (sectionData : SectionFormType): Prom
             const error = await res.json();
             console.error('Failed to save section data', error.message)
         }
-
     } catch (err) {
         console.error(`Error saving section data`, err)
     }
