@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 // Import routes
 import AuthRouter from './routes/AuthRoutes';
 import SectionRouter from './routes/SectionRoutes';
+import ContactRouter from './routes/ContactRoutes';
+import TestimonialRouter from './routes/TestimonialRoutes';
 
 // Import Utils Functions
 import { GetEnvVarOrFail } from './utils/GetEnvVarOrFail';
@@ -22,6 +24,8 @@ app.use(cookieParser());
 // API Routes + Custom Middleware
 app.use('/api/auth', AuthRouter);
 app.use('/api/section', SectionRouter);
+app.use('/api/contact', ContactRouter);
+app.use('/api/testimonials', TestimonialRouter);
 
 // Global Error Handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

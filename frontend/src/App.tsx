@@ -1,11 +1,14 @@
-// Import utilities
-// import React from "react";
+// Import React from "react";
 import {Routes, Route, useLocation} from "react-router-dom";
+import 'react-quill/dist/quill.snow.css';
 
 // Import pages & components
 import MainPage from "./pages/MainPage";
 import ResumePage from "./pages/ResumePage";
 import LoginModal from "./components/LoginModal";
+
+// Import Layouts
+import MainLayout from './layouts/MainLayout'
 
 function App() {
     const location = useLocation();
@@ -16,8 +19,10 @@ function App() {
 
             {/* Your main routes */}
             <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="resume" element={<ResumePage />} />
+                <Route element={<MainLayout/>}>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/resume" element={<ResumePage />} />
+                </Route>
             </Routes>
 
             {/* Conditional Render */}

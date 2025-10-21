@@ -30,8 +30,8 @@ export default function MissionSection() {
         const fetchSectionData = async () => {
             const data = await HandleGetSectionData(sectionName);
             if (data) {
-                setMissionText(data.text);
-                setMissionImage(data.image);
+                setMissionText(data.text ?? missionText); // fallback value if text is undefined
+                setMissionImage(data.image ?? missionImage); // fallback value if image is undefined
             }
         };
         fetchSectionData();
@@ -42,7 +42,7 @@ export default function MissionSection() {
     const handleMissionImageChange = HandleImageChangeFactory(setSelectedFile, setMissionImage);
 
     return (
-        <section className='bg-white text-gray-800 py-16 px-6 md:px-20 lg:px-32'>
+        <section id='mission' className='min-h-screen w-full flex bg-white text-gray-800 py-16 px-6 md:px-20 lg:px-32'>
             <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
                 {/* Image (left) */}
                 <EditableImage 

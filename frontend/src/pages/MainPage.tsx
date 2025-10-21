@@ -1,30 +1,37 @@
-import { useContext } from 'react';
-
 // Import Component Sections
-import TestTailwind from '../components/TestTailwind';
-import LogoutButton from '../components/LogoutButton';
+import LandingSection from '../components/LandingSection';
 import AboutMelanieMark from "../components/AboutMelanieMark";
 import MissionSection from "../components/MissionSection";
 import Divider from "../components/Divider";
 import Services from "../components/ServicesSection";
-        
-// Import Contexts
-import { AuthContext } from '../contexts/AuthContext';
+import CanoeSection from '../components/CanoeSection';
+import ExperienceSection from '../components/ExperienceSection';
 
-export default function MainPage() {
-    const { isAuthenticated } = useContext(AuthContext)
-    
+import ReconciliationSection from "../components/ReconciliationSection";
+import ContactForm from '../components/ContactForm';
+
+export default function MainPage() {    
     return (
-        <main className="flex flex-col">
-            {isAuthenticated && <LogoutButton/>} {/* Temporary */}
-            <TestTailwind />
+        <>
+            <LandingSection/>
             <Divider />
+            
             <MissionSection />
             <Divider />
+            
             <AboutMelanieMark />
             <Divider />
+            
             <Services />
             <Divider />
-        </main>
+            
+            <CanoeSection />
+            <ExperienceSection />
+            {/* <Divider /> */}
+            <ReconciliationSection />
+
+            <Divider/>
+            <ContactForm />
+        </>
     );
 }
