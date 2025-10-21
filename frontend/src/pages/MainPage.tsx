@@ -17,20 +17,22 @@ export default function MainPage() {
             <Divider />
             
             <MissionSection />
-            <Divider />
-            
+            <Divider/>
+
             <AboutMelanieMark />
             <Divider />
             
             <Services />
-            <Divider />
+            
+            <ReconciliationSection />
+            <Divider/>
             
             <CanoeSection />
-            <ExperienceSection />
-            {/* <Divider /> */}
-            <ReconciliationSection />
-
             <Divider/>
+            
+            <ExperienceSection />
+            <Divider/>
+            
             <ContactForm />
         </>
     );

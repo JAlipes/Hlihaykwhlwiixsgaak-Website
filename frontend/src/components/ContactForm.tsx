@@ -140,7 +140,7 @@ export default function ContactForm() {
     };
 
     return (
-        <section className="bg-white min-h-screen md:h-screen w-full">
+        <section id="contact" className="bg-white min-h-screen md:h-screen w-full">
             <div className="flex flex-col md:flex-row h-screen w-full">
                 {/* Left: Form */}
                 <div className="w-full md:w-3/5 h-full flex items-center justify-center px-6 md:px-12"> {/* Changed to md:w-3/5 from 1/2 */}

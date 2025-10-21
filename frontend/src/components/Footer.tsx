@@ -23,8 +23,9 @@ export default function Footer() {
             </footer>
             <div className="h-auto">
                 <RedBanner
+                    layout='footer'
                     rightContent={
-                        <p className="text-black text-xs sm:text-sm md:text-base pt-10 sm:pt-12">
+                        <p className="text-black text-xs sm:text-sm md:text-base md:pt-10 lg:pt-10">
                             Copyright © 2025
                         </p>
                     }

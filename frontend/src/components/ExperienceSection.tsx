@@ -12,7 +12,7 @@ import SaveEditsButton from './SaveEditsButton';
 import { AuthContext } from '../contexts/AuthContext';
 
 // Import Texts
-import { defaultExperienceText } from '../lang/en/EnglishText';
+import { defaultExperienceText } from '../lang/en/englishText';
 
 // Import Utils
 import { HandleGetSectionData } from '../utils/HandleGetSectionData';
@@ -32,8 +32,8 @@ export default function ExperienceSection() {
         const fetchSectionData = async () => {
             const data = await HandleGetSectionData(sectionName);
             if (data) {
-                setExperienceText(data.text);
-                setExperienceImage(data.image);
+                setExperienceText(data.text ?? experienceText);
+                setExperienceImage(data.image ?? experienceImage);
             }
         };
         fetchSectionData();
@@ -46,7 +46,7 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="min-h-screen bg-gray-100 text-gray-800 flex flex-col pt-20 py-12 px-6 md:px-20 lg:px-32">
+        <section id="experience" className="min-h-[calc(100vh-6rem)] bg-gray-100 text-gray-800 flex flex-col px-6 md:px-20 lg:px-32">
             {/* Title */}
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl text-brandRed mt-12">

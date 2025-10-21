@@ -26,7 +26,7 @@ export default function ResumeSection({defaultSectionText, sectionName, sectionI
         const fetchSectionData = async () => {
             const data = await HandleGetSectionData(sectionName);
             if (data) {
-                setSectionText(data.text);
+                setSectionText(data.text ?? sectionText);
             }
         };
         fetchSectionData();

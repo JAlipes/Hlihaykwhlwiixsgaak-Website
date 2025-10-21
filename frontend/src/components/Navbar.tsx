@@ -27,17 +27,27 @@ export default function Navbar() {
     const HandleScroll = (id: string) => {
         const el = document.getElementById(id);
         if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
+            const navbarHeight = 96; // 👈 e.g. your navbar height in px (24 * 4 = 96px for h-24)
+            const yOffset = -navbarHeight;
+
+            const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+
+            window.scrollTo({ top: y, behavior: "smooth" });
             setMenuOpen(false);
         }
     };
 
     return (
-        <nav className="fixed w-full z-50 shadow-lg">
-            <RedBanner rightContent={                <FaBars
-                className="absolute right-4 text-black cursor-pointer pr-2 sm:text-lg md:text-2xl lg:text-3xl"
-                onClick={() => setMenuOpen(!menuOpen)}
-            />}/>
+        <nav className="fixed w-screen z-50">
+            <RedBanner
+                layout="default"
+                rightContent={
+                    <FaBars
+                    className="text-black cursor-pointer pr-2 sm:text-lg md:text-2xl lg:text-3xl"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    />
+                }
+            />
 
             {/* Dropdown Menu */}
             <AnimatePresence>
