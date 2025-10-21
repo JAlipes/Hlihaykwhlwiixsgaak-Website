@@ -2,7 +2,7 @@ import { LuYoutube } from 'react-icons/lu'
 
 // Import Assets
 import groupImage from '../assets/BCFS_Keynote_Group.jpg'
-import headshot from "../assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg"
+import YWCA from "../assets/YWCA Workshop.jpg"
 import workshopImage from '../assets/serviceWorkshopImageCropped.png';
 import publicSpeakingImage from '../assets/WORTH_Keynote_2025_Summit.jpg';
 
@@ -45,7 +45,7 @@ export default function ServicesSection() {
             <ServiceImageLeftSection
                 sectionName="servicesAdvisory"
                 defaultTitle="Advisory & Public Relations"
-                defaultImage={headshot}
+                defaultImage={YWCA}
                 defaultContent={serviceAdvisoryText}
             />
 
