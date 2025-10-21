@@ -1,3 +1,37 @@
+// About Text
+export const aboutText = `<p class="text-lg leading-relaxed mb-4">
+                        I’m Melanie Mark, a proud mother of two daughters and decendent of
+                        the Nisga’a, Gitxsan, Cree, and Ojibway First Nations. Born and
+                        raised in East Vancouver, I’ve lived and worked throughout B.C. and
+                        Canada, cultivating meaningful relationships in various sectors. My
+                        late grandparents are from Laxalxap, Gitanmaax and Peguis
+                        First Nations and attended St. Michael’s, Elkhorn and Brandon Indian
+                        Residential Schools.
+                    </p>
+                    <br/>
+                    <p class="text-lg leading-relaxed mb-4">
+                        Over the past three decades, I’ve served as an advocate, public
+                        servant, elected official, and now entrepreneur in the cleantech
+                        space. My journey has been guided by a commitment to justice,
+                        empowerment, and systemic change.
+                    </p>
+                    <br/>
+                    <p class="text-lg leading-relaxed mb-4">
+                        As the first First Nations woman elected to the B.C. Legislature and
+                        appointed to Cabinet, I’ve had the privilege of working with diverse
+                        communities, from grassroots organizations to executive leadership.
+                        Now, as the founder of Hli Haykwhl Ẃii Xsgaak Consulting, I’m sharing
+                        my knowledge and experiences to help others achieve their goals
+                        through the power of culture, sport, education and industry.
+                    </p>
+                    <br/>
+                    <p class='text-lg ql-align-right'>
+                        <strong>CEO, Melanie Mark,</strong>
+                    </p>
+                    <p class='ql-align-right'>
+                        <strong>Hli Haykwhl Ẃii X̲sgaak Consulting</strong>
+                    </p>`
+
 // Services Texts
 export const serviceAdvisoryText = `<b class='block font-bold text-xl mb-2'>Governmental and Non-Partisan Political Relations</b>
 <ul class='list-disc list-inside space-y-2 text-lg'>

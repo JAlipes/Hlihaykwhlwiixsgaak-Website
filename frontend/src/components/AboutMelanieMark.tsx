@@ -16,29 +16,23 @@ import EditableImage from './EditableImage';
 import EditableText from './EditableText';
 import SaveEditsButton from './SaveEditsButton';
 
+// Import text
+import { aboutText } from '../lang/en/englishText';
+
 export default function AboutMelanieMark() {
     const sectionName: string = `about`;
     const { isAuthenticated } = useContext(AuthContext);
 
-    const [aboutText, setAboutText] = useState<string>(
-    `I’m Melanie Mark, a proud mother of two daughters and descendant of the Nisga’a, Gitxsan, Cree, and Ojibway First Nations. Born and raised in East Vancouver, I’ve lived and worked throughout B.C. and Canada, cultivating meaningful relationships in various sectors. My late grandparents are from Laxgalts’ap, Gitanmaax and Peguis First Nations and attended St. Michael’s, Elkhorn and Brandon Indian Residential Schools.
-    
-Over the past three decades, I’ve served as an advocate, public servant, elected official, and now entrepreneur in the cleantech space. My journey has been guided by a commitment to justice, empowerment, and systemic change.
-
-As the first First Nations woman elected to the B.C. Legislature and appointed to Cabinet, I’ve had the privilege of working with diverse communities, from grassroots organizations to executive leadership. Now, as the founder of Hli Haykwhl Ẃii X̲sgaak Consulting, I’m sharing my knowledge and experiences to help others achieve their goals through the power of culture, sport, education, and industry.
-
-CEO, Melanie Mark,
-Hli Haykwhl Ẃii X̲sgaak Consulting`
-    );
-    const [ aboutImage, setAboutImage ] = useState<string>(headshot);
+    const [aboutTextString, setAboutText] = useState<string>(aboutText);
+    const [aboutImage, setAboutImage] = useState<string>(headshot);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-     useEffect(() => {
+    useEffect(() => {
         const fetchSectionData = async () => {
             const data = await HandleGetSectionData(sectionName);
             if (data) {
-                setAboutText(data.text);
-                setAboutImage(data.image);
+                setAboutText(data.text ?? aboutTextString);
+                setAboutImage(data.image ?? aboutImage);
             }
         };
         fetchSectionData();
@@ -48,75 +42,51 @@ Hli Haykwhl Ẃii X̲sgaak Consulting`
 
 
     return (
-        <section className="h-auto bg-white text-gray-800 py-16 px-6 md:px-20 lg:px-32">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                {/* Text (left) */}
-                <div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-red-600 text-center">
+        <section
+            id="about"
+            className="relative min-h-screen w-full flex flex-col md:flex-row bg-white text-gray-800 pt-24"
+        >
+            {/* Left Text */}
+            <div className="flex-1 md:flex-[1.7] flex items-center justify-center p-8 md:p-16">
+                <div className="text-center max-w-2xl">
+                    <h2 className="text-3xl md:text-4xl text-brandRed">
                         About Melanie Mark
                     </h2>
-                    <div className="w-48 h-[2px] bg-black mt-3 mb-8 mx-auto" /> {/*Underline*/}
-
+                    <div className='w-64 h-[2px] bg-black mt-3 mb-8 mx-auto' />
                     <EditableText
                         isAuthenticated={isAuthenticated}
                         setText={setAboutText}
-                        text={aboutText}
+                        text={aboutTextString}
                     />
-
-                    {/* <p className="text-lg leading-relaxed mb-4">
-                        I’m Melanie Mark, a proud mother of two daughters and decendent of
-                        the Nisga’a, Gitxsan, Cree, and Ojibway First Nations. Born and
-                        raised in East Vancouver, I’ve lived and worked throughout B.C. and
-                        Canada, cultivating meaningful relationships in various sectors. My
-                        late grandparents are from Laxalxap, Gitanmaax and Peguis
-                        First Nations and attended St. Michael’s, Elkhorn and Brandon Indian
-                        Residential Schools.
-                    </p>
-
-                    <p className="text-lg leading-relaxed mb-4">
-                        Over the past three decades, I’ve served as an advocate, public
-                        servant, elected official, and now entrepreneur in the cleantech
-                        space. My journey has been guided by a commitment to justice,
-                        empowerment, and systemic change.
-                    </p>
-
-
-                    <p className="text-lg leading-relaxed mb-4">
-                        As the first First Nations woman elected to the B.C. Legislature and
-                        appointed to Cabinet, I’ve had the privilege of working with diverse
-                        communities, from grassroots organizations to executive leadership.
-                        Now, as the founder of Hli Haykwhl Ẃii Xsgaak Consulting, I’m sharing
-                        my knowledge and experiences to help others achieve their goals
-                        through the power of culture, sport, education and industry.
-                    </p>
-
-                    <p className="text-lg font-semibold mt-6 text-right">
-                        CEO, Melanie Mark,
-                        <br /> Hli Haykwhl Ẃii Xsgaak Consulting
-                    </p> */}
                 </div>
+            </div>
 
-                {/* Image (right) */}
-                <EditableImage 
+            {/* Right Image */}
+            <div className="flex-1 md:flex-[1.3] relative flex items-center justify-center">
+                <EditableImage
                     src={aboutImage}
-                    alt='Melanie Mark standing with Canadian and Indigenous flags'
-                    wrapperClassName='flex justify-center md:justify-end'
-                    imageClassName='w-full max-w-[500px] rounded-lg shadow-lg object-cover cursor-pointer'
+                    alt="Melanie Mark standing with Canadian and Indigenous flags"
+                    wrapperClassName="w-full h-full"
+                    imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl"
                     isAuthenticated={isAuthenticated}
-                    inputIdString='aboutImageUpload'
+                    inputIdString="aboutImageUpload"
                     onChangeFunction={handleAboutImageChange}
                 />
 
-                {/* Save button shows only if authenticated */}
+                {/* Save button (overlayed, only visible if authenticated) */}
                 {isAuthenticated && (
-                    <SaveEditsButton 
-                        onClickFunction={
-                            () => {
-                                HandleSaveSectionData({sectionName, text: aboutText, image: selectedFile ?? aboutImage});
-                            }
-                        }
-                    />
-                )}            
+                    <div className="absolute bottom-4 right-4">
+                        <SaveEditsButton
+                            onClickFunction={() => {
+                                HandleSaveSectionData({
+                                    sectionName,
+                                    text: aboutText,
+                                    image: selectedFile ?? aboutImage,
+                                });
+                            }}
+                        />
+                    </div>
+                )}
             </div>
         </section>
     );

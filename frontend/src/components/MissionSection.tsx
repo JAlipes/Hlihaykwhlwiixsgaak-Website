@@ -48,8 +48,8 @@ export default function MissionSection() {
                 <EditableImage 
                     src={missionImage}
                     alt='Our Mission Image'
-                    wrapperClassName='flex flex-col items-center md:items-start'
-                    imageClassName='w-full max-w-[500px] rounded-lg shadow-lg object-cover cursor-pointer'
+                    wrapperClassName='w-full h-full'
+                    imageClassName='w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl'
                     isAuthenticated={isAuthenticated}
                     inputIdString='missionImageUpload'
                     onChangeFunction={handleMissionImageChange}
@@ -57,7 +57,7 @@ export default function MissionSection() {
 
                 {/* Text (right) */}
                 <div>
-                    <h2 className='text-3xl md:text-4xl font-bold text-red-600 text-center'>
+                    <h2 className='text-3xl md:text-4xl text-red-600 text-center'>
                         Our Mission
                     </h2>
                     <div className='w-64 h-[2px] bg-black mt-3 mb-8 mx-auto' />
