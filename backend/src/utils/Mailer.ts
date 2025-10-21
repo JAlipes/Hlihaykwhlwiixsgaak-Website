@@ -14,8 +14,6 @@ const transporter = nodemailer.createTransport({
     pool: true,
 });
 
-
-
 /**
  * SendEmail
  * Sends an email using the shared transporter.

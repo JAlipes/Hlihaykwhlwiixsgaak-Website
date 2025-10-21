@@ -11,7 +11,7 @@ import ServiceImageLeftSection from "./ServiceImageLeftSection";
 import ServiceImageRightSection from "./ServiceImageRightSection";
 
 // Import Text
-import { serviceAdvisoryText, servicePublicSpeakText, serviceWorkshopText } from '../lang/en/englishText';
+import { serviceAdvisoryText, servicePublicSpeakText, serviceWorkshopText } from '../lang/en/EnglishText';
 
 export default function ServicesSection() {
     return (
