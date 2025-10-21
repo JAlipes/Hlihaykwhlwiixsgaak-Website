@@ -1,3 +1,10 @@
+// Our Mission Text
+export const missionText = `
+<p>Hli Haykwhl Ẃii Xsgaak Consulting is an Indigenous owned and matriarch-led corporation dedicated to advancing the 94 Calls to Action of the Truth and Reconciliation Commission. Our mission is to guide, empower, and inspire people and organizations to be allies and agents for change while making transformational community impact.</p>
+<br/>
+<p>Led by Melanie Mark, a dynamic changemaker with over 30 years of experience across nonprofit, public service, and private sectors. Known for her relentless advocacy and ability to turn complex ideas into actionable results, Melanie is a trusted ally who prioritizes rights, relationships, and results.</p>    
+`
+
 // About Text
 export const aboutText = `<p class="text-lg leading-relaxed mb-4">
                         I’m Melanie Mark, a proud mother of two daughters and decendent of

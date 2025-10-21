@@ -26,6 +26,7 @@ export interface MiniServiceSectionProps {
 export interface RedBannerProps {
   rightContent?: React.ReactNode;
   leftContent?: React.ReactNode;
+  layout?: 'default' | 'footer';
 }
 
 // Props for the generic SaveEdits button component

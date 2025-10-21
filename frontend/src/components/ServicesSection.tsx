@@ -11,17 +11,17 @@ import ServiceImageLeftSection from "./ServiceImageLeftSection";
 import ServiceImageRightSection from "./ServiceImageRightSection";
 
 // Import Text
-import { serviceAdvisoryText, servicePublicSpeakText, serviceWorkshopText } from '../lang/en/EnglishText';
+import { serviceAdvisoryText, servicePublicSpeakText, serviceWorkshopText } from '../lang/en/englishText';
 
 export default function ServicesSection() {
     return (
-        <section className="relative w-full bg-gradient-to-b from-white to-gray-50 pb-16">
+        <section id="services" className="relative w-full bg-gradient-to-b from-white to-gray-50 pb-16">
             {/* Header */}
-            <div className="relative">
+            <div className="relative h-screen pb-4">
                 <img
                     src={groupImage}
                     alt="Group of people together"
-                    className="min-h-screen w-full h-auto rounded-b-[100px] shadow-2xl shadow-black/50"
+                    className="w-full h-screen object-cover rounded-b-[100px] shadow-2xl shadow-black/50"
                 />
                 <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-8 py-4 rounded-full shadow-lg w-[90%] max-w-4xl border border-gray-200">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center text-[#C32148] tracking-wide">

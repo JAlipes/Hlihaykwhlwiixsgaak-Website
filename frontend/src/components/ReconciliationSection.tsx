@@ -174,7 +174,7 @@ export default function ReconciliationSection() {
     if (totalSlides === 0) return null;
 
     return (
-        <section className="relative bg-brandRed text-white w-screen h-screen flex flex-col items-center justify-center px-6 md:px-20 lg:px-32 text-center">
+        <section id="testimonials" className="relative bg-brandRed text-white w-screen min-h-[calc(100vh-6rem)] flex flex-col items-center justify-center px-6 md:px-20 lg:px-32 text-center">
             {/* Show different content based on whether it's the add slide or a real slide */}
             {/* Single rendering path: real slide or skeleton draft */}
             <div className="mb-10 md:mb-14">
