@@ -32,7 +32,7 @@ export default function ServicesSection() {
 
             {/* Intro */}
             <div className="max-w-5xl mx-auto mt-20 text-center px-6">
-                <h2 className="text-3xl md:text-4xl font-semibold text-[#8B0000] mb-6">
+                <h2 className="text-3xl md:text-4xl font-semibold text-brandRed mb-6">
                     Hli Haykwhl Ẃii Xsgaak Services
                 </h2>
                 <p className="text-lg md:text-2xl text-gray-700 leading-relaxed">

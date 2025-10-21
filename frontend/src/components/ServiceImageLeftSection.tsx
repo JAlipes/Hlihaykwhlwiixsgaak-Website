@@ -54,7 +54,7 @@ export default function ServiceImageLeftSection({ sectionName, defaultTitle, def
 
                     {/* Text */}
                     <div className="text-gray-800 flex flex-col justify-center">
-                        <h3 className="text-3xl lg:text-4xl font-semibold text-[#8B0000] mb-6">
+                        <h3 className="text-3xl lg:text-4xl font-semibold text-brandRed mb-6">
                             {defaultTitle}
                         </h3>
 
