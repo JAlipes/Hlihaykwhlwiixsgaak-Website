@@ -40,7 +40,7 @@ export default function ServiceImageRightSection({ sectionName, defaultTitle, de
 
                 {/* Text (Left Side) */}
                 <div className="order-2 md:order-1 text-gray-800 flex flex-col justify-center">
-                    <h3 className="text-3xl lg:text-4xl font-semibold text-[#8B0000] mb-6">
+                    <h3 className="text-3xl lg:text-4xl font-semibold text-brandRed mb-6">
                         {defaultTitle}
                     </h3>
 

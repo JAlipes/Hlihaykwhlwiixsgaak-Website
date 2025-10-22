@@ -2,7 +2,7 @@ import { LuYoutube } from 'react-icons/lu'
 
 // Import Assets
 import groupImage from '../assets/BCFS_Keynote_Group.jpg'
-import headshot from "../assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg"
+import YWCA from "../assets/YWCA Workshop.jpg"
 import workshopImage from '../assets/serviceWorkshopImageCropped.png';
 import publicSpeakingImage from '../assets/WORTH_Keynote_2025_Summit.jpg';
 
@@ -32,7 +32,7 @@ export default function ServicesSection() {
 
             {/* Intro */}
             <div className="max-w-5xl mx-auto mt-20 text-center px-6">
-                <h2 className="text-3xl md:text-4xl font-semibold text-[#8B0000] mb-6">
+                <h2 className="text-3xl md:text-4xl font-semibold text-brandRed mb-6">
                     Hli Haykwhl Ẃii Xsgaak Services
                 </h2>
                 <p className="text-lg md:text-2xl text-gray-700 leading-relaxed">
@@ -45,7 +45,7 @@ export default function ServicesSection() {
             <ServiceImageLeftSection
                 sectionName="servicesAdvisory"
                 defaultTitle="Advisory & Public Relations"
-                defaultImage={headshot}
+                defaultImage={YWCA}
                 defaultContent={serviceAdvisoryText}
             />
 
