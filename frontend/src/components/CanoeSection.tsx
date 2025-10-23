@@ -26,7 +26,7 @@ export default function CanoeSection() {
         </h2>
 
         <h2 className="text-5xl md:text-[96px] font-extrabold leading-tight">PADDLE TOGETHER</h2>
-        <p className="mt-4 text-3xl md:text-[64px]">- HLI HAYKWHL WII XSGAAK</p>
+        <p className="mt-4 text-3xl md:text-[64px]">- HLI HAYKWHL WII X̲SGAAK</p>
     </div>
 
     {/* Right (image) */}

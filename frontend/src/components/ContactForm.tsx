@@ -140,17 +140,14 @@ export default function ContactForm() {
     };
 
     return (
+        // Rounder, darker, 
         <section id="contact" className="bg-white min-h-screen md:h-screen w-full">
             <div className="flex flex-col md:flex-row h-screen w-full">
                 {/* Left: Form */}
                 <div className="w-full md:w-3/5 h-full flex items-center justify-center px-6 md:px-12"> {/* Changed to md:w-3/5 from 1/2 */}
                     <div className="w-full max-w-md text-center">
-                        <h2 className="text-5xl font-light text-red-600 mb-1">LET’S TALK</h2> {/* Increased to 5xl for more emphasis */}
+                        <h2 className="text-5xl font-light text-brandRed mb-1">Contact Hli Haykwhl Ẃii X̲sgaak Consulting</h2> {/* Increased to 5xl for more emphasis */}
                         <div className='w-32 h-[2px] bg-black mt-3 mb-8 mx-auto' />
-                        <p className="text-gray-700 mb-8 text-lg">
-                            Contact <br />
-                            <span>Hli Haykwhl Ẃii Xsgaak Consulting</span>
-                        </p>
 
                         <form onSubmit={handleSubmit} className="w-full space-y-4 text-left">
                             {/* Full Name */}
@@ -162,7 +159,7 @@ export default function ContactForm() {
                                     name="fullName"
                                     required
                                     placeholder="Full Name *"
-                                    className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500"
+                                    className="w-full border border-black rounded px-4 py-2 focus:outline-none focus:border-red-500"
                                     onChange={handleChange}
                                     value={formData.fullName}
                                 />
@@ -263,7 +260,7 @@ export default function ContactForm() {
                             <button
                                 type="submit"
                                 disabled={status === 'loading' || (USE_CAPTCHA && !captchaSolved)}
-                                className="bg-red-500 text-white  px-10 py-4 rounded hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60"
+                                className="bg-red-500 text-white  px-6 py-4 rounded-xl hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60"
                             >
                                 {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
                             </button>

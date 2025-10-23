@@ -27,7 +27,7 @@ export default function LandingSection(){
         const fetchSectionData = async () => {
             const data = await HandleGetSectionData(sectionName);
             if (data) {
-                setLandingImage(data.image);
+                setLandingImage(data.image ?? landingImage);
             }
         };
         fetchSectionData();
@@ -41,35 +41,43 @@ export default function LandingSection(){
     };
 
     return(
-        <section id='home' className="h-auto md:h-screen w-full bg-white flex flex-col md:flex-row">
+        <section 
+            id='home' 
+            className="@container relative min-h-[calc(100vh-6rem)] w-full bg-white flex flex-col
+                        md:flex-row"
+        >
+            
             {/* Left Text */}
+            <div className="flex-1 flex items-center justify-center p-8 md:flex-[1.3]">
+                <div className="text-center w-full">
+                    <h2 className="text-2xl mb-4 font-thin md:text-5xl">Welcome to</h2>
 
-            <div className="flex-1 md:flex-[1.3] flex items-center justify-center p-8">
-                <div className="text-center md:text-center w-full max-w-2xl">
-                    <h2 className="text-xl md:text-4xl font-thin mb-4">Welcome To</h2>
-
-                    <h1 className="text-brandRed text-3xl md:text-6xl font-thin mb-4 leading-tight">
+                    <h1 className="text-brandRed text-3xl font-thin mb-4 leading-tight md:text-6xl md:text-purple-900 lg:text-blue-900 xl:text-blue-500 2xl:text-green-900">
                         Hli Haykwhl Ẃii X̲sgaak <br />
                         <span className="inline-flex items-center gap-2">
                             Consulting
                             <button
                             onClick={HandlePlayAudio}
-                            className="inline-flex items-center justify-center w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer align-middle"
+                            className="text-sm inline-flex items-center justify-center w-6 h-6 bg-black rounded-lg hover:bg-gray-300 cursor-pointer align-middle"
                             aria-label="Play pronunciation"
                             >
-                            <LuVolume2 size={24} color="#374151" />
+                            <LuVolume2 color="#FFFFFF" />
                             </button>
                         </span>
                     </h1>
 
-                    <p className="text-base md:text-xl leading-relaxed mt-6">
-                        Let’s paddle together toward a future of <br /> reconciliation and shared success.
+                    <p className="text-base md:text-xl leading-relaxed">
+                        Let’s paddle together toward a future of
+                        <br/>
+                        reconciliation and shared success.
+                        <br />
+                        Land Acknowledgement
                     </p>
                 </div>
             </div>
 
             {/* Right Image */}
-            <div className="flex-1 relative flex items-center justify-center">
+            <div className="flex-1 relative flex items-center justify-center pl-2 border border-black">
                 <EditableImage
                     src={landingImage}
                     alt="Landing Image"
