@@ -23,6 +23,8 @@
 .ql-container {
 	padding: 0 !important;
     padding-top: 1.25em !important;
+    border: 1px solid !important;
+    border-color: rgba(119, 136, 153, 0.555) !important;
 	@apply rounded; /* keep your styling */
 }
 
@@ -31,6 +33,7 @@
 	padding: 0 !important;
 	@apply bodyStyle; /* your custom text style */
 	white-space: normal;
+    
 }
 
 /* Remove ul padding (default 1.5em) */

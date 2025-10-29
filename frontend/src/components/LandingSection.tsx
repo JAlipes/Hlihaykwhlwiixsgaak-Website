@@ -74,16 +74,16 @@ export default function LandingSection() {
                     </h1>
 
                     <p className="bodyStyle">
-                        Let’s paddle together toward a future of
+                        Let’s Paddle Together towards a future of
                         <br />
-                        reconciliation and shared success.
+                        reconciliation and transformative change.
                         <br />
                         <br />
                     </p>
                     <div className='bodyStyle'>
                         We acknowledge with gratitude that we live and work on the traditional, ancestral,
-                        and unceded territories of the xʷməθkʷəy̓əm (Musqueam), Skwxwú7mesh (Squamish),
-                        and Səl̓ílwətaʔ/Selilwitulh (Tsleil-Waututh) Nations.
+                        and unceded territories of the xʷməθkʷəy̓əm &#40;Musqueam&#41;, Skwxwú7mesh &#40;Squamish&#41;,
+                        and Səl̓ílwətaʔ/Selilwitulh &#40;Tsleil-Waututh&#41; Nations.
                     </div>
                 </div>
             </motion.div>

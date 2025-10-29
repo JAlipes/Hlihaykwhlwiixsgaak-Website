@@ -1,81 +1,99 @@
 // Our Mission Text
 export const missionText = `
-<p>Hli Haykwhl Ẃii Xsgaak Consulting is an Indigenous owned and matriarch-led corporation dedicated to advancing the 94 Calls to Action of the Truth and Reconciliation Commission. Our mission is to guide, empower, and inspire people and organizations to be allies and agents for change while making transformational community impact.</p>
+<p>
+    Hli Haykwhl Ẃii Xsgaak Consulting is an Indigenous owned and 
+    matriarch-led corporation dedicated to advancing the 94 Calls to Action 
+    of the Truth and Reconciliation Commission. Our mission is to guide,
+    empower, and inspire people and organizations to be allies and agents 
+    for change while making transformational community impact.
+</p>
 <br/>
-<p>Led by Melanie Mark, a dynamic changemaker with over 30 years of experience across nonprofit, public service, and private sectors. Known for her relentless advocacy and ability to turn complex ideas into actionable results, Melanie is a trusted ally who prioritizes rights, relationships, and results.</p>    
+<p>
+    Led by Melanie Mark, the first First Nations woman elected to the B.C. 
+    Legislature and appointed to Cabinet, the company builds upon her 
+    legacy of working with diverse communities, from grassroots 
+    organizations to executive leadership. With over 30 years of experience, 
+    Melanie is a dynamic changemaker and trusted ally known for her 
+    relentless advocacy and formidable ability to transform complex 
+    ideas into tangible results. Her leadership embeds rights, respect, 
+    and relationships into every part of the company.    
+</p>    
 `
 
 // About Text
-export const aboutText = `<p>
-                        I’m Melanie Mark, a proud mother of two daughters and decendent of
-                        the Nisga’a, Gitxsan, Cree, and Ojibway First Nations. Born and
-                        raised in East Vancouver, I’ve lived and worked throughout B.C. and
-                        Canada, cultivating meaningful relationships in various sectors. My
-                        late grandparents are from Laxalxap, Gitanmaax and Peguis
-                        First Nations and attended St. Michael’s, Elkhorn and Brandon Indian
-                        Residential Schools.
-                    </p>
-                    <br/>
-                    <p>
-                        Over the past three decades, I’ve served as an advocate, public
-                        servant, elected official, and now entrepreneur in the cleantech
-                        space. My journey has been guided by a commitment to justice,
-                        empowerment, and systemic change.
-                    </p>
-                    <br/>
-                    <p>
-                        As the first First Nations woman elected to the B.C. Legislature and
-                        appointed to Cabinet, I’ve had the privilege of working with diverse
-                        communities, from grassroots organizations to executive leadership.
-                        Now, as the founder of Hli Haykwhl Ẃii Xsgaak Consulting, I’m sharing
-                        my knowledge and experiences to help others achieve their goals
-                        through the power of culture, sport, education and industry.
-                    </p>
-                    <br/>
-                    <p class='specialFont ql-align-right'>
-                        <strong>CEO, Melanie Mark,</strong>
-                    </p>
-                    <p class='specialFont ql-align-right'>
-                        <strong>Hli Haykwhl Ẃii <u>X</u>sgaak Consulting</strong>
-                    </p>`
+export const aboutText = `
+<p>
+    I’m Melanie Mark, a proud mother of two daughters and a descendant of 
+    the Nisga’a (Laxsgiik/Eagle clan), Gitxsan (Ganeda/Frog clan), 
+    and Peguis (Ma’iingan/Wolf clan) First Nations. Born and raised in East Vancouver, 
+    I’ve lived and worked throughout B.C. and Canada, cultivating deep knowledge and meaningful relationships. 
+</p>
+<br/>
+<p>
+    My late grandparents attended St. Michael’s, Elkhorn, and Brandon Indian Residential Schools. 
+    Their love, grit, and determination inspire my dedication to spreading joy and creating positive change for individuals, communities, and organizations.
+</p>
+<br/>
+<p>
+    Over the past three decades, I’ve served as an advocate, public servant, elected official, and now entrepreneur in the cleantech space. My journey has been guided by a commitment to justice, empowerment, and systemic change. 
+</p>
+<br/>
+<p>
+    Now, as the founder of Hli Haykwhl Ẃii Xsgaak Consulting, I’m committed to share my knowledge and experience, to guide others to achieve their goals through the power of culture, sport, and education.
+</p>
+<br/>
+<p class='specialFont ql-align-right'>
+    <strong><i>CEO, Melanie Mark,</i></strong>
+</p>
+<p class='specialFont ql-align-right'>
+    <strong><i>Hli Haykwhl Ẃii <u>X</u>sgaak Consulting</i></strong>
+</p>
+`
 
 // Services Texts
-export const serviceAdvisoryText = `<b class='block font-bold text-xl mb-2'>Governmental and Non-Partisan Political Relations</b>
-<ul class='list-disc list-inside space-y-2 text-lg'>
-    <li>I’ll offer high-level strategic advice to guide you through complex systems and successfully implement change.</li>
-    <li>I’ll direct you to the right organization, decision makers, government body, business, public institution, or First Nation to advance your ideas.</li>
-    <li>I’ll support you in narrowing your 30 big ideas into 3 attainable outcomes.</li>
-    <li>I’ll review your draft documents and provide advice on how to prepare, approach, and engage with the B.C. public service, B.C. MLAs, Official Opposition, Cabinet Ministers, First Nations Leadership, and other stakeholders.</li>
-    <li>I’ll keep your approach focused and efficient, ensuring your time is used wisely.</li>
+export const serviceAdvisoryText = `
+<p><strong>Governmental and Non-Partisan Political Relations</strong></p>
+<ul>
+    <li>High-level strategic advice to navigate complex systems and implement change.</li>
+    <li>Connections to the right organizations, decision-makers, government bodies, businesses, public institutions, or First Nations to advance your ideas.</li>
+    <li>Support in narrowing 30 big ideas into 3 attainable outcomes.</li>
+    <li>
+        Document reviews and guidance on engaging with the B.C. public service, MLAs, Cabinet Ministers, First Nations leadership, 
+        and other industry stakeholders (e.g. Post-Secondary Institutes, Trades, Tourism, Arts, Culture, Sport, Housing, Children and Youth, Criminal Justice)
+    </li>
+    <li>A focused, efficient approach to maximize your time and impact.</li>
 </ul>
 `;
 
-export const serviceWorkshopText = `<b class='block font-bold text-xl mb-2'>Paddling Together: Team Building & Community Engagement</b>
-<ul class='list-disc list-inside space-y-2 text-lg'>
-    <li>I’ll facilitate in-person and virtual workshops to guide organizations committed to advancing the Truth and Reconciliation Commission’s 94 Calls to Action.</li>
-    <li>I’ll aspire to educate others by sharing my experience as an inter-generational Indian Residential school survivor, unpacking what we were never taught.</li>
-    <li>I’ll advise you on how to build your community network, strengthen relationships, and connect with the right people and organizations.</li>
+export const serviceWorkshopText = `
+<p><strong>Paddling Together: Team Building & Community Engagement</strong></p>
+<ul>
+    <li>Facilitation of in-person and virtual workshops to advance the Truth and Reconciliation Commission’s 94 Calls to Action.</li>
+    <li>Education on the intergenerational impacts of Indian Residential Schools and the lessons we were never taught.</li>
+    <li>Guidance on building community networks, strengthening relationships, and connecting with the right people and organizations.</li>
 </ul>
 
-<b class='block font-bold text-xl mb-2 mt-6'>Leadership Empowerment & Public Speaking Coaching</b>
-<ul class='list-disc list-inside space-y-2 text-lg'>
-    <li>I’ll support your leadership journey and assist with developing public speaking skills, keynotes, and media engagement with confidence and time efficiency.</li>
-    <li>I’ll offer one-on-one or small group coaching on how to achieve a work-life balance, take control of your time, and consistently show up as your best self.</li>
+<p><strong>Leadership Empowerment & Public Speaking Coaching</strong></p>
+<ul>
+    <li>One-on-one or small group coaching to develop public speaking skills, keynotes, and media engagement</li>
+    <li>Support for achieving work-life balance, time management, and showing up as your best self.</li>
 </ul>
 
-<b class='block font-bold text-xl mb-2 mt-6'>Event Planning & Coordination</b>
-<ul class='list-disc list-inside space-y-2 text-lg'>
-    <li>I’ll guide you to successfully plan and execute the most effective location, date, time, menu, guest list, and program for your event.</li>
-    <li>I’ll support you through logistics, accessibility considerations, speaker selection, and a personalized communications/marketing strategy to ensure intentionality and profound impact.</li>
+<p><strong>Event Planning & Coordination</strong></p>
+<ul>
+    <li>Ensure culturally appropriate event design and protocols are followed with Indigenous rights holders, local community champions, and government.</li>
+    <li>Guidance on planning and executing impactful events, from logistics to personalized communication strategies</li>
+    <li>Support with accessibility considerations, speaker selection, and intentional programming.</li>
 </ul>`;
 
-export const servicePublicSpeakText = `<b class='block font-bold text-xl mb-2'>Multidimensional Leadership</b>
+export const servicePublicSpeakText = `
+<p><strong>Transcendual Leadership</strong></p>
 <ul class='list-disc list-inside space-y-2 text-lg'>
-    <li>I’ll deliver highly emotional, thought-provoking, and motivational keynotes guaranteed to make you laugh, cry, or cheer.</li>
-    <li>I’ll moderate panels and emcee events that evoke lasting impressions.</li>
-    <li>I’ll speak about almost any topic/theme related to reconciliation and confidently engage diverse audiences through remarkable storytelling and sharing tangible lessons learned. </li>
+    <li>Emotional, thought-provoking, and motivational keynotes that will leave you feeling energized and empowered.</li>
+    <li>Panel moderation and event emceeing that leaves lasting impressions.</li>
+    <li>Storytelling and lessons learned to inspire change and actionable steps toward reconciliation.</li>
     <li>I’ll commit to sparking new conversations that inspire change, boost morale, and encourage actionable steps towards reconciliation.</li>
-    <li>I’ll respect your time and your audience, ensuring I prioritize your unique event goals and individual budget.</li>
+    <li>Tailored presentations that respect your time, audience, and event goals.</li>
 </ul>`;
 
 

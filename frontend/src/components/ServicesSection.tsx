@@ -42,8 +42,8 @@ export default function ServicesSection() {
                         </>
                     }
                 />
-                <p className="bodyStyle">
-                    Reconciliation isn’t a Destination–it's a Journey. Who’s in your canoe? Are you paddling together?
+                <p className="bodyStyle mt-10">
+                    Reconciliation isn’t a Destination—it's a Journey. Who’s in your canoe? Are you paddling together? 
                     What are the conditions? What direction do you want to go? Let me know how I can be a part of your journey.
                 </p>
             </div>
