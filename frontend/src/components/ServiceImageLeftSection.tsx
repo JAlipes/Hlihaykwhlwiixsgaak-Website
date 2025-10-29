@@ -13,6 +13,7 @@ import SaveEditsButton from "./SaveEditsButton";
 
 // Import Types
 import type { MiniServiceSectionProps } from '../../../shared-types/ComponentPropTypes'
+import MainTitle from "./MainTitle";
 
 export default function ServiceImageLeftSection({ sectionName, defaultTitle, defaultContent, defaultImage,}: MiniServiceSectionProps) {
     const { isAuthenticated } = useContext(AuthContext);
@@ -54,9 +55,11 @@ export default function ServiceImageLeftSection({ sectionName, defaultTitle, def
 
                     {/* Text */}
                     <div className="text-gray-800 flex flex-col justify-center">
-                        <h3 className="text-3xl lg:text-4xl font-semibold text-brandRed mb-6">
-                            {defaultTitle}
-                        </h3>
+                        <MainTitle
+                            titleText={defaultTitle}
+                            underline={false}
+                            className={'subHeadingStyle'}
+                        />
 
                         <EditableText
                             isAuthenticated={isAuthenticated}

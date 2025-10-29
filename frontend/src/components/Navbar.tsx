@@ -43,7 +43,7 @@ export default function Navbar() {
                 layout="default"
                 rightContent={
                     <FaBars
-                    className="text-black cursor-pointer pr-2 sm:text-lg md:text-2xl lg:text-3xl"
+                    className="text-black cursor-pointer pr-2 text-xl justify-center align-middle md:text-2xl lg:text-3xl"
                     onClick={() => setMenuOpen(!menuOpen)}
                     />
                 }

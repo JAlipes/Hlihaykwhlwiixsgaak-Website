@@ -9,13 +9,14 @@ import publicSpeakingImage from '../assets/WORTH_Keynote_2025_Summit.jpg';
 // Import Components
 import ServiceImageLeftSection from "./ServiceImageLeftSection";
 import ServiceImageRightSection from "./ServiceImageRightSection";
+import MainTitle from './MainTitle';
 
 // Import Text
 import { serviceAdvisoryText, servicePublicSpeakText, serviceWorkshopText } from '../lang/en/englishText';
 
 export default function ServicesSection() {
     return (
-        <section id="services" className="relative w-full bg-gradient-to-b from-white to-gray-50 pb-16">
+        <section id="services" className="relative w-full pb-16">
             {/* Header */}
             <div className="relative h-screen pb-4">
                 <img
@@ -23,19 +24,25 @@ export default function ServicesSection() {
                     alt="Group of people together"
                     className="w-full h-screen object-cover rounded-b-[100px] shadow-2xl shadow-black/50"
                 />
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-8 py-4 rounded-full shadow-lg w-[90%] max-w-4xl border border-gray-200">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center text-brandRed tracking-wide">
-                        Let’s Navigate Your Journey Together
-                    </h2>
+                <div className="flex justify-center absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px- py-4 rounded-full shadow-lg w-[90%] max-w-4xl border border-gray-200">
+                    <MainTitle
+                        titleText='Let’s Navigate Your Journey Together'
+                        underline={false}
+                        className='titleStyle'
+                    />
                 </div>
             </div>
 
             {/* Intro */}
             <div className="max-w-5xl mx-auto mt-20 text-center px-6">
-                <h2 className="text-3xl md:text-4xl font-semibold text-brandRed mb-6">
-                    Hli Haykwhl Ẃii X̲sgaak Services
-                </h2>
-                <p className="text-lg md:text-2xl text-gray-700 leading-relaxed">
+                <MainTitle
+                    titleText={
+                        <>
+                        Hli Haykwhl Ẃii <u className='underline-offset-[3px] decoration-2'>X</u>sgaak Services
+                        </>
+                    }
+                />
+                <p className="bodyStyle">
                     Reconciliation isn’t a Destination–it's a Journey. Who’s in your canoe? Are you paddling together?
                     What are the conditions? What direction do you want to go? Let me know how I can be a part of your journey.
                 </p>
@@ -66,7 +73,7 @@ export default function ServicesSection() {
             {/* Added Embeded Video Section */}
             {/* Embedded Video CTA */}
             <div className="flex justify-center mt-20 px-6">
-                <div className="w-full max-w-md border-4 border-brandRed rounded-xl py-10 px-2 text-center bg-black shadow-lg">
+                <div className="w-full max-w-md border-4 border-brandRed rounded-xl py-10 px-2 text-center bg-black">
                     <h3 className="text-lg md:text-3xl mb-6 text-white">
                         Check out Melanie's <br/> previous speeches
                     </h3>
@@ -81,7 +88,6 @@ export default function ServicesSection() {
                             rounded-full 
                             hover:bg-[#C32148]/10 
                             transition-all duration-300
-                            border-black                        
                         "
                         onClick={() => window.open('https://www.youtube.com/@melaniejmark', '_blank')}
                     >

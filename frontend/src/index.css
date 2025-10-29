@@ -1,53 +1,166 @@
+/* Fonts imports */
+/*Overlock SC titles, Quicksand, Montsserat*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overlock+SC&family=Quicksand:wght@300..700&display=swap');
+
+/*Miniver For Signatures (Maybe swap to miama)*/
+@import url('https://fonts.googleapis.com/css2?family=Miniver&display=swap');
+
+@font-face {
+  font-family: "Miama";
+  src: url("/src/assets/fonts/miama/Miama.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Ensure Quill editor uses the same text styles as your site */
 .ql-editor {
-    @apply text-lg leading-relaxed text-gray-800;
-    white-space: normal;
+	@apply bodyStyle;
+	white-space: normal;
 }
 
 /* Match padding to your editor container */
 .ql-container {
-    @apply p-2 rounded;
+	@apply p-2 rounded;
 }
 
 /* Remove border & background for readonly mode KEEP*/
 .ql-container.ql-disabled {
-    border: none !important;
-    background-color: transparent !important;
-    box-shadow: none !important;
+	border: none !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
 }
 
 
 /* Matches tool bar with the website */
 .ql-toolbar {
-    @apply bg-gray-50 border border-gray-200 rounded mb-2;
+	@apply bg-gray-50 border border-gray-200 rounded mb-2;
 }
 
 /* Alignment for non-editable text KEEP*/
-.ql-align-right {text-align: right;}
-.ql-align-center {text-align: center;}
-.ql-align-left {text-align: left; /* optional: default */}
-.ql-align-justify {text-align: justify;}
+.ql-align-right {
+	text-align: right;
+}
+
+.ql-align-center {
+	text-align: center;
+}
+
+.ql-align-left {
+	text-align: left;
+	/* optional: default */
+}
+
+.ql-align-justify {
+	text-align: justify;
+}
 
 /* Bullets */
 .ql-editor ul {
-    list-style-type: disc; /*Solid Round bullet points*/
-    padding-left : 0rem;
-    /* padding-left: 1.25rem; */
-    /* margin: 0 0 1em 0; */
+	list-style-type: disc;
+	/*Solid Round bullet points*/
+	padding-left: 0rem;
+	/* padding-left: 1.25rem; */
+	/* margin: 0 0 1em 0; */
 }
 
 /* Numbered lists */
 .ql-editor ol {
-    list-style-type: decimal;
-    padding-left: 1.25rem;
-    margin: 0 0 1em 0;
+	list-style-type: decimal;
+	padding-left: 1.25rem;
+	margin: 0 0 1em 0;
 }
 
 /* Optional: spacing between list items */
 .ql-editor li {
-    margin-bottom: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+
+/* Text stylings */
+@layer components {
+
+	/* Default smallest style */
+	.titleStyle {
+		@apply titleFont leading-relaxed text-brandRed text-2xl;
+	}
+
+	.bodyStyle {
+		@apply bodyFont leading-relaxed text-black text-xs;
+	}
+
+	.subHeadingStyle {
+		@apply subHeadingFont leading-relaxed text-brandRed text-base
+	}
+
+	@screen md {
+		.titleStyle {
+		}
+
+		.bodyStyle {
+		}
+
+		.subHeadingStyle{
+		}
+	}
+
+	@screen lg {
+		.titleStyle {
+		}
+
+		.bodyStyle {
+		}
+
+		.subHeadingStyle{
+		}
+	}
+
+	@screen xl {
+		.titleStyle {
+		}
+
+		.bodyStyle {
+		}
+
+		.subHeadingStyle{
+		}
+	}
+
+	/* Largest */
+	@screen 2xl {
+		.titleStyle {
+			@apply text-5xl;
+		}
+
+		.bodyStyle {
+			@apply text-xl;
+		}
+
+		.subHeadingStyle{
+			@apply text-3xl
+		}
+	}
+}
+
+/* Font Usage */
+@layer utilities {
+	.titleFont {
+		@apply font-titleFont;
+	}
+
+	.subHeadingFont {
+		@apply font-subHeadingFont;
+	}
+
+	.bodyFont {
+		@apply font-bodyFont;
+	}
+
+	.specialFont {
+		@apply font-specialFont;
+	}
 }

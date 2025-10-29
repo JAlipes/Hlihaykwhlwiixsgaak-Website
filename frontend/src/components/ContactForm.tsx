@@ -4,6 +4,9 @@ import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 // Import Assets
 import feather from '../assets/red-feather.png';
 
+// Import Components
+import TitleUnderline from "./TitleUnderline";
+
 export default function ContactForm() {
     const USE_CAPTCHA = false; // Toggle captcha on/off
     // Captcha
@@ -145,9 +148,13 @@ export default function ContactForm() {
             <div className="flex flex-col md:flex-row h-screen w-full">
                 {/* Left: Form */}
                 <div className="w-full md:w-3/5 h-full flex items-center justify-center px-6 md:px-12"> {/* Changed to md:w-3/5 from 1/2 */}
-                    <div className="w-full max-w-md text-center">
-                        <h2 className="text-5xl font-light text-brandRed mb-1">Contact Hli Haykwhl Ẃii X̲sgaak Consulting</h2> {/* Increased to 5xl for more emphasis */}
-                        <div className='w-32 h-[2px] bg-black mt-3 mb-8 mx-auto' />
+                    <div className="w-full max-w-lg text-center">
+                        <h2 className="text-5xl titleFont text-brandRed mb-1">Contact Hli Haykwhl Ẃii <u>X</u>sgaak Consulting</h2> {/* Increased to 5xl for more emphasis */}
+                        <TitleUnderline/>
+
+                        <div className='mb-9'>
+                            <p className='bodyFont 2xl:text-xl'>Reach out to Hli Haykwhl Ẃii Xsgaak Consulting to start our shared journey toward reconciliation and transformative change.</p>
+                        </div>
 
                         <form onSubmit={handleSubmit} className="w-full space-y-4 text-left">
                             {/* Full Name */}

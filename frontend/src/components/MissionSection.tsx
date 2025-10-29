@@ -15,9 +15,11 @@ import { HandleImageChangeFactory } from '../utils/HandleImageChangeFactory';
 import EditableImage from '../components/EditableImage';
 import SaveEditsButton from './SaveEditsButton';
 import EditableText from './EditableText';
+import MainTitle from './MainTitle';
 
 // Import Text
 import { missionText } from '../lang/en/englishText';
+import TitleUnderline from './TitleUnderline';
 
 export default function MissionSection() {
     const sectionName: string = `mission`;
@@ -78,10 +80,10 @@ export default function MissionSection() {
             {/* Right Text */}
             <div className="flex-1 md:flex-[1.7] flex items-center justify-center p-8 md:p-16">
                 <div className="text-center max-w-2xl">
-                    <h2 className="text-3xl md:text-4xl text-brandRed font-semibold">
-                        Our Mission
-                    </h2>
-                    <div className='w-64 h-[2px] bg-black mt-3 mb-8 mx-auto' />
+                    <MainTitle
+                        titleText='Our Mission'
+                    />
+                    <TitleUnderline/>
 
                     <EditableText
                         isAuthenticated={isAuthenticated}

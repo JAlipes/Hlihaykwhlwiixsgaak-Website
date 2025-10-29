@@ -39,7 +39,7 @@ export default function EditableText({ isAuthenticated, setText, text, placehold
             formats={formats}
             theme="snow"
             placeholder={placeholder}
-            className={`rounded ${isAuthenticated ? "bg-white" : "ql-disabled cursor-auto"} text-lg`}
+            className={`rounded ${isAuthenticated ? "bg-white" : "ql-disabled cursor-auto"} text:xl`}
         />
     );
 }

@@ -43,17 +43,20 @@ export default function LandingSection(){
     return(
         <section 
             id='home' 
-            className="@container relative min-h-[calc(100vh-6rem)] w-full bg-white flex flex-col
-                        md:flex-row"
+            className="@container relative min-h-[calc(100vh-6rem)] w-full bg-white flex flex-col 
+                        lg:flex-row"
         >
             
             {/* Left Text */}
-            <div className="flex-1 flex items-center justify-center p-8 md:flex-[1.3]">
+            <div className="flex-1 flex items-center justify-center p-8 md:flex-[1.3] titleFont">
                 <div className="text-center w-full">
-                    <h2 className="text-2xl mb-4 font-thin md:text-5xl">Welcome to</h2>
+                    <h2 className="titleStyle text-black">Welcome to</h2>   
 
-                    <h1 className="text-brandRed text-3xl font-thin mb-4 leading-tight md:text-6xl md:text-purple-900 lg:text-blue-900 xl:text-blue-500 2xl:text-green-900">
-                        Hli Haykwhl Ẃii X̲sgaak <br />
+                    {/* Currently Differing colours for each style */}
+                    <h1 className="m-4 leading-relaxed text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl 
+                                md:text-purple-900 lg:text-blue-900 xl:text-blue-500 2xl:text-green-900"
+                    >
+                        Hli Haykwhl Ẃii <u className='underline-offset-[3px] decoration-2'>X</u>sgaak<br />
                         <span className="inline-flex items-center gap-2">
                             Consulting
                             <button
@@ -61,28 +64,33 @@ export default function LandingSection(){
                             className="text-sm inline-flex items-center justify-center w-6 h-6 bg-black rounded-lg hover:bg-gray-300 cursor-pointer align-middle"
                             aria-label="Play pronunciation"
                             >
-                            <LuVolume2 color="#FFFFFF" />
+                            <LuVolume2 color="#E63551" />
                             </button>
                         </span>
                     </h1>
 
-                    <p className="text-base md:text-xl leading-relaxed">
+                    <p className="bodyStyle">
                         Let’s paddle together toward a future of
-                        <br/>
+                        <br/>   
                         reconciliation and shared success.
+                        <br /> 
                         <br />
-                        Land Acknowledgement
                     </p>
+                    <div className='bodyStyle'>
+                        We acknowledge with gratitude that we live and work on the traditional, ancestral, 
+                        and unceded territories of the xʷməθkʷəy̓əm (Musqueam), Skwxwú7mesh (Squamish), 
+                        and Səl̓ílwətaʔ/Selilwitulh (Tsleil-Waututh) Nations.
+                    </div>
                 </div>
             </div>
 
             {/* Right Image */}
-            <div className="flex-1 relative flex items-center justify-center pl-2 border border-black">
+            <div className="flex-1 relative flex items-center justify-center pl-2">
                 <EditableImage
                     src={landingImage}
                     alt="Landing Image"
                     wrapperClassName="w-full h-full"
-                    imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl"
+                    imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl "
                     isAuthenticated={isAuthenticated}
                     inputIdString="landingImageUpload"
                     onChangeFunction={HandleLandingImageChange}

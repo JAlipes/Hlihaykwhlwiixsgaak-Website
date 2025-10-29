@@ -18,6 +18,7 @@ import SaveEditsButton from './SaveEditsButton';
 
 // Import text
 import { aboutText } from '../lang/en/englishText';
+import MainTitle from './MainTitle';
 
 export default function AboutMelanieMark() {
     const sectionName: string = `about`;
@@ -49,10 +50,9 @@ export default function AboutMelanieMark() {
             {/* Left Text */}
             <div className="flex-1 md:flex-[1.7] flex items-center justify-center p-8 md:p-16">
                 <div className="text-center max-w-2xl">
-                    <h2 className="text-3xl md:text-4xl text-brandRed">
-                        About Melanie Mark
-                    </h2>
-                    <div className="w-64 h-[2px] bg-black mt-3 mb-8 mx-auto" />
+                    <MainTitle
+                        titleText='About Melanie Mark'
+                    />
                     <EditableText
                         isAuthenticated={isAuthenticated}
                         setText={setAboutText}
