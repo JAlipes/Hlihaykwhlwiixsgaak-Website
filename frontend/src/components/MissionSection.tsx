@@ -83,7 +83,6 @@ export default function MissionSection() {
                     <MainTitle
                         titleText='Our Mission'
                     />
-                    <TitleUnderline/>
 
                     <EditableText
                         isAuthenticated={isAuthenticated}

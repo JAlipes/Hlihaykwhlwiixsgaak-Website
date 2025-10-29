@@ -6,6 +6,7 @@ import feather from '../assets/red-feather.png';
 
 // Import Components
 import TitleUnderline from "./TitleUnderline";
+import MainTitle from "./MainTitle";
 
 export default function ContactForm() {
     const USE_CAPTCHA = false; // Toggle captcha on/off
@@ -149,9 +150,12 @@ export default function ContactForm() {
                 {/* Left: Form */}
                 <div className="w-full md:w-3/5 h-full flex items-center justify-center px-6 md:px-12"> {/* Changed to md:w-3/5 from 1/2 */}
                     <div className="w-full max-w-lg text-center">
-                        <h2 className="text-5xl titleFont text-brandRed mb-1">Contact Hli Haykwhl Ẃii <u>X</u>sgaak Consulting</h2> {/* Increased to 5xl for more emphasis */}
-                        <TitleUnderline/>
-
+                        <MainTitle
+                            titleText={<>
+                                Contact Hli Haykwhl Ẃii <u>X</u>sgaak Consulting
+                            </>}
+                            underline={false}
+                        />
                         <div className='mb-9'>
                             <p className='bodyFont 2xl:text-xl'>Reach out to Hli Haykwhl Ẃii Xsgaak Consulting to start our shared journey toward reconciliation and transformative change.</p>
                         </div>

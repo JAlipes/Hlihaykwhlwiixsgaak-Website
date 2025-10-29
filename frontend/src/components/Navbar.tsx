@@ -19,7 +19,7 @@ export default function Navbar() {
         { name: "About", id: "about" },
         { name: "Services", id: "services" },
         { name: "Testimonials", id: "testimonials" },
-        { name: "Rising Tides", id: "canoe"},
+        { name: "Rising Tides", id: "canoe" },
         { name: "Experience", id: "experience" },
         { name: "Contact Us", id: "contact" },
     ]
@@ -42,10 +42,7 @@ export default function Navbar() {
             <RedBanner
                 layout="default"
                 rightContent={
-                    <FaBars
-                    className="text-black cursor-pointer pr-2 text-xl justify-center align-middle md:text-2xl lg:text-3xl"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    />
+                    <MenuToggle isOpen={menuOpen} toggle={() => setMenuOpen(!menuOpen)} />
                 }
             />
 
@@ -53,30 +50,73 @@ export default function Navbar() {
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="absolute top-full left-0 w-full bg-white text-black flex flex-col items-center py-4 space-y-2 shadow-lg"
+                        initial={{ opacity: 0, scaleY: 0 }}
+                        animate={{ opacity: 1, scaleY: 1 }}
+                        exit={{ opacity: 0, scaleY: 0 }}
+                        transition={{
+                            duration: 0.35,
+                            ease: [0.25, 0.8, 0.25, 1],
+                        }}
+                        className="absolute top-full left-0 w-full bg-white text-black flex flex-col items-center py-4 space-y-2 shadow-lg origin-top overflow-hidden z-40 border-t-2 border-brandRed"
                     >
-                        {sectionList.map((item) => (
-                            <button
+                        {sectionList.map((item, index) => (
+                            <motion.button
                                 key={item.id}
                                 onClick={() => HandleScroll(item.id)}
                                 className="hover:text-brandRed transition-colors text-lg"
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    delay: 0.05 * index, // staggered fade-in
+                                    duration: 0.25,
+                                }}
                             >
                                 {item.name}
-                            </button>
+                            </motion.button>
                         ))}
 
-                        {/* Secret Logout */}
                         {isAuthenticated && (
-                            <div className="mt-4">
+                            <motion.div
+                                className="mt-4"
+                                initial={{ opacity: 0, y: -5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.05 * sectionList.length }}
+                            >
                                 <LogoutButton />
-                            </div>
+                            </motion.div>
                         )}
                     </motion.div>
                 )}
             </AnimatePresence>
         </nav>
+    );
+}
+
+function MenuToggle({ isOpen, toggle }: { isOpen: boolean; toggle: () => void }) {
+    return (
+        <button
+            onClick={toggle}
+            aria-label="Toggle menu"
+            className="relative w-8 h-8 flex flex-col justify-center items-center group focus:outline-none"
+        >
+            {/* Top bar */}
+            <motion.span
+                className="absolute h-[3px] w-6 bg-black rounded-full"
+                animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+            {/* Middle bar */}
+            <motion.span
+                className="absolute h-[3px] w-6 bg-black rounded-full"
+                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+                transition={{ duration: 0.2 }}
+            />
+            {/* Bottom bar */}
+            <motion.span
+                className="absolute h-[3px] w-6 bg-black rounded-full"
+                animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+        </button>
     );
 }

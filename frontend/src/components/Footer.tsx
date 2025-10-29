@@ -17,7 +17,7 @@ export default function Footer() {
         <>
             <footer className="bg-black text-white py-10 px-6 py-16">
                 <div className="max-w-6xl mx-auto text-center">
-                    <p className="mb-4 text-3xl md:text-md">Follow me for updates and insights</p>
+                    <p className="mb-4 md:text-md 2xl:text-3xl titleFont">Follow me for updates and insights</p>
                     <SocialMediaLinks />
                 </div>
             </footer>
@@ -25,7 +25,7 @@ export default function Footer() {
                 <RedBanner
                     layout='footer'
                     rightContent={
-                        <p className="text-black text-xs sm:text-sm md:text-base md:pt-10 lg:pt-10">
+                        <p className="text-white text-xs sm:text-sm md:text-base md:pt-10 lg:pt-10">
                             Copyright © 2025
                         </p>
                     }
@@ -49,7 +49,7 @@ function SocialMediaLinks() {
                     aria-label={link.label}
                 >
                     {link.icon}
-                    <span className="hidden md:inline text-white text-xl">{link.label}</span>
+                    <span className="hidden md:inline text-white text-xl bodyFont;">{link.label}</span>
                 </a>
             ))}
         </div>

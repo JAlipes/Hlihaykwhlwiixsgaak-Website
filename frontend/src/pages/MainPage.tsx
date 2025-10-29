@@ -25,7 +25,8 @@ export default function MainPage() {
             <Divider />
             
             <Services />
-            
+            <Divider/>
+
             <ReconciliationSection />
             <Divider/>
             

@@ -54,7 +54,7 @@ export default function ServiceImageLeftSection({ sectionName, defaultTitle, def
                     </div>
 
                     {/* Text */}
-                    <div className="text-gray-800 flex flex-col justify-center">
+                    <div className="text-gray-800 flex flex-col justify-center" id='ServiceImageLeft'>
                         <MainTitle
                             titleText={defaultTitle}
                             underline={false}

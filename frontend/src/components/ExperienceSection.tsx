@@ -18,6 +18,7 @@ import { defaultExperienceText } from '../lang/en/englishText';
 import { HandleGetSectionData } from '../utils/HandleGetSectionData';
 import { HandleImageChangeFactory } from '../utils/HandleImageChangeFactory';
 import { HandleSaveSectionData } from '../utils/HandleSaveSectionData';
+import MainTitle from './MainTitle';
 
 export default function ExperienceSection() {
     const sectionName: string = `experience`;
@@ -46,35 +47,34 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="min-h-[calc(100vh-6rem)] bg-gray-100 text-gray-800 flex flex-col px-6 md:px-20 lg:px-32">
+        <section id="experience" className="min-h-[calc(100vh-6rem)] flex flex-col md:px-20 lg:px-32">
             {/* Title */}
             <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-5xl text-brandRed mt-12">
-                    Experience
-                </h2>
-                <div className="w-48 h-[2px] bg-black mt-3 mx-auto" />
+                <MainTitle
+                    titleText='Experience'
+                    className='titleStyle mt-12'
+                />
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="flex flex-col md:flex-row justify-center items-center flex-1 pt-12 pb-14 md:pt-0 h-auto md:h-[490px]">
+            <div className="gap-8 flex flex-col md:flex-row justify-center items-center flex-1 mb-14">
                 {/* Image */}
-                <div className="w-full md:w-1/2 flex justify-center h-auto md:h-full pt-10 pb-10 pl-10 pr-0">
-                    <EditableImage
-                        src={experienceImage}
-                        alt="Experience Image"
-                        wrapperClassName="w-full h-full"
-                        imageClassName="w-full h-full object-cover rounded-[75px]"
-                        isAuthenticated={isAuthenticated}
-                        inputIdString="experienceImageUpload"
-                        onChangeFunction={HandleExperienceImageChange}
-                    />
-                </div>
+                <EditableImage
+                    src={experienceImage}
+                    alt="Experience Image"
+                    wrapperClassName="w-full md:w-1/2 flex justify-center h-auto md:h-full pt-10 pb-10 pl-10 pr-0"
+                    imageClassName="w-full h-full object-cover rounded-[75px]"
+                    isAuthenticated={isAuthenticated}
+                    inputIdString="experienceImageUpload"
+                    onChangeFunction={HandleExperienceImageChange}
+                />
 
                 {/* Text */}
-                <div className="w-full md:w-1/2 flex flex-col justify-center h-full sm:mt-10">
-                    <h3 className="text-2xl font-light text-brandRed text-center">
-                        Profile Summary
-                    </h3>
+                <div className="w-full flex flex-col justify-center h-full sm:mt-10 2xl:w-1/2">
+                    <MainTitle 
+                        titleText='Profile Summary'
+                        className='subHeadingStyle text-center mb-5'
+                    />
                     <EditableText
                         isAuthenticated={isAuthenticated}
                         setText={setExperienceText}

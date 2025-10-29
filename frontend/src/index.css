@@ -17,62 +17,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ensure Quill editor uses the same text styles as your site */
+/* --- Quill custom overrides --- */
+
+/* Remove container padding (default 0.5rem) */
+.ql-container {
+	padding: 0 !important;
+    padding-top: 1.25em !important;
+	@apply rounded; /* keep your styling */
+}
+
+/* Remove editor padding (default 12px 15px) */
 .ql-editor {
-	@apply bodyStyle;
+	padding: 0 !important;
+	@apply bodyStyle; /* your custom text style */
 	white-space: normal;
 }
 
-/* Match padding to your editor container */
-.ql-container {
-	@apply p-2 rounded;
-}
-
-/* Remove border & background for readonly mode KEEP*/
-.ql-container.ql-disabled {
-	border: none !important;
-	background-color: transparent !important;
-	box-shadow: none !important;
-}
-
-
-/* Matches tool bar with the website */
-.ql-toolbar {
-	@apply bg-gray-50 border border-gray-200 rounded mb-2;
-}
-
-/* Alignment for non-editable text KEEP*/
-.ql-align-right {
-	text-align: right;
-}
-
-.ql-align-center {
-	text-align: center;
-}
-
-.ql-align-left {
-	text-align: left;
-	/* optional: default */
-}
-
-.ql-align-justify {
-	text-align: justify;
-}
-
-/* Bullets */
+/* Remove ul padding (default 1.5em) */
 .ql-editor ul {
+	padding-left: 0 !important;
 	list-style-type: disc;
-	/*Solid Round bullet points*/
-	padding-left: 0rem;
-	/* padding-left: 1.25rem; */
-	/* margin: 0 0 1em 0; */
 }
 
-/* Numbered lists */
+/* Adjust list item padding-left (default 1.5em → 1.0em) */
+.ql-editor ul li:not(.ql-direction-rtl) {
+	padding-left: 1em !important;
+}
+
+/* Optional: Adjust numbered lists if needed */
 .ql-editor ol {
+	padding-left: 1.25rem !important;
 	list-style-type: decimal;
-	padding-left: 1.25rem;
-	margin: 0 0 1em 0;
 }
 
 /* Optional: spacing between list items */
@@ -80,6 +55,23 @@
 	margin-bottom: 0.5em;
 }
 
+/* Keep disabled mode styling */
+.ql-container.ql-disabled {
+	border: none !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+
+/* Toolbar style */
+.ql-toolbar {
+	@apply bg-gray-50 border border-gray-200 rounded mb-2;
+}
+
+/* Alignment helpers */
+.ql-align-right { text-align: right; }
+.ql-align-center { text-align: center; }
+.ql-align-left { text-align: left; }
+.ql-align-justify { text-align: justify; }
 
 /* Text stylings */
 @layer components {
@@ -133,15 +125,15 @@
 	/* Largest */
 	@screen 2xl {
 		.titleStyle {
-			@apply text-5xl;
+			@apply text-5xl; /*48px*/
 		}
 
 		.bodyStyle {
-			@apply text-xl;
+			@apply text-xl; /*20px*/
 		}
 
-		.subHeadingStyle{
-			@apply text-3xl
+		.subHeadingStyle{ 
+			@apply text-3xl; /*30px*/
 		}
 	}
 }

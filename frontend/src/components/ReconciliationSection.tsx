@@ -11,6 +11,7 @@ import { UploadTestimonialImage } from "../utils/UploadTestimonialImage.ts";
 import { DeleteTestimonial } from "../utils/DeleteTestimonial.ts";
 import { ResizeImageFile } from "../utils/ResizeImage.ts";
 import { DEFAULT_TESTIMONIALS } from "../utils/DefaultTestimonials";
+import MainTitle from "./MainTitle.tsx";
 
 export default function ReconciliationSection() {
     const { isAuthenticated } = useContext(AuthContext);
@@ -178,9 +179,18 @@ export default function ReconciliationSection() {
             {/* Show different content based on whether it's the add slide or a real slide */}
             {/* Single rendering path: real slide or skeleton draft */}
             <div className="mb-10 md:mb-14">
-                <h1 className="text-4xl md:text-4xl">
-                    Reconciliation in Action
-                </h1>
+                <MainTitle
+                    titleText={
+                        <>
+                            <p className="text-white">
+                                <u className="decoration-1 underline-offset-[10px]  2xl:decoration-2 2xl:underline-offset-[20px]">
+                                    Reconciliation in Action
+                                </u>
+                            </p>
+                        </>
+                    }
+                    underline={false}
+                />
             </div>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-7xl">
                 {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
