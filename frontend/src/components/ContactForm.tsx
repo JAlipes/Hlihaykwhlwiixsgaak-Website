@@ -5,8 +5,10 @@ import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 import feather from '../assets/red-feather.png';
 
 // Import Components
-import TitleUnderline from "./TitleUnderline";
 import MainTitle from "./MainTitle";
+import InputField from "./form/InputField";
+import SelectField from "./form/SelectField";
+import TextAreaField from "./form/TextAreaField";
 
 export default function ContactForm() {
     const USE_CAPTCHA = false; // Toggle captcha on/off
@@ -161,96 +163,73 @@ export default function ContactForm() {
 
                         <form onSubmit={handleSubmit} className="w-full space-y-4 text-left">
                             {/* Full Name */}
-                            <div>
-                                {/* <label htmlFor="fullName" className="block mb-1 text-sm font-medium text-gray-700">Full Name*</label> */}
-                                <input
-                                    id="fullName"
-                                    type="text"
-                                    name="fullName"
-                                    required
-                                    placeholder="Full Name *"
-                                    className="w-full border border-black rounded px-4 py-2 focus:outline-none focus:border-red-500"
-                                    onChange={handleChange}
-                                    value={formData.fullName}
-                                />
-                            </div>
+                            <InputField
+                                id="fullName"
+                                name="fullName"
+                                type="text"
+                                required
+                                placeholder="Full Name *"
+                                onChange={handleChange}
+                                value={formData.fullName}
+                            />
 
                             {/* Company */}
-                            <div>
-                                {/* <label htmlFor="company" className="block mb-1 text-sm font-medium text-gray-700">Company</label> */}
-                                <input
-                                    id="company"
-                                    type="text"
-                                    name="company"
-                                    placeholder="Company"
-                                    className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500"
-                                    onChange={handleChange}
-                                    value={formData.company}
-                                />
-                            </div>
+                            <InputField
+                                id="company"
+                                name="company"
+                                type="text"
+                                placeholder="Company"
+                                onChange={handleChange}
+                                value={formData.company}
+                            />
 
                             {/* Email */}
-                            <div>
-                                {/* <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-700">Email*</label> */}
-                                <input
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    required
-                                    placeholder="Email *"
-                                    className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500"
-                                    onChange={handleChange}
-                                    value={formData.email}
-                                />
-                            </div>
+                            <InputField
+                                id="email"
+                                name="email"
+                                type="email"
+                                required
+                                placeholder="Email *"
+                                onChange={handleChange}
+                                value={formData.email}
+                            />
 
                             {/* Phone */}
-                            <div>
-                                {/* <label htmlFor="phone" className="block mb-1 text-sm font-medium text-gray-700">Phone</label> */}
-                                <input
-                                    id="phone"
-                                    type="tel"
-                                    name="phone"
-                                    placeholder="Phone"
-                                    className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500"
-                                    onChange={handleChange}
-                                    value={formData.phone}
-                                />
-                            </div>
+                            <InputField
+                                id="phone"
+                                name="phone"
+                                type="tel"
+                                placeholder="Phone"
+                                onChange={handleChange}
+                                value={formData.phone}
+                            />
 
                             {/* Request Type */}
-                            <div>
-                                {/* <label htmlFor="requestType" className="block mb-1 text-sm font-medium text-gray-700">Request Type*</label> */}
-                                <select
-                                    id="requestType"
-                                    name="requestType"
-                                    required
-                                    className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500"
-                                    onChange={handleChange}
-                                    value={formData.requestType}
-                                >
-                                    <option value="" disabled>Request type *</option>
-                                    <option value="consulting">Consulting</option>
-                                    <option value="speaking">Speaking Engagement</option>
-                                    <option value="collaboration">Collaboration</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
+                            <SelectField
+                                id="requestType"
+                                name="requestType"
+                                required
+                                onChange={handleChange}
+                                value={formData.requestType}
+                                options={[
+                                    { value: '', label: 'Request type *', disabled: true },
+                                    { value: 'consulting', label: 'Consulting' },
+                                    { value: 'speaking', label: 'Speaking Engagement' },
+                                    { value: 'collaboration', label: 'Collaboration' },
+                                    { value: 'other', label: 'Other' },
+                                ]}
+                            />
 
                             {/* Additional details */}
-                            <div>
-                                {/* <label htmlFor="message" className="block mb-1 text-sm font-medium text-gray-700">Additional details*</label> */}
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    required
-                                    placeholder="Additional details, i.e. timeframe for request, and allocated budget *"
-                                    rows={4}
-                                    className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500"
-                                    onChange={handleChange}
-                                    value={formData.message}
-                                />
-                            </div>
+                            <TextAreaField
+                                id="message"
+                                name="message"
+                                required
+                                placeholder="Additional details, i.e. timeframe for request, and allocated budget *"
+                                rows={4}
+                                onChange={handleChange}
+                                value={formData.message}
+                            />
 
                             {/* Status Feedback */}
                             {status === 'success' && (
