@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { GetEnvVarOrFail } from "../utils/GetEnvVarOrFail";
 
 // Import Assets
-import feather from '../assets/red-feather.png';
+import feather from '../assets/Feather2025-Photoroom.png';
 
 // Import Components
 import MainTitle from "./MainTitle";
@@ -147,7 +147,7 @@ export default function ContactForm() {
 
     return (
         // Rounder, darker, 
-        <section id="contact" className="bg-white min-h-screen md:h-screen w-full">
+        <section id="contact" className="min-h-screen w-full min-h-[80vh]">
             <div className="flex flex-col md:flex-row h-screen w-full">
                 {/* Left: Form */}
                 <div className="w-full md:w-3/5 h-full flex items-center justify-center px-6 md:px-12"> {/* Changed to md:w-3/5 from 1/2 */}
@@ -158,7 +158,7 @@ export default function ContactForm() {
                             </>}
                         />
                         <div className='mb-9'>
-                            <p className='bodyFont 2xl:text-xl'>Reach out to Hli Haykwhl Ẃii Xsgaak Consulting to start our shared journey toward reconciliation and transformative change.</p>
+                            <p className='bodyFont 2xl:text-xl'>Reach out to Hli Haykwhl Ẃii <u className="decoration-1">X</u>sgaak Consulting to start our shared journey toward reconciliation and transformative change.</p>
                         </div>
 
                         <form onSubmit={handleSubmit} className="w-full space-y-4 text-left">
@@ -249,7 +249,7 @@ export default function ContactForm() {
                             <button
                                 type="submit"
                                 disabled={status === 'loading' || (USE_CAPTCHA && !captchaSolved)}
-                                className="bg-red-500 text-white  px-6 py-4 rounded-xl hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60"
+                                className="bg-black text-white border border-brandRed hover:bg-white hover:text-brandRed transition-colors px-6 py-4 rounded-xl hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60"
                             >
                                 {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
                             </button>

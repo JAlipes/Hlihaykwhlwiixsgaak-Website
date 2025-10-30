@@ -129,12 +129,11 @@ export const defaultExperienceText = `
 </ul>
 `;
 
-
 // Resume Texts
 export const resumeProfileText = `
-  <h3 class="subHeadingStyle">Profile</h3>
-  <ul class="list-disc list-outside space-y-4 text-lg leading-relaxed">
-    <li>Committed to advancing meaningful social, environmental, and economic justice through reconciliation</li>
+  <h3><span class='ql-font-montserrat ql-size-30px' style='color: rgb(230, 53,81)'>Profile</span></h3>
+  <ul>
+    <li>Committed to advancing meaningful social, environmental, and economic justice through reconciliation.</li>
     <li>A results-oriented, charismatic, determined, knowledgeable, and experienced First Nation’s matriarch with re<strong>MARK</strong>able leadership, strategic thinking, advocacy, public speaking, communication, facilitation, and interpersonal skills</li>
     <li>A pragmatic visionary leader, with a strong acumen navigating complex systems and public relations, supported by a solid track record of advancing public policy, programs, and provincial legislation</li>
     <li>An Elder-in-training, with a deep understanding of colonialism and the devastating impacts of the Indian residential schools; actively cultivating personal/Indigenous people’s history, cultural practices, protocols, customs, and traditions through family, community, post-secondary education, and professional teachings</li>
@@ -144,7 +143,7 @@ export const resumeProfileText = `
   </ul>
 `;
 export const resumeExecutiveExpText = `
-    <h3 class="text-2xl font-light text-brandRed mb-6 text-center">Executive Experience</h3>
+    <h3><span class='ql-font-montserrat ql-size-30px' style='color: rgb(230, 53,81)'>Executive Experience</span></h3>
     <strong>Co-Founder & Partner, Aks Wind Energy Corp — Incorporated June 2025</strong>\n
     <br/>
     <br/>
@@ -219,7 +218,7 @@ export const resumeExecutiveExpText = `
     </ul>
 `;
 export const resumeCommunityInvolvementText = `
-    <h3 class="text-2xl font-light text-brandRed mb-6 text-center">Community Involvement</h3>
+    <h3><span class='ql-font-montserrat ql-size-30px' style='color: rgb(230, 53,81)'>Community Involvement</span></h3>
     <ul>
         <li><strong>Partnership and Growth Strategy Advisor</strong></li>
     </ul>
@@ -250,9 +249,8 @@ export const resumeCommunityInvolvementText = `
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Board of Directors, Urban Native Youth Association	2002 - 2006</p>
     <br/>
 `;
-
 export const resumeProfessionalDevText = `
-    <h3 class="text-2xl font-light text-brandRed mb-6 text-center">Professional Development & Certifications</h3>
+    <h3><span class='ql-font-montserrat ql-size-30px' style='color: rgb(230, 53,81)'>Professional Development & Certifications</span></h3>
     <ul>
         <li><strong>Health & WellBeing - Dealing with Difficult Behaviour in the Workplace/ Workplace Conflict Management Strategies Vancouver, BC</strong></li>
     </ul>
@@ -302,28 +300,17 @@ export const resumeProfessionalDevText = `
     <br/>
 `;
 export const resumePostSecCredsText = `
-    <h3 class="text-2xl font-light text-brandRed mb-6 text-center">Post-Secondary Credentials</h3>
+    <h3><span class='ql-font-montserrat ql-size-30px' style='color: rgb(230, 53,81)'>Post-Secondary Credentials</span></h3>
     <p><strong>Simon Fraser University</strong> — Burnaby, B.C.<br/>Bachelor of Arts, Major in Political Science / Minor in Sociology (Fall 2002 – Spring 2005)</p>
 
     <br/>
     <p><strong>Native Education College / Douglas College Partnership</strong> — Vancouver, B.C.<br/>Criminology Diploma (1997 – 1999)</p>
 `;
 export const resumeAdditionalInfoText = `
-    <h3 class="text-2xl font-light text-brandRed mb-6 text-center">Additional Information</h3>
+    <h3><span class='ql-font-montserrat ql-size-30px' style='color: rgb(230, 53,81)'>Additional Information</span></h3>
     <strong>Media Relations</strong>
     <ul>
         <li><strong>Local</strong> - Roundhouse Radio, Vancouver Co-operative Radio, CKNW, Fanny Keefer Show, Vancouver Sun, The Province, Georgia Straight, Shared Vision, PowHERhouse, CBC TV/Radio, CTV, Global TV</li>
         <li><strong>National</strong> - Guest on Canada AM, Globe & Mail, APTN, Canadian Voices, CTV Question Period, Published article: My Life So Far - Canadian Women’s Studies, Chatelaine Magazine, Canadian Encyclopedia: https://www.thecanadianencyclopedia.ca/en/article/melanie-mark</li>
-    </ul>
-`;
-export const resumeTravelExpText = `
-    <h3 class="text-2xl font-light text-brandRed mb-6 text-center">Travel Experience</h3>
-    <ul>
-        <li><strong>B.C. & Canada</strong> - Extensive experience traveling across B.C. and Canada, professionally and personally</li>
-        <li><strong>Santiago, Chile</strong> - Canadian delegate, United Nations Urban Indigenous Conference 2006</li>
-        <li><strong>San Diego, California</strong> - Presented the Native Youth Centre Project to 1500 Aboriginal youth 2005</li>
-        <li><strong>Philadelphia, USA</strong> - Delegate & presenter 2001</li>
-        <li><strong>Yokohama, Japan</strong> - 2nd World Congress on Child & Youth Commercial Sexual Exploitation 2001</li>
-        <li><strong>Personal travel</strong> - Cuba, Costa Rica, Croatia, Fiji, Mexico, New York City, Western Europe (England, Netherlands, Scotland, France, Portugal, Spain, Italy, Greece)</li>
     </ul>
 `;

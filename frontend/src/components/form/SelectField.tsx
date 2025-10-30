@@ -37,7 +37,7 @@ export default function SelectField({
   return (
     <div className={wrapperClassName}>
       {label && (
-        <label htmlFor={id} className="block mb-1 text-sm font-medium text-gray-700">
+        <label htmlFor={id} className="block mb-1 text-sm font-medium">
           {label}
           {required ? <span className="text-red-500">*</span> : null}
         </label>

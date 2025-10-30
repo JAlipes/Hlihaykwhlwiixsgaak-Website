@@ -10,9 +10,9 @@ import audio from '../assets/audio/Website_Audio.mp4'
 import { AuthContext } from '../contexts/AuthContext';
 
 // Import Utils
-import { HandleSaveSectionData } from '../utils/HandleSaveSectionData';
 import { HandleGetSectionData } from '../utils/HandleGetSectionData';
 import { HandleImageChangeFactory } from '../utils/HandleImageChangeFactory';
+import { HandleSaveSectionData } from '../utils/HandleSaveSectionData';
 
 // Import Components
 import EditableImage from './EditableImage';
@@ -71,14 +71,14 @@ export default function LandingSection() {
                 >
                     Hli Haykwhl Ẃii <u className="underline-offset-[3px] decoration-2">X</u>sgaak
                     <br />
-                    <span className="inline-flex items-center gap-2 mt-2">
+                    <span className="inline-flex items-center gap-2 mt-2 hover:bg-white">
                         Consulting
                         <button
                             onClick={HandlePlayAudio}
                             className="inline-flex items-center justify-center w-6 h-6 2xl:w-10 2xl:h-10 bg-black rounded-lg hover:bg-gray-300 transition-colors"
                             aria-label="Play pronunciation"
                         >
-                            <LuVolume2 color="#FFFFFF" className="w-4 h-4 2xl:w-6 2xl:h-6 hover:text-brandRed transition-colors" />
+                            <LuVolume2 color="#E63551" className="w-4 h-4 2xl:w-6 2xl:h-6 " />
                         </button>
                     </span>
                 </h1>
@@ -111,6 +111,21 @@ export default function LandingSection() {
                     inputIdString="landingImageUpload"
                     onChangeFunction={HandleLandingImageChange}
                 />
+
+                {/* Save button overlay (for image) */}
+                {isAuthenticated && (
+                    <div className="absolute bottom-4 right-4">
+                        <SaveEditsButton
+                        onClickFunction={() => {
+                            HandleSaveSectionData({
+                                sectionName,
+                                text: "", // no text in this section — only image
+                                image: selectedFile ?? landingImage,
+                            });
+                        }}
+                        />
+                    </div>
+                )}
             </motion.div>
         </section>
     );

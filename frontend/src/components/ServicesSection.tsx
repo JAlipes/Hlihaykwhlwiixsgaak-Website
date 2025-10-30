@@ -107,7 +107,7 @@ export default function ServicesSection() {
                         "
                     >
                         <LuYoutube
-                            className="w-6 h-6 text-[#C32148] group-hover:text-brandRed transition-colors duration-300"
+                            className="lg:w-12 lg:h-12 text-[#C32148] group-hover:text-brandRed transition-colors duration-300"
                         />
                         <span className="text-white group-hover:text-brandRed transition-colors duration-300 bodyStyle">
                             melaniejmark

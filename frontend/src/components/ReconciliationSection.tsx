@@ -183,14 +183,11 @@ export default function ReconciliationSection() {
                     titleText={
                         <>
                             <p className="text-white">
-                                <u className="decoration-1 underline-offset-[10px]  2xl:decoration-2 2xl:underline-offset-[20px]">
                                     Reconciliation in Action
-                                </u>
                             </p>
                         </>
                     }
-                    underline={false}
-                />
+                    />
             </div>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-7xl">
                 {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (

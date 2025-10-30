@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 
 // Import Assets
-import feather from '../assets/red-feather.png';
+import feather from '../assets/Feather2025-Photoroom.png';
 
 // Import Contexts
 import { AuthContext } from '../contexts/AuthContext';
@@ -19,7 +19,6 @@ import MainTitle from './MainTitle';
 
 // Import Text
 import { missionText } from '../lang/en/englishText';
-import TitleUnderline from './TitleUnderline';
 
 export default function MissionSection() {
     const sectionName: string = `mission`;

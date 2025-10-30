@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import familyPhoto from '../assets/Family_Experience_Photo.jpg';
+import familyPhoto from '../assets/Family_Experience_Photo_Edited.jpg';
 
 // Import components
 import EditableText from './EditableText';
@@ -99,9 +99,9 @@ export default function ExperienceSection() {
                     <div className="flex justify-center mt-4">
                         <button
                             onClick={HandleResumeRedirect}
-                            className="bg-brandRed text-white text-lg py-2 px-3 rounded-lg shadow-md hover:bg-red-700 transition border border-black"
+                            className="transition bg-black text-white py-2 px-3 rounded-lg shadow-md hover:bg-white hover:text-brandRed border border-brandRed bodyStyle"
                         >
-                            Explore more
+                            Read more
                         </button>
                     </div>
                 </div>

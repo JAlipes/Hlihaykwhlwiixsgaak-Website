@@ -11,8 +11,8 @@ import {
     resumeProfessionalDevText, 
     resumePostSecCredsText, 
     resumeAdditionalInfoText, 
-    resumeTravelExpText 
 } from "../lang/en/englishText";
+import MainTitle from "../components/MainTitle";
 
 export default function ResumePage() {
     const navigate = useNavigate();
@@ -35,9 +35,9 @@ export default function ResumePage() {
                 </button>
 
                 {/* Centered title */}
-                <h2 className="text-3xl md:text-4xl text-brandRed text-center">
-                    CV Melanie Mark
-                </h2>
+                <MainTitle
+                    titleText='CV Melanie Mark'
+                />
             </div>
 
             {/* Resume container for padding and spacing */}
@@ -78,13 +78,6 @@ export default function ResumePage() {
                     sectionName="additionalInformationSection"
                     sectionId="additionalInformation"
                 />
-
-                <ResumeSection
-                    defaultSectionText={resumeTravelExpText}
-                    sectionName="travelExperienceSection"
-                    sectionId="travelExperience"
-                />
-
             </div>
         </>
     );

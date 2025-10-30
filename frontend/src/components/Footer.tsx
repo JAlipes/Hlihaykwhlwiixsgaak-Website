@@ -48,7 +48,9 @@ function SocialMediaLinks() {
                     className="flex items-center gap-2 text-[#C32148] hover:text-white transition-colors duration-300"
                     aria-label={link.label}
                 >
-                    {link.icon}
+                    <span className="w-8 h-8 flex items-center justify-center text-3xl">
+                        {link.icon}
+                    </span>
                     <span className="hidden md:inline text-white text-xl bodyFont;">{link.label}</span>
                 </a>
             ))}
