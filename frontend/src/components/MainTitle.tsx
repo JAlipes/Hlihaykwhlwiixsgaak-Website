@@ -4,10 +4,11 @@ interface MainTitleProp {
     titleText: React.ReactNode;
     underline?: boolean;
     className?: string;
+    underlineColor?: string; // new prop
 }
 
-export default function MainTitle({ titleText, underline = true, className = "" }: MainTitleProp) {
-    const appliedClassName = className || "titleStyle mb-5";
+export default function MainTitle({ titleText, underline = true, className = "", underlineColor = "black" }: MainTitleProp) {
+    const appliedClassName = className || "titleStyle mb-5 pb-4";
 
     return (
         <div className="inline-block relative">
@@ -17,9 +18,10 @@ export default function MainTitle({ titleText, underline = true, className = "" 
                     <motion.span
                         initial={{ scaleX: 0 }}
                         whileInView={{ scaleX: 1 }}
-                        viewport={{ once: true, amount: 0.5 }} // triggers when 50% of the element is visible
+                        viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="absolute left-0 bottom-0 w-full h-[2px] bg-black origin-left"
+                        style={{ backgroundColor: underlineColor }} // dynamically set color
+                        className="absolute left-0 bottom-0 w-full h-[2px] origin-left"
                     />
                 )}
             </h2>

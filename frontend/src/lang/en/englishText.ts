@@ -1,7 +1,7 @@
 // Our Mission Text
 export const missionText = `
 <p>
-    Hli Haykwhl Ẃii Xsgaak Consulting is an Indigenous owned and 
+    Hli Haykwhl Ẃii <u>X</u>sgaak Consulting is an Indigenous owned and 
     matriarch-led corporation dedicated to advancing the 94 Calls to Action 
     of the Truth and Reconciliation Commission. Our mission is to guide,
     empower, and inspire people and organizations to be allies and agents 
@@ -39,7 +39,7 @@ export const aboutText = `
 </p>
 <br/>
 <p>
-    Now, as the founder of Hli Haykwhl Ẃii Xsgaak Consulting, I’m committed to share my knowledge and experience, to guide others to achieve their goals through the power of culture, sport, and education.
+    Now, as the founder of Hli Haykwhl Ẃii <u>X</u>sgaak Consulting, I’m committed to share my knowledge and experience, to guide others to achieve their goals through the power of culture, sport, and education.
 </p>
 <br/>
 <p class='specialFont ql-align-right'>
@@ -147,7 +147,7 @@ export const resumeExecutiveExpText = `
     <strong>Co-Founder & Partner, Aks Wind Energy Corp — Incorporated June 2025</strong>\n
     <br/>
     <br/>
-    <strong>Founder & CEO Hli Haykwhl Ẃii Xsgaak Consutling Ltd Incorporated August 2023 </strong>
+    <strong>Founder & CEO Hli Haykwhl Ẃii <u>X</u>sgaak Consutling Ltd Incorporated August 2023 </strong>
     <br/>
     <br/>
     <strong>Founder & CEO Remarkable First Nations Regenerative Industries Corp	Incorporated July 2023</strong>
