@@ -31,7 +31,7 @@ export default function SelectField({
   selectClassName,
   ...rest
 }: SelectFieldProps) {
-  const baseSelect = "w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500";
+  const baseSelect = "w-full border border-black rounded px-4 py-2 focus:outline-none focus:border-red-500";
   const className = [baseSelect, selectClassName].filter(Boolean).join(' ');
 
   return (

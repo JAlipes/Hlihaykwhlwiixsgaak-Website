@@ -25,7 +25,7 @@ export default function InputField({
   inputClassName,
   ...rest
 }: InputFieldProps) {
-  const baseInput = "w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500";
+  const baseInput = "w-full border border-black rounded px-4 py-2 focus:outline-none focus:border-red-500";
   const className = [baseInput, inputClassName].filter(Boolean).join(' ');
 
   return (

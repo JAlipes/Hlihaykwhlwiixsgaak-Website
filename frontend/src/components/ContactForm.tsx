@@ -172,7 +172,6 @@ export default function ContactForm() {
                                 placeholder="Full Name *"
                                 onChange={handleChange}
                                 value={formData.fullName}
-                                inputClassName="border-black"
                             />
 
                             {/* Company */}

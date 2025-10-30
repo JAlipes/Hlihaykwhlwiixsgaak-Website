@@ -25,7 +25,7 @@ export default function TextAreaField({
   textareaClassName,
   ...rest
 }: TextAreaFieldProps) {
-  const baseTextarea = "w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500";
+  const baseTextarea = "w-full border border-black rounded px-4 py-2 focus:outline-none focus:border-red-500";
   const className = [baseTextarea, textareaClassName].filter(Boolean).join(' ');
 
   return (
