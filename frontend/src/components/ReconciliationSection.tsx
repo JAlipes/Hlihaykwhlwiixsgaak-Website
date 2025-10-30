@@ -190,42 +190,46 @@ export default function ReconciliationSection() {
                     underlineColor="white"
                 />
             </div>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-7xl">
-                {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
-                    <EditableImage
-                        src={isSkeleton ? (draftSlide.image) : (slides[current]?.image as string)}
-                        alt={"Testimonial image"}
-                        wrapperClassName="flex-shrink-0"
-                        imageClassName="rounded-3xl shadow-xl w-auto h-[32rem] object-cover mx-auto cursor-pointer"
-                        isAuthenticated={isAuthenticated}
-                        inputIdString={`reconciliation-image-${current}`}
-                        onChangeFunction={updateImage}
-                    />
-                ) : (
-                    <div
-                        className="flex-shrink-0 w-auto h-[32rem] flex items-center justify-center bg-white/20 rounded-3xl border-4 border-dashed border-white/50 cursor-pointer px-10"
-                        onClick={() => {
-                            if (isAuthenticated) {
-                                document.getElementById(`reconciliation-placeholder-input-${current}`)?.click();
-                            }
-                        }}
-                    >
-                        <div className="flex flex-col items-center gap-4 text-white/70">
-                            <Plus size={64} />
-                            <span className="font-semibold tracking-wide">Add Image</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8 max-w-7xl w-full">
+                {/* Image stage: fixed height per breakpoint to prevent layout shift */}
+                <div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[30rem] 2xl:h-[32rem] flex items-center justify-center">
+                    {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
+                        <EditableImage
+                            src={isSkeleton ? (draftSlide.image) : (slides[current]?.image as string)}
+                            alt={"Testimonial image"}
+                            wrapperClassName="h-full w-full"
+                            imageClassName="rounded-3xl shadow-xl w-full h-full object-cover mx-auto cursor-pointer"
+                            isAuthenticated={isAuthenticated}
+                            inputIdString={`reconciliation-image-${current}`}
+                            onChangeFunction={updateImage}
+                        />
+                    ) : (
+                        <div
+                            className="w-full h-full flex items-center justify-center bg-white/20 rounded-3xl border-4 border-dashed border-white/50 cursor-pointer px-10"
+                            onClick={() => {
+                                if (isAuthenticated) {
+                                    document.getElementById(`reconciliation-placeholder-input-${current}`)?.click();
+                                }
+                            }}
+                        >
+                            <div className="flex flex-col items-center gap-4 text-white/70">
+                                <Plus size={64} />
+                                <span className="font-semibold tracking-wide">Add Image</span>
+                            </div>
+                            {isAuthenticated && (
+                                <input
+                                    id={`reconciliation-placeholder-input-${current}`}
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={updateImage}
+                                />
+                            )}
                         </div>
-                        {isAuthenticated && (
-                            <input
-                                id={`reconciliation-placeholder-input-${current}`}
-                                type="file"
-                                accept="image/*"
-                                className="hidden"
-                                onChange={updateImage}
-                            />
-                        )}
-                    </div>
-                )}
-                <div className="flex flex-col justify-center text-left max-w-lg">
+                    )}
+                </div>
+
+                <div className="flex flex-col justify-center text-left w-full min-h-24 md:min-h-32">
                     <EditableText
                         key={`text-${isSkeleton ? 'draft' : current}`}
                         isAuthenticated={isAuthenticated}
