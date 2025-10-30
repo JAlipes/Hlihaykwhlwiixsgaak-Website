@@ -97,23 +97,23 @@ function MenuToggle({ isOpen, toggle }: { isOpen: boolean; toggle: () => void })
         <button
             onClick={toggle}
             aria-label="Toggle menu"
-            className="relative w-8 h-8 flex flex-col justify-center items-center group focus:outline-none"
+            className="relative w-5 md:w-20 md:h-8 flex flex-col justify-center items-center group focus:outline-none"
         >
             {/* Top bar */}
             <motion.span
-                className="absolute h-[3px] w-6 bg-black rounded-full"
+                className="absolute h-[1px] md:h-[3px] w-1 md:w-6 bg-black rounded-full"
                 animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
             />
             {/* Middle bar */}
             <motion.span
-                className="absolute h-[3px] w-6 bg-black rounded-full"
+                className="absolute h-[1px] md:h-[3px] w-1 md:w-6 bg-black rounded-full"
                 animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
                 transition={{ duration: 0.2 }}
             />
             {/* Bottom bar */}
             <motion.span
-                className="absolute h-[3px] w-6 bg-black rounded-full"
+                className="absolute h-[1px] md:h-[3px] w-1 md:w-6 bg-black rounded-full"
                 animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
             />

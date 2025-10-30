@@ -152,9 +152,8 @@ export default function ContactForm() {
                     <div className="w-full max-w-lg text-center">
                         <MainTitle
                             titleText={<>
-                                Contact Hli Haykwhl Ẃii <u>X</u>sgaak Consulting
+                                Contact Hli Haykwhl Ẃii <u className='decoration-2 underline-offset-4'>X</u>sgaak Consulting
                             </>}
-                            underline={false}
                         />
                         <div className='mb-9'>
                             <p className='bodyFont 2xl:text-xl'>Reach out to Hli Haykwhl Ẃii Xsgaak Consulting to start our shared journey toward reconciliation and transformative change.</p>

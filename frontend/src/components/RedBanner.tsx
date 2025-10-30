@@ -1,5 +1,3 @@
-import { FaFeather } from "react-icons/fa6";
-
 // Import types
 import type { RedBannerProps } from "../../../shared-types/ComponentPropTypes";
 
@@ -19,7 +17,7 @@ export default function RedBanner({ rightContent, leftContent, layout = "default
                 <img
                     src={featherLogo}
                     alt="Feather logo"
-                    className="sm:h-6 md:h-8 lg:h-16 h-auto object-contain"
+                    className="h-6 sm:h-6 md:h-8 lg:h-16 object-contain"
                 />
                 <p className="text-white whitespace-nowrap text-center 2xl:text-3xl titleFont">
                     Hli Haykwhl Ẃii <u className="decoration-2">X</u>sgaak Consulting

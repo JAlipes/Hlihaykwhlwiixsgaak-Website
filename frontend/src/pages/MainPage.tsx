@@ -13,8 +13,6 @@ import ContactForm from '../components/ContactForm';
 export default function MainPage() {    
     return (
         <>
-            <Divider/>
-
             <LandingSection/>
             <Divider />
             

@@ -12,7 +12,7 @@ import {
     resumePostSecCredsText, 
     resumeAdditionalInfoText, 
     resumeTravelExpText 
-} from "../lang/en/EnglishText";
+} from "../lang/en/englishText";
 
 export default function ResumePage() {
     const navigate = useNavigate();

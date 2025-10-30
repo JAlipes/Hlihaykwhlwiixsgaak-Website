@@ -5,157 +5,317 @@
 /*Miniver For Signatures (Maybe swap to miama)*/
 @import url('https://fonts.googleapis.com/css2?family=Miniver&display=swap');
 
-@font-face {
-  font-family: "Miama";
-  src: url("/src/assets/fonts/miama/Miama.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+@import "react-quill/dist/quill.snow.css";
 
+/* React Quill base */
+@import "react-quill/dist/quill.snow.css";
+
+@font-face {
+    font-family: "Miama";
+    src: url("/src/assets/fonts/miama/Miama.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* --- Quill custom overrides --- */
+/* --- Quill Font classes for content --- */
+.ql-font-overlock-sc { font-family: "Overlock SC", cursive !important; }
+.ql-font-quicksand  { font-family: "Quicksand", sans-serif !important; }
+.ql-font-montserrat { font-family: "Montserrat", sans-serif !important; }
+.ql-font-miniver    { font-family: "Miniver", cursive !important; }
+.ql-font-miama      { font-family: "Miama", cursive !important; }
 
+/* Toolbar label default */
+.ql-picker.ql-font .ql-picker-label::before {
+  content: "Default";
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Dropdown items */
+.ql-picker.ql-font .ql-picker-options .ql-picker-item[data-value="overlock-sc"]::before {
+  content: "Overlock SC";
+  font-family: "Overlock SC", cursive;
+}
+.ql-picker.ql-font .ql-picker-options .ql-picker-item[data-value="quicksand"]::before {
+  content: "Quicksand";
+  font-family: "Quicksand", sans-serif;
+}
+.ql-picker.ql-font .ql-picker-options .ql-picker-item[data-value="montserrat"]::before {
+  content: "Montserrat";
+  font-family: "Montserrat", sans-serif;
+}
+.ql-picker.ql-font .ql-picker-options .ql-picker-item[data-value="miniver"]::before {
+  content: "Miniver";
+  font-family: "Miniver", cursive;
+}
+.ql-picker.ql-font .ql-picker-options .ql-picker-item[data-value="miama"]::before {
+  content: "Miama";
+  font-family: "Miama", cursive;
+}
+
+/* Default toolbar label */
+.ql-picker.ql-size .ql-picker-label::before {
+  content: "20px"; /* Default size label */
+}
+
+/* Dropdown items */
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="12px"]::before { content: "12px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="14px"]::before { content: "14px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="16px"]::before { content: "16px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="18px"]::before { content: "18px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="20px"]::before { content: "20px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="24px"]::before { content: "24px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="30px"]::before { content: "30px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="36px"]::before { content: "36px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="48px"]::before { content: "48px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="60px"]::before { content: "60px"; }
+.ql-picker.ql-size .ql-picker-options .ql-picker-item[data-value="72px"]::before { content: "72px"; }
+
+/* Apply sizes inside editor */
+.ql-size-12px  { font-size: 12px; }
+.ql-size-14px  { font-size: 14px; }
+.ql-size-16px  { font-size: 16px; }
+.ql-size-18px  { font-size: 18px; }
+.ql-size-20px  { font-size: 20px; }
+.ql-size-24px  { font-size: 24px; }
+.ql-size-30px  { font-size: 30px; }
+.ql-size-36px  { font-size: 36px; }
+.ql-size-48px  { font-size: 48px; }
+.ql-size-60px  { font-size: 60px; }
+.ql-size-72px  { font-size: 72px; }
+
+/* --- Quill text size mapping to Tailwind --- */
+/* Dynamic sizing for each level this can be tweaked */
+
+/* Base mapping mobile mapping*/
+.ql-size-12px { @apply text-xs; }
+.ql-size-14px { @apply text-sm; }
+.ql-size-16px { @apply text-base; }
+.ql-size-18px { @apply text-lg; }
+.ql-size-20px { @apply text-xl; }
+.ql-size-24px { @apply text-2xl; }
+.ql-size-30px { @apply text-3xl; }
+.ql-size-36px { @apply text-4xl; }
+.ql-size-48px { @apply text-2xl; }
+.ql-size-60px { @apply text-6xl; }
+.ql-size-72px { @apply text-7xl; }
+
+/* Responsive overrides for md */
+@screen md {
+  .ql-size-12px { @apply text-sm; }
+  .ql-size-14px { @apply text-base; }
+  .ql-size-16px { @apply text-lg; }
+  .ql-size-18px { @apply text-xl; }
+  .ql-size-20px { @apply text-2xl; }
+  .ql-size-24px { @apply text-3xl; }
+  .ql-size-30px { @apply text-4xl; }
+  .ql-size-36px { @apply text-5xl; }
+  .ql-size-48px { @apply text-6xl; }
+  .ql-size-60px { @apply text-7xl; }
+  .ql-size-72px { @apply text-8xl; }
+}
+
+/* Responsive overrides for lg */
+@screen lg {
+  .ql-size-12px { @apply text-base; }
+  .ql-size-14px { @apply text-lg; }
+  .ql-size-16px { @apply text-xl; }
+  .ql-size-18px { @apply text-2xl; }
+  .ql-size-20px { @apply text-3xl; }
+  .ql-size-24px { @apply text-4xl; }
+  .ql-size-30px { @apply text-5xl; }
+  .ql-size-36px { @apply text-6xl; }
+  .ql-size-48px { @apply text-7xl; }
+  .ql-size-60px { @apply text-8xl; }
+  .ql-size-72px { @apply text-9xl; }
+}
+
+/* Responsive overrides for xl */
+@screen xl {
+  .ql-size-12px { @apply text-base; }
+  .ql-size-14px { @apply text-lg; }
+  .ql-size-16px { @apply text-xl; }
+  .ql-size-18px { @apply text-2xl; }
+  .ql-size-20px { @apply text-3xl; }
+  .ql-size-24px { @apply text-4xl; }
+  .ql-size-30px { @apply text-5xl; }
+  .ql-size-36px { @apply text-6xl; }
+  .ql-size-48px { @apply text-7xl; }
+  .ql-size-60px { @apply text-8xl; }
+  .ql-size-72px { @apply text-9xl; }
+}
+
+/* Responsive overrides for 2xl */
+@screen 2xl {
+  .ql-size-12px { @apply text-xs; }
+  .ql-size-14px { @apply text-sm; }
+  .ql-size-16px { @apply text-base; }
+  .ql-size-18px { @apply text-lg; }
+  .ql-size-20px { @apply text-xl; }
+  .ql-size-24px { @apply text-2xl; }
+  .ql-size-30px { @apply text-3xl; }
+  .ql-size-36px { @apply text-4xl; }
+  .ql-size-48px { @apply text-5xl; }
+  .ql-size-60px { @apply text-6xl; }
+  .ql-size-72px { @apply text-7xl; }
+}
+
+
+
+/* --- Quill custom overrides --- */
 /* Remove container padding (default 0.5rem) */
 .ql-container {
-	padding: 0 !important;
+    padding: 0 !important;
     padding-top: 1.25em !important;
     border: 1px solid !important;
     border-color: rgba(119, 136, 153, 0.555) !important;
-	@apply rounded; /* keep your styling */
+    @apply rounded;
+    /* keep your styling */
 }
 
-/* Remove editor padding (default 12px 15px) */
+/* Base look */
 .ql-editor {
-	padding: 0 !important;
-	@apply bodyStyle; /* your custom text style */
-	white-space: normal;
-    
+    padding: 0 !important;
+    white-space: normal;
+
+    /* Keep your base text color and spacing only */
+    line-height: 1.6;
+    color: #000;
+
+    /* Set your document default font + size */
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
 }
+
 
 /* Remove ul padding (default 1.5em) */
 .ql-editor ul {
-	padding-left: 0 !important;
-	list-style-type: disc;
+    padding-left: 0 !important;
+    list-style-type: disc;
 }
 
 /* Adjust list item padding-left (default 1.5em → 1.0em) */
 .ql-editor ul li:not(.ql-direction-rtl) {
-	padding-left: 1em !important;
+    padding-left: 1em !important;
 }
 
 /* Optional: Adjust numbered lists if needed */
 .ql-editor ol {
-	padding-left: 1.25rem !important;
-	list-style-type: decimal;
+    padding-left: 1.25rem !important;
+    list-style-type: decimal;
 }
 
 /* Optional: spacing between list items */
 .ql-editor li {
-	margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 /* Keep disabled mode styling */
 .ql-container.ql-disabled {
-	border: none !important;
-	background-color: transparent !important;
-	box-shadow: none !important;
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
 /* Toolbar style */
 .ql-toolbar {
-	@apply bg-gray-50 border border-gray-200 rounded mb-2;
+    @apply bg-gray-50 border border-gray-200 rounded mb-2;
 }
 
 /* Alignment helpers */
-.ql-align-right { text-align: right; }
-.ql-align-center { text-align: center; }
-.ql-align-left { text-align: left; }
-.ql-align-justify { text-align: justify; }
+.ql-align-right {
+    text-align: right;
+}
+
+.ql-align-center {
+    text-align: center;
+}
+
+.ql-align-left {
+    text-align: left;
+}
+
+.ql-align-justify {
+    text-align: justify;
+}
 
 /* Text stylings */
 @layer components {
 
-	/* Default smallest style */
-	.titleStyle {
-		@apply titleFont leading-relaxed text-brandRed text-2xl;
-	}
+    /* Default smallest style */
+    .titleStyle {
+        @apply titleFont leading-relaxed text-brandRed text-2xl;
+    }
 
-	.bodyStyle {
-		@apply bodyFont leading-relaxed text-black text-xs;
-	}
+    .bodyStyle {
+        @apply bodyFont leading-relaxed text-black text-xs;
+    }
 
-	.subHeadingStyle {
-		@apply subHeadingFont leading-relaxed text-brandRed text-base
-	}
+    .subHeadingStyle {
+        @apply subHeadingFont leading-relaxed text-brandRed text-base
+    }
 
-	@screen md {
-		.titleStyle {
-		}
+    @screen md {
+        .titleStyle {}
 
-		.bodyStyle {
-		}
+        .bodyStyle {}
 
-		.subHeadingStyle{
-		}
-	}
+        .subHeadingStyle {}
+    }
 
-	@screen lg {
-		.titleStyle {
-		}
+    @screen lg {
+        .titleStyle {}
 
-		.bodyStyle {
-		}
+        .bodyStyle {}
 
-		.subHeadingStyle{
-		}
-	}
+        .subHeadingStyle {}
+    }
 
-	@screen xl {
-		.titleStyle {
-		}
+    @screen xl {
+        .titleStyle {}
 
-		.bodyStyle {
-		}
+        .bodyStyle {}
 
-		.subHeadingStyle{
-		}
-	}
+        .subHeadingStyle {}
+    }
 
-	/* Largest */
-	@screen 2xl {
-		.titleStyle {
-			@apply text-5xl; /*48px*/
-		}
+    /* Largest */
+    @screen 2xl {
+        .titleStyle {
+            @apply text-5xl;
+            /*48px*/
+        }
 
-		.bodyStyle {
-			@apply text-xl; /*20px*/
-		}
+        .bodyStyle {
+            @apply text-xl;
+            /*20px*/
+        }
 
-		.subHeadingStyle{ 
-			@apply text-3xl; /*30px*/
-		}
-	}
+        .subHeadingStyle {
+            @apply text-3xl;
+            /*30px*/
+        }
+    }
 }
 
 /* Font Usage */
 @layer utilities {
-	.titleFont {
-		@apply font-titleFont;
-	}
+    .titleFont {
+        @apply font-titleFont;
+    }
 
-	.subHeadingFont {
-		@apply font-subHeadingFont;
-	}
+    .subHeadingFont {
+        @apply font-subHeadingFont;
+    }
 
-	.bodyFont {
-		@apply font-bodyFont;
-	}
+    .bodyFont {
+        @apply font-bodyFont;
+    }
 
-	.specialFont {
-		@apply font-specialFont;
-	}
+    .specialFont {
+        @apply font-specialFont;
+    }
 }

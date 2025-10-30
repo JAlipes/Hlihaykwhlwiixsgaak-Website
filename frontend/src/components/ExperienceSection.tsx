@@ -70,9 +70,10 @@ export default function ExperienceSection() {
                 />
 
                 {/* Text */}
-                <div className="w-full flex flex-col justify-center h-full sm:mt-10 2xl:w-1/2">
+                <div className="w-full flex flex-col justify-center h-full text-center sm:mt-10 2xl:w-1/2">
                     <MainTitle 
                         titleText='Profile Summary'
+                        underline={false}
                         className='subHeadingStyle text-center mb-5'
                     />
                     <EditableText

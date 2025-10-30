@@ -132,7 +132,7 @@ export const defaultExperienceText = `
 
 // Resume Texts
 export const resumeProfileText = `
-  <h3 class="text-2xl font-light text-brandRed mb-6 text-center">Profile</h3>
+  <h3 class="subHeadingStyle">Profile</h3>
   <ul class="list-disc list-outside space-y-4 text-lg leading-relaxed">
     <li>Committed to advancing meaningful social, environmental, and economic justice through reconciliation</li>
     <li>A results-oriented, charismatic, determined, knowledgeable, and experienced First Nation’s matriarch with re<strong>MARK</strong>able leadership, strategic thinking, advocacy, public speaking, communication, facilitation, and interpersonal skills</li>

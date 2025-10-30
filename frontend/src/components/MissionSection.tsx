@@ -68,7 +68,7 @@ export default function MissionSection() {
                             onClickFunction={() => {
                                 HandleSaveSectionData({
                                     sectionName,
-                                    text: missionText,
+                                    text: missionTextString,
                                     image: selectedFile ?? missionImage,
                                 });
                             }}

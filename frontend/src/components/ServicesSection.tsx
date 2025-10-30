@@ -3,7 +3,7 @@ import { LuYoutube } from 'react-icons/lu'
 // Import Assets
 import groupImage from '../assets/BCFS_Keynote_Group.jpg'
 import YWCA from "../assets/YWCA Workshop.jpg"
-import workshopImage from '../assets/serviceWorkshopImageCropped.png';
+import workshopImage from '../assets/Fora_Workshop_Screenshot_June13_2025 PM.png';
 import publicSpeakingImage from '../assets/WORTH_Keynote_2025_Summit.jpg';
 
 // Import Components
