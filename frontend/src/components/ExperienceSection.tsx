@@ -57,13 +57,13 @@ export default function ExperienceSection() {
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="gap-8 flex flex-col md:flex-row justify-center items-center flex-1 mb-14">
+            <div className="gap-8 flex flex-col md:flex-row justify-center items-center flex-1 mb-14 px-4">
                 {/* Image */}
                 <EditableImage
                     src={experienceImage}
                     alt="Experience Image"
-                    wrapperClassName="w-full md:w-1/2 flex justify-center h-auto md:h-full pt-10 pb-10 pl-10 pr-0"
-                    imageClassName="w-full h-full object-cover rounded-[75px]"
+                    wrapperClassName="w-full md:w-1/2 flex justify-center h-auto md:h-full lg:pt-10 lg:pb-10 lg:pl-10 lg:pr-0"
+                    imageClassName="w-full h-full object-cover rounded-3xl"
                     isAuthenticated={isAuthenticated}
                     inputIdString="experienceImageUpload"
                     onChangeFunction={HandleExperienceImageChange}
@@ -74,7 +74,7 @@ export default function ExperienceSection() {
                     <MainTitle 
                         titleText='Profile Summary'
                         underline={false}
-                        className='subHeadingStyle text-center mb-5'
+                        className='subHeadingStyle text-center lg:mb-5'
                     />
                     <EditableText
                         isAuthenticated={isAuthenticated}

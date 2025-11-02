@@ -21,7 +21,7 @@ export default function MainTitle({ titleText, underline = true, className = "",
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         style={{ backgroundColor: underlineColor }} // dynamically set color
-                        className="absolute left-0 bottom-0 w-full h-[2px] origin-left"
+                        className="absolute left-0 bottom-0 w-full h-[1px] md:h-[2px] origin-left"
                     />
                 )}
             </h2>

@@ -53,7 +53,7 @@ export default function LandingSection() {
     return (
         <section
             id="home"
-            className="w-full bg-white flex flex-col min-h-[80vh] max-h-[100vh] lg:flex-row mt-16 2xl:mt-24"
+            className="w-full bg-white flex flex-col max-h-[100vh] lg:flex-row mt-16 2xl:mt-24"
         >
             {/* Left Text */}
             <motion.div
@@ -66,7 +66,7 @@ export default function LandingSection() {
                 <h2 className="titleStyle text-black">Welcome to</h2>
 
                 <h1
-                    className="leading-relaxed text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl
+                    className="leading-strict text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl
                  text-purple-900 md:text-purple-900 lg:text-blue-900 xl:text-blue-500 2xl:text-brandRed"
                 >
                     Hli Haykwhl Ẃii <u className="underline-offset-[3px] decoration-2">X</u>sgaak
@@ -96,7 +96,7 @@ export default function LandingSection() {
 
             {/* Right Image */}
             <motion.div
-                className="flex-1 relative w-full pl-5 mt-6 w- lg:w-1/2 lg:mt-0"
+                className="flex-1 relative w-full pl-5 mt-6 lg:w-1/2 lg:mt-0"
                 initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
@@ -106,7 +106,7 @@ export default function LandingSection() {
                     src={landingImage}
                     alt="Landing Image"
                     wrapperClassName="w-full h-auto"
-                    imageClassName="w-full h-auto object-cover lg:max-h-[90vh] rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
+                    imageClassName="w-full h-auto object-cover max-h-[90vh] rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
                     isAuthenticated={isAuthenticated}
                     inputIdString="landingImageUpload"
                     onChangeFunction={HandleLandingImageChange}

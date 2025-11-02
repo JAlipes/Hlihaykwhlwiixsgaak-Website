@@ -30,7 +30,7 @@ export default function CanoeSection() {
             </div>
 
             {/* Right (image) */}
-            <div className="md:w-2/5 w-full flex items-center justify-center">
+            <div className="md:w-2/5 w-full flex items-center justify-center pl-5">
                 <img
                     src={canoeImage}
                     alt="Canoe"

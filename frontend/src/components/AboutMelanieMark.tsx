@@ -62,19 +62,17 @@ export default function AboutMelanieMark() {
             </div>
 
             {/* Right Image */}
-            <div className="flex-1 md:flex-[1.3] relative">
+            <div className="flex-1 pl-5 lg:flex-[1.3] relative">
                 {/* Absolutely fill the right side */}
-                <div className="absolute inset-0">
-                    <EditableImage
-                        src={aboutImage}
-                        alt="Melanie Mark standing with Canadian and Indigenous flags"
-                        wrapperClassName="w-full h-full"
-                        imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl"
-                        isAuthenticated={isAuthenticated}
-                        inputIdString="aboutImageUpload"
-                        onChangeFunction={handleAboutImageChange}
-                    />
-                </div>
+                <EditableImage
+                    src={aboutImage}
+                    alt="Melanie Mark standing with Canadian and Indigenous flags"
+                    wrapperClassName="w-full h-full"
+                    imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
+                    isAuthenticated={isAuthenticated}
+                    inputIdString="aboutImageUpload"
+                    onChangeFunction={handleAboutImageChange}
+                />
 
                 {/* Save button overlay */}
                 {isAuthenticated && (

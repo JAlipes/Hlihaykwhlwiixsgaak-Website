@@ -7,7 +7,7 @@ import featherLogo from '../assets/Cleaned_Feather_Logo_BG_Free.png'
 export default function RedBanner({ rightContent, leftContent, layout = "default" }: RedBannerProps) {
 	return (
 		<div
-			className={`relative w-screen h-16 md:h-24 bg-brandRed flex items-center justify-center py-4 sm:py-6 md:py-8 overflow-x-hidden overflow-y-hidden ${layout === "footer" ? "flex-col sm:flex-row" : ""
+			className={`relative divider flex items-center justify-center py-4 sm:py-6 md:py-8 overflow-x-hidden overflow-y-hidden ${layout === "footer" ? "flex-col sm:flex-row" : ""
 				}`}
 		>
 			{leftContent && <div className="absolute left-4 flex items-center">{leftContent}</div>}
@@ -20,7 +20,7 @@ export default function RedBanner({ rightContent, leftContent, layout = "default
                     className="h-6 sm:h-6 md:h-8 lg:h-16 object-contain"
                 />
                 <p className="text-white whitespace-nowrap text-center 2xl:text-3xl titleFont">
-                    Hli Haykwhl Ẃii <u className="decoration-2">X</u>sgaak Consulting
+                    Hli Haykwhl Ẃii <u className="decoration-1 md:decoration-2">X</u>sgaak Consulting
                 </p>
             </div>
 

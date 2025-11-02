@@ -18,13 +18,13 @@ export default function ServicesSection() {
     return (
         <section id="services" className="relative w-full pb-16">
             {/* Header */}
-            <div className="relative h-screen pb-4">
+            <div className="relative lg:h-screen pb-4">
                 <img
                     src={groupImage}
                     alt="Group of people together"
-                    className="w-full h-screen object-cover rounded-b-[100px] shadow-2xl shadow-black/50"
+                    className="w-full min-h-[50vh] lg:h-screen object-cover rounded-b-[100px] shadow-2xl shadow-black/50"
                 />
-                <div className="flex justify-center absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px- py-4 rounded-full shadow-lg w-[90%] max-w-4xl border border-gray-200">
+                <div className="flex justify-center text-center absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px- py-4 rounded-full shadow-lg w-[90%] max-w-4xl border border-gray-200">
                     <MainTitle
                         titleText='Let’s Navigate Your Journey Together'
                         underline={false}
@@ -72,7 +72,7 @@ export default function ServicesSection() {
 
             {/* Added Embeded Video Section */}
             {/* Embedded Video CTA */}
-            <div className="flex justify-center px-6">
+            <div className="flex justify-center px-20 lg:px-6">
                 <a
                     href="https://www.youtube.com/@melaniejmark"
                     target="_blank"
@@ -82,7 +82,7 @@ export default function ServicesSection() {
                         w-full max-w-md
                         border-4 border-brandRed
                         rounded-xl
-                        py-10 px-2
+                        py-5 lg:py-10 px-2
                         text-center
                         bg-black
                         flex flex-col items-center justify-center
@@ -90,14 +90,14 @@ export default function ServicesSection() {
                         hover:bg-white hover:text-brandRed
                     "
                 >
-                    <h3 className="text-lg titleFont md:text-3xl mb-6 text-white group-hover:text-brandRed transition-colors duration-300">
+                    <h3 className="text-lg titleFont md:text-3xl mb-2 lg:mb-6 text-white group-hover:text-brandRed transition-colors duration-300">
                         Check out Melanie's <br /> previous speeches
                     </h3>
 
                     <div
                         className="
                             flex items-center justify-center gap-3
-                            border-4 border-black
+                            border-2 lg:border-4 border-black
                             font-semibold text-lg
                             rounded-full
                             px-6 py-2
@@ -107,7 +107,7 @@ export default function ServicesSection() {
                         "
                     >
                         <LuYoutube
-                            className="lg:w-12 lg:h-12 text-[#C32148] group-hover:text-brandRed transition-colors duration-300"
+                            className="w-6 h-6 lg:w-12 lg:h-12 text-[#C32148] group-hover:text-brandRed transition-colors duration-300"
                         />
                         <span className="text-white group-hover:text-brandRed transition-colors duration-300 bodyStyle">
                             melaniejmark
