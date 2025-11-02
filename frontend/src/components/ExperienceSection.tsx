@@ -47,17 +47,16 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="min-h-[calc(100vh-6rem)] flex flex-col md:px-20 lg:px-32">
+        <section id="experience" className="relative min-h-[calc(100vh-6rem)] flex flex-col lg:px-10">
             {/* Title */}
-            <div className="text-center mb-12">
+            <div className="text-center mt-12">
                 <MainTitle
                     titleText='Experience'
-                    className='titleStyle mt-12'
                 />
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="gap-8 flex flex-col md:flex-row justify-center items-center flex-1 mb-14 px-4">
+            <div className="w-full gap-8 flex flex-col lg:flex-row justify-center items-center flex-1 mb-14 px-4">
                 {/* Image */}
                 <EditableImage
                     src={experienceImage}

@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { FaBars } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Import Components

@@ -97,13 +97,13 @@
 .ql-size-18px { @apply text-lg; }
 .ql-size-20px { @apply text-xl; }
 .ql-size-24px { @apply text-2xl; }
-.ql-size-30px { @apply text-3xl; }
+.ql-size-30px { @apply text-base; }
 .ql-size-36px { @apply text-4xl; }
 .ql-size-48px { @apply text-2xl; }
 .ql-size-60px { @apply text-6xl; }
 .ql-size-72px { @apply text-7xl; }
 
-/* Responsive overrides for md */
+/* Responsive overrides for md conversions are messed up */
 @screen md {
   .ql-size-12px { @apply text-sm; }
   .ql-size-14px { @apply text-base; }
@@ -111,41 +111,41 @@
   .ql-size-18px { @apply text-xl; }
   .ql-size-20px { @apply text-2xl; }
   .ql-size-24px { @apply text-3xl; }
-  .ql-size-30px { @apply text-4xl; }
-  .ql-size-36px { @apply text-5xl; }
-  .ql-size-48px { @apply text-6xl; }
-  .ql-size-60px { @apply text-7xl; }
-  .ql-size-72px { @apply text-8xl; }
+  .ql-size-30px { @apply text-lg; }
+  .ql-size-36px { @apply text-4xl; }
+  .ql-size-48px { @apply text-5xl; }
+  .ql-size-60px { @apply text-6xl; }
+  .ql-size-72px { @apply text-7xl; }
 }
 
 /* Responsive overrides for lg */
 @screen lg {
-  .ql-size-12px { @apply text-base; }
-  .ql-size-14px { @apply text-lg; }
-  .ql-size-16px { @apply text-xl; }
-  .ql-size-18px { @apply text-2xl; }
-  .ql-size-20px { @apply text-3xl; }
-  .ql-size-24px { @apply text-4xl; }
-  .ql-size-30px { @apply text-5xl; }
-  .ql-size-36px { @apply text-6xl; }
-  .ql-size-48px { @apply text-7xl; }
-  .ql-size-60px { @apply text-8xl; }
-  .ql-size-72px { @apply text-9xl; }
+  .ql-size-12px { @apply text-xs; }
+  .ql-size-14px { @apply text-sm; }
+  .ql-size-16px { @apply text-base; }
+  .ql-size-18px { @apply text-lg; }
+  .ql-size-20px { @apply text-xl; }
+  .ql-size-24px { @apply text-2xl; }
+  .ql-size-30px { @apply text-3xl; }
+  .ql-size-36px { @apply text-4xl; }
+  .ql-size-48px { @apply text-5xl; }
+  .ql-size-60px { @apply text-6xl; }
+  .ql-size-72px { @apply text-7xl; }
 }
 
 /* Responsive overrides for xl */
 @screen xl {
-  .ql-size-12px { @apply text-base; }
-  .ql-size-14px { @apply text-lg; }
-  .ql-size-16px { @apply text-xl; }
-  .ql-size-18px { @apply text-2xl; }
-  .ql-size-20px { @apply text-3xl; }
-  .ql-size-24px { @apply text-4xl; }
-  .ql-size-30px { @apply text-5xl; }
-  .ql-size-36px { @apply text-6xl; }
-  .ql-size-48px { @apply text-7xl; }
-  .ql-size-60px { @apply text-8xl; }
-  .ql-size-72px { @apply text-9xl; }
+  .ql-size-12px { @apply text-xs; }
+  .ql-size-14px { @apply text-sm; }
+  .ql-size-16px { @apply text-base; }
+  .ql-size-18px { @apply text-lg; }
+  .ql-size-20px { @apply text-xl; }
+  .ql-size-24px { @apply text-2xl; }
+  .ql-size-30px { @apply text-3xl; }
+  .ql-size-36px { @apply text-4xl; }
+  .ql-size-48px { @apply text-5xl; }
+  .ql-size-60px { @apply text-6xl; }
+  .ql-size-72px { @apply text-7xl; }
 }
 
 /* Responsive overrides for 2xl */

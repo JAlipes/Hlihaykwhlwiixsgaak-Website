@@ -49,7 +49,7 @@ export default function AboutMelanieMark() {
         >
             {/* Left Text */}
             <div className="flex-1 md:flex-[1.7] flex items-center justify-center p-8 md:p-16">
-                <div className="text-center max-w-2xl">
+                <div className="text-center max-w-4xl">
                     <MainTitle
                         titleText='About Melanie Mark'
                     />
