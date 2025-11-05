@@ -175,7 +175,7 @@ export default function ReconciliationSection() {
     if (totalSlides === 0) return null;
 
     return (
-        <section id="testimonials" className="relative bg-brandRed text-white w-screen min-h-[calc(100vh-6rem)] flex flex-col items-center justify-center px-6 md:px-20 lg:px-32 text-center">
+    <section id="testimonials" className="relative bg-brandRed text-white w-screen min-h-[calc(100vh-6rem)] flex flex-col items-center justify-start md:justify-center px-6 md:px-20 lg:px-32 text-center pt-6 pb-10 md:pb-16">
             {/* Show different content based on whether it's the add slide or a real slide */}
             {/* Single rendering path: real slide or skeleton draft */}
             <div className="mb-10 md:mb-14">
@@ -190,7 +190,8 @@ export default function ReconciliationSection() {
                     underlineColor="white"
                 />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8 max-w-7xl w-full">
+            <div className="relative w-full max-w-7xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8 w-full">
                 {/* Image stage: fixed height per breakpoint to prevent layout shift */}
                 <div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[30rem] 2xl:h-[32rem] flex items-center justify-center">
                     {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
@@ -229,7 +230,7 @@ export default function ReconciliationSection() {
                     )}
                 </div>
 
-                <div className="flex flex-col justify-center text-left w-full min-h-24 md:min-h-32">
+                <div className="flex flex-col justify-center text-left w-full min-h-32 md:min-h-32">
                     <EditableText
                         key={`text-${isSkeleton ? 'draft' : current}`}
                         isAuthenticated={isAuthenticated}
@@ -238,19 +239,37 @@ export default function ReconciliationSection() {
                         placeholder="Write the testimonial..."
                     />
                 </div>
+                </div>
+
+                {totalSlides > 1 && (
+                    <div className="md:hidden pointer-events-none absolute inset-x-0 top-0 h-72 sm:h-80">
+                        <button
+                            onClick={() => setCurrent((prev) => (prev - 1 + totalSlides) % totalSlides)}
+                            className="pointer-events-auto absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
+                        >
+                            <ChevronLeft className="w-6 h-6 text-white" />
+                        </button>
+                        <button
+                            onClick={() => setCurrent((prev) => (prev + 1) % totalSlides)}
+                            className="pointer-events-auto absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
+                        >
+                            <ChevronRight className="w-6 h-6 text-white" />
+                        </button>
+                    </div>
+                )}
             </div>
             {/* Navigation Arrows - show only if there are multiple slides (including add card) */}
             {totalSlides > 1 && (
                 <>
                     <button
                         onClick={() => setCurrent((prev) => (prev - 1 + totalSlides) % totalSlides)}
-                        className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
+                        className="hidden md:inline-flex absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
                     >
                         <ChevronLeft className="w-6 h-6 text-white" />
                     </button>
                     <button
                         onClick={() => setCurrent((prev) => (prev + 1) % totalSlides)}
-                        className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
+                        className="hidden md:inline-flex absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
                     >
                         <ChevronRight className="w-6 h-6 text-white" />
                     </button>
@@ -287,7 +306,7 @@ export default function ReconciliationSection() {
 
             {/* Slide indicator dots */}
             {totalSlides > 1 && (
-                <div className="flex gap-2 mt-4">
+                <div className="flex gap-2 mt-8 md:mt-12">
                     {Array.from({ length: totalSlides }).map((_, idx) => (
                         <button
                             key={idx}
