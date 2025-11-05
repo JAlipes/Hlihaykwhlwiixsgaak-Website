@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Plus, Trash } from "lucide-react";
 import { AuthContext } from "../contexts/AuthContext";
 import { HandleGetTestimonials } from "../utils/HandleGetTestimonials.ts";
@@ -23,6 +24,7 @@ export default function ReconciliationSection() {
     // Draft skeleton slide (only used when authenticated)
     const [draftSlide, setDraftSlide] = useState<TestimonialType>({ image: "", text: "" });
     const [draftFile, setDraftFile] = useState<File | null>(null);
+    const [isUploading, setIsUploading] = useState(false);
     // Lightweight toast feedback
     const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
     const showToast = (msg: string, type: 'success' | 'error') => {
@@ -81,19 +83,24 @@ export default function ReconciliationSection() {
     const updateImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
-        // Try to resize/compress to stay under 10MB (Cloudinary free limit)
-    const processed = await ResizeImageFile(file, { maxWidth: 1920, maxHeight: 1920, quality: 0.8 });
-        const url = URL.createObjectURL(processed);
-        if (isSkeleton) {
-            setDraftSlide((prev) => ({ ...prev, image: url }));
-            setDraftFile(processed);
-        } else {
-            updateSlide("image", url);
-            setSlideImageFiles((prev) => {
-                const copy = [...prev];
-                copy[current] = processed;
-                return copy;
-            });
+        try {
+            setIsUploading(true);
+            // Try to resize/compress to stay under 10MB (Cloudinary free limit)
+            const processed = await ResizeImageFile(file, { maxWidth: 1920, maxHeight: 1920, quality: 0.8 });
+            const url = URL.createObjectURL(processed);
+            if (isSkeleton) {
+                setDraftSlide((prev) => ({ ...prev, image: url }));
+                setDraftFile(processed);
+            } else {
+                updateSlide("image", url);
+                setSlideImageFiles((prev) => {
+                    const copy = [...prev];
+                    copy[current] = processed;
+                    return copy;
+                });
+            }
+        } finally {
+            setIsUploading(false);
         }
     };
 
@@ -194,51 +201,76 @@ export default function ReconciliationSection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8 w-full">
                 {/* Image stage: fixed height per breakpoint to prevent layout shift */}
                 <div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[30rem] 2xl:h-[32rem] flex items-center justify-center">
-                    {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
-                        <EditableImage
-                            src={isSkeleton ? (draftSlide.image) : (slides[current]?.image as string)}
-                            alt={"Testimonial image"}
-                            wrapperClassName="h-full w-full"
-                            imageClassName="rounded-3xl shadow-xl w-full h-full object-cover mx-auto cursor-pointer"
-                            isAuthenticated={isAuthenticated}
-                            inputIdString={`reconciliation-image-${current}`}
-                            onChangeFunction={updateImage}
-                        />
-                    ) : (
-                        <div
-                            className="w-full h-full flex items-center justify-center bg-white/20 rounded-3xl border-4 border-dashed border-white/50 cursor-pointer px-10"
-                            onClick={() => {
-                                if (isAuthenticated) {
-                                    document.getElementById(`reconciliation-placeholder-input-${current}`)?.click();
-                                }
-                            }}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={`img-${isSkeleton ? 'draft' : current}`}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2, ease: 'easeOut' }}
+                            className="w-full h-full flex items-center justify-center"
                         >
-                            <div className="flex flex-col items-center gap-4 text-white/70">
-                                <Plus size={64} />
-                                <span className="font-semibold tracking-wide">Add Image</span>
-                            </div>
-                            {isAuthenticated && (
-                                <input
-                                    id={`reconciliation-placeholder-input-${current}`}
-                                    type="file"
-                                    accept="image/*"
-                                    className="hidden"
-                                    onChange={updateImage}
+                            {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
+                                <EditableImage
+                                    src={isSkeleton ? (draftSlide.image) : (slides[current]?.image as string)}
+                                    alt={"Testimonial image"}
+                                    wrapperClassName="h-full w-full"
+                                    imageClassName="rounded-3xl shadow-xl w-full h-full object-cover mx-auto cursor-pointer"
+                                    isAuthenticated={isAuthenticated}
+                                    inputIdString={`reconciliation-image-${current}`}
+                                    onChangeFunction={updateImage}
                                 />
+                            ) : (
+                                <div
+                                    className="w-full h-full flex items-center justify-center bg-white/20 rounded-3xl border-4 border-dashed border-white/50 cursor-pointer px-10"
+                                    onClick={() => {
+                                        if (isAuthenticated) {
+                                            document.getElementById(`reconciliation-placeholder-input-${current}`)?.click();
+                                        }
+                                    }}
+                                >
+                                    <div className="flex flex-col items-center gap-4 text-white/70">
+                                        <Plus size={64} />
+                                        <span className="font-semibold tracking-wide">Add Image</span>
+                                    </div>
+                                    {isAuthenticated && (
+                                        <input
+                                            id={`reconciliation-placeholder-input-${current}`}
+                                            type="file"
+                                            accept="image/*"
+                                            className="hidden"
+                                            onChange={updateImage}
+                                        />
+                                    )}
+                                </div>
                             )}
+                        </motion.div>
+                    </AnimatePresence>
+                    {isUploading && (
+                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center rounded-3xl">
+                            <div className="h-10 w-10 border-4 border-white/60 border-t-transparent rounded-full animate-spin" />
                         </div>
                     )}
                 </div>
 
-                <div className="flex flex-col justify-center text-left w-full min-h-32 md:min-h-32">
-                    <EditableText
+                <AnimatePresence mode="wait">
+                    <motion.div
                         key={`text-${isSkeleton ? 'draft' : current}`}
-                        isAuthenticated={isAuthenticated}
-                        setText={(val) => updateSlide("text", val)}
-                        text={isSkeleton ? (draftSlide.text ?? "") : (slides[current]?.text ?? "")}
-                        placeholder="Write the testimonial..."
-                    />
-                </div>
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.25, ease: 'easeOut' }}
+                        className="flex flex-col justify-center text-left w-full min-h-32 md:min-h-32"
+                    >
+                        <EditableText
+                            key={`text-editor-${isSkeleton ? 'draft' : current}`}
+                            isAuthenticated={isAuthenticated}
+                            setText={(val) => updateSlide("text", val)}
+                            text={isSkeleton ? (draftSlide.text ?? "") : (slides[current]?.text ?? "")}
+                            placeholder="Write the testimonial..."
+                        />
+                    </motion.div>
+                </AnimatePresence>
                 </div>
 
                 {totalSlides > 1 && (
