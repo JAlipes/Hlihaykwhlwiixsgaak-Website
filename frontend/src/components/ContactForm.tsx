@@ -146,11 +146,11 @@ export default function ContactForm() {
     };
 
     return (
-        // Rounder, darker, 
-        <section id="contact" className="min-h-screen w-full min-h-[80vh]">
-            <div className="flex flex-col md:flex-row h-screen w-full">
+        // Mobile-first: allow natural scroll height on small screens, use full viewport height at md+
+        <section id="contact" className="w-full">
+            <div className="flex flex-col md:flex-row w-full min-h-[80vh] md:h-screen">
                 {/* Left: Form */}
-                <div className="w-full md:w-3/5 h-full flex items-center justify-center px-6 md:px-12"> {/* Changed to md:w-3/5 from 1/2 */}
+                <div className="w-full md:w-3/5 md:h-full flex md:items-center justify-center px-4 sm:px-6 md:px-12 py-10 md:py-0"> {/* Changed to md:w-3/5 from 1/2 */}
                     <div className="w-full max-w-lg text-center">
                         <MainTitle
                             titleText={<>
@@ -249,7 +249,7 @@ export default function ContactForm() {
                             <button
                                 type="submit"
                                 disabled={status === 'loading' || (USE_CAPTCHA && !captchaSolved)}
-                                className="bg-black text-white border border-brandRed hover:bg-white hover:text-brandRed transition-colors px-6 py-4 rounded-xl hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60"
+                                className="bg-black text-white border border-brandRed hover:bg-white hover:text-brandRed transition-colors px-6 py-4 rounded-xl hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60 w-full sm:w-auto"
                             >
                                 {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
                             </button>
