@@ -47,33 +47,35 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="relative min-h-[calc(100vh-6rem)] flex flex-col lg:px-10">
+        <section id="experience" className="relative sectionHeight flex flex-col xl:p-10">
             {/* Title */}
-            <div className="text-center mt-12">
+            <div className="text-center">
                 <MainTitle
                     titleText='Experience'
                 />
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="w-full gap-8 flex flex-col lg:flex-row justify-center items-center flex-1 mb-14 px-4">
+            <div className="relative w-full gap-8 flex flex-col lg:flex-row justify-center items-center flex-1">
                 {/* Image */}
-                <EditableImage
-                    src={experienceImage}
-                    alt="Experience Image"
-                    wrapperClassName="w-full md:w-1/2 flex justify-center h-auto md:h-full lg:pt-10 lg:pb-10 lg:pl-10 lg:pr-0"
-                    imageClassName="w-full h-full object-cover rounded-3xl"
-                    isAuthenticated={isAuthenticated}
-                    inputIdString="experienceImageUpload"
-                    onChangeFunction={HandleExperienceImageChange}
-                />
+                <div className="lg:flex-[1.3] h-full">
+                    <EditableImage
+                        src={experienceImage}
+                        alt="Experience Image"
+                        wrapperClassName="w-full justify-center h-auto"
+                        imageClassName="w-full h-full object-cover rounded-3xl"
+                        isAuthenticated={isAuthenticated}
+                        inputIdString="experienceImageUpload"
+                        onChangeFunction={HandleExperienceImageChange}
+                    />
+                </div>
 
                 {/* Text */}
-                <div className="w-full flex flex-col justify-center h-full text-center sm:mt-10 2xl:w-1/2">
+                <div className="lg:flex-[1.7] flex-col justify-center h-full text-center">
                     <MainTitle 
                         titleText='Profile Summary'
                         underline={false}
-                        className='subHeadingStyle text-center lg:mb-5'
+                        className='subHeadingStyle text-center xl:mb-2 2xl:mb-5'
                     />
                     <EditableText
                         isAuthenticated={isAuthenticated}

@@ -17,7 +17,7 @@ export default function Footer() {
         <>
             <footer className="bg-black text-white px-6 py-16">
                 <div className="max-w-6xl mx-auto text-center">
-                    <p className="mb-4 md:text-md 2xl:text-3xl titleFont">Follow me for updates and insights</p>
+                    <p className="mb-4 md:text-md navTitleStyle">Follow me for updates and insights</p>
                     <SocialMediaLinks />
                 </div>
             </footer>

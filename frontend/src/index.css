@@ -255,15 +255,26 @@
     }
 
     .subHeadingStyle {
-        @apply subHeadingFont leading-relaxed text-brandRed text-base
+        @apply subHeadingFont leading-relaxed text-brandRed text-base;
     }
 
+    .navTitleStyle {
+        @apply titleFont xl:text-2xl 2xl:text-3xl text-white leading-relaxed;
+    }
+
+
     @screen md {
-        .titleStyle {}
+        .titleStyle {
+            @apply text-4xl; 
+        }
 
-        .bodyStyle {}
+        .bodyStyle {
+            @apply text-base;
+        }
 
-        .subHeadingStyle {}
+        .subHeadingStyle {
+            @apply text-lg;
+        }
     }
 
     @screen lg {
@@ -275,11 +286,17 @@
     }
 
     @screen xl {
-        .titleStyle {}
+        .titleStyle {
+            @apply text-4xl;
+        }
 
-        .bodyStyle {}
+        .bodyStyle {
+            @apply text-base;
+        }
 
-        .subHeadingStyle {}
+        .subHeadingStyle {
+            @apply text-xl;
+        }
     }
 
     /* Largest */
@@ -311,6 +328,28 @@
 @layer components {
     .divider {
         @apply bg-brandRed w-full h-16 lg:h-24;
+    }
+}
+
+/* Section Styling */
+@layer components {
+    .sectionWrapper {
+        @apply w-full bg-white flex flex-col relative sectionHeight lg:flex-row;
+    }
+
+    .sectionHeight {
+        @apply min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-6rem)];
+    }
+}
+
+/* Canoe Section Text */
+@layer components {
+    .risingTideLargeText {
+        @apply text-5xl lg:text-[56] xl:text-[76px] 2xl:text-[96px] leading-tight;
+    }
+
+    .risingTideSmallText {
+        @apply text-3xl lg:text-[24] xl:text-[44px] 2xl:text-[64px] leading-tight;
     }
 }
 

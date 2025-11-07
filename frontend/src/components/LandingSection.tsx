@@ -53,7 +53,7 @@ export default function LandingSection() {
     return (
         <section
             id="home"
-            className="w-full bg-white flex flex-col max-h-[100vh] lg:flex-row mt-16 2xl:mt-24"
+            className="sectionWrapper mt-20 xl:mt-24"
         >
             {/* Left Text */}
             <motion.div
@@ -105,8 +105,8 @@ export default function LandingSection() {
                 <EditableImage
                     src={landingImage}
                     alt="Landing Image"
-                    wrapperClassName="w-full h-auto"
-                    imageClassName="w-full h-auto object-cover max-h-[90vh] rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
+                    wrapperClassName="w-full h-full"
+                    imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
                     isAuthenticated={isAuthenticated}
                     inputIdString="landingImageUpload"
                     onChangeFunction={HandleLandingImageChange}

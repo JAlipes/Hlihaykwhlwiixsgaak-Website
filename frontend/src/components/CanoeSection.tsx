@@ -6,7 +6,7 @@ export default function CanoeSection() {
     return (
         <section
             id="canoe"
-            className="bg-brandRed text-white w-full min-h-[calc(100vh-6rem)] flex flex-col md:flex-row"
+            className="bg-brandRed text-white sectionWrapper"
         >
             {/* Left (text) */}
             <div className="md:w-3/5 w-full flex flex-col justify-center px-6 md:px-12 py-8 titleFont">
@@ -14,19 +14,19 @@ export default function CanoeSection() {
                 <img
                     src={featherLogo}
                     alt="Feather Logo"
-                    className="w-32 h-auto mb-8"
+                    className="xl:w-24 2xl:w-32 h-auto "
                 />
 
                 {/* Text */}
-                <h2 className="text-5xl md:text-[96px] font-light leading-tight">A RISING TIDE</h2>
+                <h2 className="risingTideLargeText font-light">A RISING TIDE</h2>
 
-                <h2 className="text-5xl md:text-[96px] leading-tight">
+                <h2 className="risingTideLargeText">
                     <span className="font-extrabold">LIFTS ALL </span>
                     <span className="font-light">CANOES</span>
                 </h2>
 
-                <h2 className="text-5xl md:text-[96px] font-extrabold leading-tight">PADDLE TOGETHER</h2>
-                <p className="mt-4 text-3xl md:text-[64px]">- HLI HAYKWHL WII <u className='decoration-2'>X</u>SGAAK</p>
+                <h2 className="risingTideLargeText font-extrabold">PADDLE TOGETHER</h2>
+                <p className="risingTideSmallText mt-4">- HLI HAYKWHL WII <u className='decoration-2'>X</u>SGAAK</p>
             </div>
 
             {/* Right (image) */}

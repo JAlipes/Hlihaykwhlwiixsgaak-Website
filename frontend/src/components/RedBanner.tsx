@@ -19,7 +19,7 @@ export default function RedBanner({ rightContent, leftContent, layout = "default
                     alt="Feather logo"
                     className="h-6 sm:h-6 md:h-8 lg:h-16 object-contain"
                 />
-                <p className="text-white whitespace-nowrap text-center 2xl:text-3xl titleFont">
+                <p className="text-white whitespace-nowrap text-center navTitleStyle">
                     Hli Haykwhl Ẃii <u className="decoration-1 md:decoration-2">X</u>sgaak Consulting
                 </p>
             </div>

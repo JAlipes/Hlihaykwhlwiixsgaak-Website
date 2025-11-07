@@ -45,10 +45,10 @@ export default function AboutMelanieMark() {
     return (
         <section
             id="about"
-            className="relative min-h-[calc(100vh-6rem)] w-full flex flex-col md:flex-row bg-white text-gray-800 overflow-hidden"
+            className="sectionWrapper overflow-hidden"
         >
             {/* Left Text */}
-            <div className="flex-1 md:flex-[1.7] flex items-center justify-center p-8 md:p-16">
+            <div className="flex-1 md:flex-[1.7] flex items-center justify-center md:px-16">
                 <div className="text-center max-w-4xl">
                     <MainTitle
                         titleText='About Melanie Mark'
@@ -62,7 +62,7 @@ export default function AboutMelanieMark() {
             </div>
 
             {/* Right Image */}
-            <div className="flex-1 pl-5 lg:flex-[1.3] relative">
+            <div className="flex-1 xl:pl-2 lg:flex-[1.3] relative">
                 {/* Absolutely fill the right side */}
                 <EditableImage
                     src={aboutImage}

@@ -46,7 +46,7 @@ export default function MissionSection() {
     return (
         <section
             id="mission"
-            className="relative min-h-[calc(100vh-6rem)] w-full flex flex-col md:flex-row bg-white text-gray-800"
+            className="sectionWrapper"
         >
             {/* Left Image Hidden during md and mobile designs*/}
             <div className="hidden lg:block flex-1 md:flex-[1.3] relative flex items-center justify-center">
