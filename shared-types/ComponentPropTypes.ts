@@ -13,6 +13,7 @@ export interface EditableTextPropType {
     setText : (text : string) => void;
     text : string;
     placeholder?: string;
+    colorOption? : string;
 }
 
 export interface MiniServiceSectionProps {

@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { LuArrowLeft} from 'react-icons/lu'
+// import { useNavigate } from "react-router-dom";
+// import { LuArrowLeft} from 'react-icons/lu'
 // Import Components
 import ResumeSection from "../components/ResumeSections";
 
@@ -15,24 +15,24 @@ import {
 import MainTitle from "../components/MainTitle";
 
 export default function ResumePage() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const HandleBackClick = () => {
-        navigate("/", { state: { scrollTo: "experience" } });    
-    };
+    // const HandleBackClick = () => {
+    //     navigate("/", { state: { scrollTo: "experience" } });    
+    // };
 
     return (
         <>  
             {/* Header with Back Arrow */}
             <div className="relative flex items-center justify-center pt-32 pb-8">
                 {/* Back button (top-left corner of title area) */}
-                <button
+                {/* <button
                     onClick={HandleBackClick}
                     className="absolute left-6 md:left-12 flex items-center gap-2 text-black hover:text-red-700 transition"
                     aria-label="Go back to Experience"
                 >
                     <LuArrowLeft className="w-6 h-6" />
-                </button>
+                </button> */}
 
                 {/* Centered title */}
                 <MainTitle

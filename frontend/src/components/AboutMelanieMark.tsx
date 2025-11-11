@@ -1,4 +1,5 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
+import { motion, useInView } from "framer-motion";
 
 // Import Assets
 import headshot from '../assets/MJM_FINAL_HEADSHOT_2024_BLUE_WHITE.jpg';
@@ -21,6 +22,10 @@ import { aboutText } from '../lang/en/englishText';
 import MainTitle from './MainTitle';
 
 export default function AboutMelanieMark() {
+    // Animation Referance
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-200px" }); // trigger slightly
+
     const sectionName: string = `about`;
     const { isAuthenticated } = useContext(AuthContext);
 
@@ -46,48 +51,72 @@ export default function AboutMelanieMark() {
         <section
             id="about"
             className="sectionWrapper overflow-hidden"
+            ref={sectionRef}
         >
-            {/* Left Text */}
-            <div className="flex-1 md:flex-[1.7] flex items-center justify-center md:px-16">
-                <div className="text-center max-w-4xl">
-                    <MainTitle
-                        titleText='About Melanie Mark'
-                    />
-                    <EditableText
-                        isAuthenticated={isAuthenticated}
-                        setText={setAboutText}
-                        text={aboutTextString}
-                    />
-                </div>
-            </div>
+            <div className="flex flex-col md:flex-row items-center justify-center">
 
-            {/* Right Image */}
-            <div className="flex-1 xl:pl-2 lg:flex-[1.3] relative">
-                {/* Absolutely fill the right side */}
-                <EditableImage
-                    src={aboutImage}
-                    alt="Melanie Mark standing with Canadian and Indigenous flags"
-                    wrapperClassName="w-full h-full"
-                    imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
-                    isAuthenticated={isAuthenticated}
-                    inputIdString="aboutImageUpload"
-                    onChangeFunction={handleAboutImageChange}
-                />
+                {/* Left Text */}
+                <motion.div
+                    className="flex-1 md:flex-[1.7] flex items-center justify-center md:px-16"
+                    initial={{ opacity: 0}}
+                    animate={isInView ? { opacity: 1} : {}}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    <div className="text-center max-w-4xl">
+                        <motion.div>
+                            <MainTitle titleText="About Melanie Mark" />
+                        </motion.div>
 
-                {/* Save button overlay */}
-                {isAuthenticated && (
-                    <div className="absolute bottom-4 right-4 z-10">
-                        <SaveEditsButton
-                            onClickFunction={() => {
-                                HandleSaveSectionData({
-                                    sectionName,
-                                    text: aboutText,
-                                    image: selectedFile ?? aboutImage,
-                                });
-                            }}
-                        />
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : {}}
+                            transition={{ duration: 0.2, delay: 0.5 }}
+                        >
+                            <EditableText
+                                isAuthenticated={isAuthenticated}
+                                setText={setAboutText}
+                                text={aboutTextString}
+                            />
+                        </motion.div>
                     </div>
-                )}
+                </motion.div>
+
+                {/* Right Image */}
+                <motion.div
+                    className="flex-1 xl:pl-2 lg:flex-[1.3] h-full w-full relative mt-8 md:mt-0"
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+                >
+                    <EditableImage
+                        src={aboutImage}
+                        alt="Melanie Mark standing with Canadian and Indigenous flags"
+                        wrapperClassName="w-full h-full"
+                        imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
+                        isAuthenticated={isAuthenticated}
+                        inputIdString="aboutImageUpload"
+                        onChangeFunction={handleAboutImageChange}
+                    />
+
+                    {isAuthenticated && (
+                        <motion.div
+                            className="absolute bottom-4 right-4 z-10"
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : {}}
+                            transition={{ duration: 0.5, delay: 0.7 }}
+                        >
+                            <SaveEditsButton
+                                onClickFunction={() => {
+                                    HandleSaveSectionData({
+                                        sectionName,
+                                        text: aboutText,
+                                        image: selectedFile ?? aboutImage,
+                                    });
+                                }}
+                            />
+                        </motion.div>
+                    )}
+                </motion.div>
             </div>
         </section>
     );
