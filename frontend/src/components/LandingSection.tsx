@@ -57,7 +57,7 @@ export default function LandingSection() {
         >
             {/* Left Text */}
             <motion.div
-                className="flex-1 flex flex-col justify-center titleFont px-6 sm:px-10 md:flex-[1.65] 2xl:pt-8"
+                className="textSection flex flex-col justify-center titleFont px-6 sm:px-10 2xl:pt-8"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
@@ -96,7 +96,7 @@ export default function LandingSection() {
 
             {/* Right Image */}
             <motion.div
-                className="flex-1 relative w-full pl-5 mt-6 lg:w-1/2 lg:mt-0"
+                className="imgSection relative w-full pl-5 mt-6 lg:mt-0"
                 initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}

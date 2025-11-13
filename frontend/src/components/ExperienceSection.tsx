@@ -47,7 +47,7 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="relative sectionHeight flex flex-col xl:p-10">
+        <section id="experience" className="relative sectionHeight flex flex-col xl:p-6 2xl:p-12">
             {/* Title */}
             <div className="text-center">
                 <MainTitle
@@ -56,9 +56,9 @@ export default function ExperienceSection() {
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="relative w-full gap-8 flex flex-col lg:flex-row justify-center items-center flex-1">
+            <div className="relative w-full gap-8 flex flex-col lg:flex-row justify-center items-center">
                 {/* Image */}
-                <div className="lg:flex-[1.3] h-full">
+                <div className="imgSection">
                     <EditableImage
                         src={experienceImage}
                         alt="Experience Image"
@@ -71,7 +71,7 @@ export default function ExperienceSection() {
                 </div>
 
                 {/* Text */}
-                <div className="lg:flex-[1.7] flex-col justify-center h-full text-center">
+                <div className="textSection flex-col justify-center h-full text-center">
                     <MainTitle 
                         titleText='Profile Summary'
                         underline={false}

@@ -43,7 +43,7 @@ export default function CanoeSection() {
             className="bg-brandRed text-white sectionWrapper"
         >
             {/* Left (text) */}
-            <div className="md:w-3/5 w-full flex flex-col justify-center px-6 md:px-12 py-8 titleFont">
+            <div className="textSection w-full flex flex-col justify-center px-6 md:px-12 py-8 titleFont">
                 {/* Feather Logo */}
                 <img
                     src={featherLogo}
@@ -64,7 +64,7 @@ export default function CanoeSection() {
             </div>
 
             {/* Right (image) */}
-            <div className="md:w-2/5 w-full flex items-center justify-center pl-5">
+            <div className="imgSection w-full flex items-center justify-center pl-5">
                 <EditableImage
                     src={canoeImage}
                     alt="canoe Image"

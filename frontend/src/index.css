@@ -251,7 +251,7 @@
     }
 
     .bodyStyle {
-        @apply bodyFont leading-relaxed text-black text-xs;
+        @apply bodyFont leading-relaxed text-black text-xs; /*12px*/
     }
 
     .subHeadingStyle {
@@ -269,7 +269,7 @@
         }
 
         .bodyStyle {
-            @apply text-base;
+            @apply text-base; /*16px*/
         }
 
         .subHeadingStyle {
@@ -280,7 +280,7 @@
     @screen lg {
         .titleStyle {}
 
-        .bodyStyle {}
+        .bodyStyle {@apply text-base} /*16px*/
 
         .subHeadingStyle {}
     }
@@ -291,11 +291,11 @@
         }
 
         .bodyStyle {
-            @apply text-base;
+            @apply text-lg; /*too big 18px --> 16px*/ 
         }
 
         .subHeadingStyle {
-            @apply text-xl;
+            @apply text-2xl; /*24px*/
         }
     }
 
@@ -307,7 +307,7 @@
         }
 
         .bodyStyle {
-            @apply text-xl;
+            @apply text-xl; /*20px*/
             /*20px*/
         }
 
@@ -339,6 +339,14 @@
 
     .sectionHeight {
         @apply max-h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-6rem)] min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-6rem)];
+    }
+
+    .textSection{
+        @apply flex-1 xl:flex-[0.6]
+    }
+
+    .imgSection {
+        @apply flex-1 xl:flex-[0.4]
     }
 }
 

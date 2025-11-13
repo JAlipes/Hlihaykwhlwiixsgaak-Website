@@ -53,11 +53,10 @@ export default function AboutMelanieMark() {
             className="sectionWrapper overflow-hidden"
             ref={sectionRef}
         >
-            <div className="flex flex-col md:flex-row items-center justify-center">
 
                 {/* Left Text */}
                 <motion.div
-                    className="flex-1 md:flex-[1.7] flex items-center justify-center md:px-16"
+                    className="textSection flex items-center justify-center xl:px-10 2xl:px-16"
                     initial={{ opacity: 0}}
                     animate={isInView ? { opacity: 1} : {}}
                     transition={{ duration: 0.8, ease: "easeOut" }}
@@ -83,7 +82,7 @@ export default function AboutMelanieMark() {
 
                 {/* Right Image */}
                 <motion.div
-                    className="flex-1 xl:pl-2 lg:flex-[1.3] h-full w-full relative mt-8 md:mt-0"
+                        className="imgSection"
                     initial={{ opacity: 0, x: 50 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
@@ -117,7 +116,6 @@ export default function AboutMelanieMark() {
                         </motion.div>
                     )}
                 </motion.div>
-            </div>
         </section>
     );
 }
