@@ -53,7 +53,7 @@ export default function LandingSection() {
     return (
         <section
             id="home"
-            className="sectionWrapper mt-20 xl:mt-24"
+            className="sectionWrapper mt-20 lg:mt-24"
         >
             {/* Left Text */}
             <motion.div
@@ -66,7 +66,7 @@ export default function LandingSection() {
                 <h2 className="titleStyle text-black">Welcome to</h2>
 
                 <h1
-                    className="leading-strict text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl
+                    className="leading-strict text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl
                  text-purple-900 md:text-purple-900 lg:text-blue-900 xl:text-blue-500 2xl:text-brandRed"
                 >
                     Hli Haykwhl Ẃii <u className="underline-offset-[3px] decoration-2">X</u>sgaak

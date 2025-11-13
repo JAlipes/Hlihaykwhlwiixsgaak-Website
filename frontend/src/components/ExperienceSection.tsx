@@ -47,7 +47,7 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="relative sectionHeight flex flex-col xl:p-6 2xl:p-12">
+        <section id="experience" className="relative sectionHeight flex flex-col lg:p-6 2xl:p-12">
             {/* Title */}
             <div className="text-center">
                 <MainTitle

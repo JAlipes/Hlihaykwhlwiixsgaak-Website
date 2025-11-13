@@ -72,17 +72,17 @@ export default function ServicesSection() {
 
             {/* Added Embeded Video Section */}
             {/* Embedded Video CTA */}
-            <div className="flex justify-center px-20 lg:px-6">
+            <div className="flex justify-center">
                 <a
                     href="https://www.youtube.com/@melaniejmark"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
                         group
-                        w-full max-w-md
+                        w-full lg:max-w-60 xl:max-w-80
                         border-4 border-brandRed
                         rounded-xl
-                        py-5 lg:py-10 px-2
+                        lg:py-4 xl:py-6
                         text-center
                         bg-black
                         flex flex-col items-center justify-center
@@ -90,24 +90,25 @@ export default function ServicesSection() {
                         hover:bg-white hover:text-brandRed
                     "
                 >
-                    <h3 className="text-lg titleFont md:text-3xl mb-2 lg:mb-6 text-white group-hover:text-brandRed transition-colors duration-300">
+                    <h3 className="navTitleStyle xl:text-3xl mb-2 xl:mb-6 text-white group-hover:text-brandRed transition-colors duration-300">
                         Check out Melanie's <br /> previous speeches
                     </h3>
 
+                    {/* Melanie youtube logo section */}
                     <div
                         className="
                             flex items-center justify-center gap-3
                             border-2 lg:border-4 border-black
                             font-semibold text-lg
                             rounded-full
-                            px-6 py-2
+                            p-2
                             bg-transparent
                             transition-all duration-300
                             group-hover:border-brandRed
                         "
                     >
                         <LuYoutube
-                            className="w-6 h-6 lg:w-12 lg:h-12 text-[#C32148] group-hover:text-brandRed transition-colors duration-300"
+                            className="w-4 h-4 lg:w-8 lg:h-8 text-[#C32148] group-hover:text-brandRed transition-colors duration-300"
                         />
                         <span className="text-white group-hover:text-brandRed transition-colors duration-300 bodyStyle">
                             melaniejmark

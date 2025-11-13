@@ -56,7 +56,7 @@ export default function AboutMelanieMark() {
 
                 {/* Left Text */}
                 <motion.div
-                    className="textSection flex items-center justify-center xl:px-10 2xl:px-16"
+                    className="textSection flex items-center justify-center lg:px-10 2xl:px-16"
                     initial={{ opacity: 0}}
                     animate={isInView ? { opacity: 1} : {}}
                     transition={{ duration: 0.8, ease: "easeOut" }}

@@ -36,9 +36,8 @@ export default function ServiceImageRightSection({ sectionName, defaultTitle, de
     const handleImageChange = HandleImageChangeFactory(setSelectedFile, setSectionImage);
 
     return (
-        <section className="w-full lg:py-16 bg-white">
+        <section className="w-full lg:py-10 xl:py-16 flex bg-white">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 sm:px-8 lg:px-12 xl:px-20">
-
                 {/* Text (Left Side) */}
                 <div className="order-2 md:order-1 text-gray-800 flex flex-col justify-center">
                     <MainTitle

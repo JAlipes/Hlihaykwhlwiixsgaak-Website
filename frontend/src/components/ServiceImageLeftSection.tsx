@@ -36,9 +36,8 @@ export default function ServiceImageLeftSection({ sectionName, defaultTitle, def
     const handleImageChange = HandleImageChangeFactory(setSelectedFile, setSectionImage);
 
     return (
-        <section className="w-full lg:py-16 bg-white">
-            <div className="w-full bg-white py-16">
-                <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 sm:px-8 lg:px-12 xl:px-20">
+        <section className="w-full lg:py-14 xl:py-16 bg-white">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 sm:px-8 lg:px-12 xl:px-20">
                     
                     {/* Image */}
                     <div className="flex justify-end">
@@ -81,7 +80,6 @@ export default function ServiceImageLeftSection({ sectionName, defaultTitle, def
                             </div>
                         )}
                     </div>
-                </div>
             </div>
         </section>
     );

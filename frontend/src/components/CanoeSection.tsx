@@ -48,7 +48,7 @@ export default function CanoeSection() {
                 <img
                     src={featherLogo}
                     alt="Feather Logo"
-                    className="xl:w-24 2xl:w-32 h-auto "
+                    className="lg:w-20 xl:w-24 2xl:w-32 h-auto "
                 />
 
                 {/* Text */}

@@ -51,7 +51,7 @@ function SocialMediaLinks() {
                     <span className="w-4 h-4 lg:w-8 lg:h-8 flex items-center justify-center text-3xl">
                         {link.icon}
                     </span>
-                    <span className="hidden md:inline text-white text-xl bodyFont;">{link.label}</span>
+                    <span className="hidden md:inline text-white bodyStyle;">{link.label}</span>
                 </a>
             ))}
         </div>
