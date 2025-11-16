@@ -340,13 +340,14 @@
     }
 }
 
-/* Nav bar compnent styles  */
+/* Navbar and footer styles  */
 @layer components {
   .menuBar {
     @apply absolute w-3 h-[2px] bg-black rounded-full md:h-[3px] md:w-6 ;
   }
 }
- 
+
+/* Divider */
 @layer components {
     .divider {
         @apply bg-brandRed w-full h-16 lg:h-24;
@@ -360,7 +361,7 @@
     }
 
     .sectionHeight {
-        @apply max-h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-6rem)] min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-6rem)];
+        @apply lg:max-h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-6rem)];
     }
 
     .textSection{
@@ -380,6 +381,16 @@
 
     .risingTideSmallText {
         @apply text-3xl lg:text-[24px] xl:text-[44px] 2xl:text-[64px] leading-tight;
+    }
+}
+
+@layer components {
+    .imageRounding {
+
+    }
+
+    .btnRounding {
+        @apply transition bg-black text-white py-2 px-3 rounded-lg shadow-md hover:bg-white hover:text-brandRed border border-brandRed bodyStyle
     }
 }
 

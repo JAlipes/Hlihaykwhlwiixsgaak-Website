@@ -1,4 +1,5 @@
-import { LuYoutube } from 'react-icons/lu'
+import { LuYoutube } from 'react-icons/lu';
+import { HiQuestionMarkCircle } from "react-icons/hi";
 
 // Import Assets
 import groupImage from '../assets/BCFS_Keynote_Group.jpg'
@@ -22,8 +23,30 @@ export default function ServicesSection() {
                 <img
                     src={groupImage}
                     alt="Group of people together"
-                    className="w-full min-h-[50vh] lg:h-screen object-cover rounded-b-[100px] shadow-2xl shadow-black/50"
+                    className="w-full min-h-[50vh] lg:h-screen object-cover rounded-bl-3xl rounded-br-3xl shadow-2xl shadow-black/50"
                 />
+
+                <div className="absolute bottom-6 right-6 z-10 group">
+                    <button
+                        aria-label="Image Source Information"
+                        className="w-10 h-10 flex items-center justify-center bg-black backdrop-blur-sm rounded-full 
+                                transition-colors duration-200 
+                                hover:bg-white border border-brandRed 
+                                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                                "
+                    >
+                        <HiQuestionMarkCircle
+                            className="w-4 h-4 lg:w-8 lg:h-8 text-[#C32148] group-hover:text-brandRed transition-colors duration-300"
+                        />
+                    </button>
+
+                    <div className="absolute bottom-full right-0 mb-2 w-max max-w-xs p-2 text-sm text-white bg-black/80 rounded-md shadow-xl 
+                                    opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100">
+                        BC Federation of Students’ 39th Annual Skills Development Symposium.
+                        <div className="absolute bottom-[-6px] right-3 w-0 h-0 border-t-[6px] border-l-[6px] border-r-[6px] border-t-black/80 border-l-transparent border-r-transparent"></div>
+                    </div>
+                </div>
+
                 <div className="flex justify-center text-center absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px- py-4 rounded-full shadow-lg w-[90%] max-w-4xl border border-gray-200">
                     <MainTitle
                         titleText='Let’s Navigate Your Journey Together'
@@ -81,7 +104,7 @@ export default function ServicesSection() {
                         group
                         w-full lg:max-w-60 xl:max-w-80
                         border-4 border-brandRed
-                        rounded-xl
+                        rounded-3xl
                         lg:py-4 xl:py-6
                         text-center
                         bg-black
@@ -100,7 +123,7 @@ export default function ServicesSection() {
                             flex items-center justify-center gap-3
                             border-2 lg:border-4 border-black
                             font-semibold text-lg
-                            rounded-full
+                            rounded-3xl
                             p-2
                             bg-transparent
                             transition-all duration-300

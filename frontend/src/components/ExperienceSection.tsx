@@ -47,7 +47,7 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="relative sectionHeight flex flex-col lg:p-6 2xl:p-12">
+        <section id="experience" className="relative sectionHeight flex flex-col items-center justify-center lg:p-6 2xl:p-12">
             {/* Title */}
             <div className="text-center">
                 <MainTitle
@@ -56,35 +56,21 @@ export default function ExperienceSection() {
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="relative w-full gap-8 flex flex-col lg:flex-row justify-center items-center">
+            <div className="relative w-full h-full gap-8 flex flex-col lg:flex-row justify-center items-center">
                 {/* Image */}
-                <div className="imgSection">
+                <div className="imgSection relative">
                     <EditableImage
                         src={experienceImage}
                         alt="Experience Image"
-                        wrapperClassName="w-full justify-center h-auto"
+                        wrapperClassName="w-full justify-center h-full"
                         imageClassName="w-full h-full object-cover rounded-3xl"
                         isAuthenticated={isAuthenticated}
                         inputIdString="experienceImageUpload"
                         onChangeFunction={HandleExperienceImageChange}
                     />
-                </div>
-
-                {/* Text */}
-                <div className="textSection flex-col justify-center h-full text-center">
-                    <MainTitle 
-                        titleText='Profile Summary'
-                        underline={false}
-                        className='subHeadingStyle text-center xl:mb-2 2xl:mb-5'
-                    />
-                    <EditableText
-                        isAuthenticated={isAuthenticated}
-                        setText={setExperienceText}
-                        text={experienceText}
-                    />
 
                     {isAuthenticated && (
-                        <div className="mt-4 flex justify-center">
+                        <div className="mt-4 absolute bottom-4 right-4 z-10 flex justify-center">
                             <SaveEditsButton
                                 onClickFunction={() => {
                                     HandleSaveSectionData({
@@ -96,11 +82,25 @@ export default function ExperienceSection() {
                             />
                         </div>
                     )}
+                </div>
+
+                {/* Text */}
+                <div className="textSection flex-col justify-center h-full w-full text-center">
+                    <MainTitle 
+                        titleText='Profile Summary'
+                        underline={false}
+                        className='subHeadingStyle text-center xl:mb-2 2xl:mb-5'
+                    />
+                    <EditableText
+                        isAuthenticated={isAuthenticated}
+                        setText={setExperienceText}
+                        text={experienceText}
+                    />
 
                     <div className="flex justify-center mt-4">
                         <button
                             onClick={HandleResumeRedirect}
-                            className="transition bg-black text-white py-2 px-3 rounded-lg shadow-md hover:bg-white hover:text-brandRed border border-brandRed bodyStyle"
+                            className="btnRounding"
                         >
                             Read more
                         </button>

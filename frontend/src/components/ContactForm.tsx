@@ -249,7 +249,7 @@ export default function ContactForm() {
                             <button
                                 type="submit"
                                 disabled={status === 'loading' || (USE_CAPTCHA && !captchaSolved)}
-                                className="bg-black text-white border border-brandRed hover:bg-white hover:text-brandRed transition-colors px-6 py-4 rounded-xl hover:bg-red-600 transition block mx-auto text-2xl disabled:opacity-60 w-full sm:w-auto"
+                                className="btnRounding block mx-auto disabled:opacity-60 w-full sm:w-auto"
                             >
                                 {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
                             </button>
