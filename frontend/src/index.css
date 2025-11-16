@@ -376,11 +376,11 @@
 /* Canoe Section Text */
 @layer components {
     .risingTideLargeText {
-        @apply text-5xl lg:text-[56px] xl:text-[76px] 2xl:text-[96px] leading-tight;
+        @apply text-4xl md:text-5xl lg:text-[56px] xl:text-[76px] 2xl:text-[96px] leading-tight;
     }
 
     .risingTideSmallText {
-        @apply text-3xl lg:text-[24px] xl:text-[44px] 2xl:text-[64px] leading-tight;
+        @apply text-2xl md:text-3xl lg:text-[24px] xl:text-[44px] 2xl:text-[64px] leading-tight;
     }
 }
 

@@ -96,7 +96,7 @@ export default function LandingSection() {
 
             {/* Right Image */}
             <motion.div
-                className="imgSection relative w-full pl-5 mt-6 lg:mt-0"
+                className="imgSection relative w-full lg:mt-0"
                 initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
@@ -105,8 +105,8 @@ export default function LandingSection() {
                 <EditableImage
                     src={landingImage}
                     alt="Landing Image"
-                    wrapperClassName="w-full h-full"
-                    imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
+                    wrapperClassName="w-full h-full p-6 lg:p-0"
+                    imageClassName="w-full h-full object-cover rounded-3xl lg:rounded-tr-none lg:rounded-br-none lg:rounded-tl-3xl lg:rounded-bl-3xl lg:shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
                     isAuthenticated={isAuthenticated}
                     inputIdString="landingImageUpload"
                     onChangeFunction={HandleLandingImageChange}

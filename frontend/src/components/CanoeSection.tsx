@@ -48,7 +48,7 @@ export default function CanoeSection() {
                 <img
                     src={featherLogo}
                     alt="Feather Logo"
-                    className="lg:w-20 xl:w-24 2xl:w-32 h-auto "
+                    className="w-16 lg:w-20 xl:w-24 2xl:w-32 h-auto"
                 />
 
                 {/* Text */}
@@ -64,12 +64,12 @@ export default function CanoeSection() {
             </div>
 
             {/* Right (image) */}
-            <div className="imgSection w-full flex items-center justify-center pl-5">
+            <div className="imgSection w-full flex items-center justify-center lg:pl-5">
                 <EditableImage
                     src={canoeImage}
                     alt="canoe Image"
-                    wrapperClassName="w-full h-full"
-                    imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
+                    wrapperClassName="w-full h-full p-5 lg:p-0"
+                    imageClassName="ww-full h-full object-cover rounded-3xl lg:rounded-tr-none lg:rounded-br-none lg:rounded-tl-3xl lg:rounded-bl-3xl lg:shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
                     isAuthenticated={isAuthenticated}
                     inputIdString="canoeImageUpload"
                     onChangeFunction={HandleCanoeImageChange}

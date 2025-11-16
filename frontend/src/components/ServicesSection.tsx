@@ -32,7 +32,6 @@ export default function ServicesSection() {
                         className="w-10 h-10 flex items-center justify-center bg-black backdrop-blur-sm rounded-full 
                                 transition-colors duration-200 
                                 hover:bg-white border border-brandRed 
-                                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                                 "
                     >
                         <HiQuestionMarkCircle
@@ -47,7 +46,7 @@ export default function ServicesSection() {
                     </div>
                 </div>
 
-                <div className="flex justify-center text-center absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px- py-4 rounded-full shadow-lg w-[90%] max-w-4xl border border-gray-200">
+                <div className="flex justify-center text-center absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md p-2 md:p-4 rounded-full shadow-lg w-[70%] lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl  border border-gray-200">
                     <MainTitle
                         titleText='Let’s Navigate Your Journey Together'
                         underline={false}
@@ -57,7 +56,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Intro */}
-            <div className="max-w-5xl mx-auto mt-20 text-center px-6">
+            <div className="max-w-5xl mx-auto mt-10 lg:mt-20 text-center px-6">
                 <MainTitle
                     titleText={
                         <>
@@ -65,7 +64,7 @@ export default function ServicesSection() {
                         </>
                     }
                 />
-                <p className="bodyStyle mt-10">
+                <p className="bodyStyle lg:mt-10">
                     Reconciliation isn’t a Destination—it's a Journey. Who’s in your canoe? Are you paddling together? 
                     What are the conditions? What direction do you want to go? Let me know how I can be a part of your journey.
                 </p>
@@ -102,10 +101,10 @@ export default function ServicesSection() {
                     rel="noopener noreferrer"
                     className="
                         group
-                        w-full lg:max-w-60 xl:max-w-80
+                        w-full max-w-56 lg:max-w-64 xl:max-w-80 2xl:max-w-sm
                         border-4 border-brandRed
                         rounded-3xl
-                        lg:py-4 xl:py-6
+                        py-4 lg:py-4 xl:py-6 2xl:py-8
                         text-center
                         bg-black
                         flex flex-col items-center justify-center
@@ -113,7 +112,7 @@ export default function ServicesSection() {
                         hover:bg-white hover:text-brandRed
                     "
                 >
-                    <h3 className="navTitleStyle xl:text-3xl mb-2 xl:mb-6 text-white group-hover:text-brandRed transition-colors duration-300">
+                    <h3 className="navTitleStyle mb-2 xl:mb-6 text-white group-hover:text-brandRed transition-colors duration-300">
                         Check out Melanie's <br /> previous speeches
                     </h3>
 

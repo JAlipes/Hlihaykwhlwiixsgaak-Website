@@ -49,20 +49,20 @@ export default function ExperienceSection() {
     return (
         <section id="experience" className="relative sectionHeight flex flex-col items-center justify-center lg:p-6 2xl:p-12">
             {/* Title */}
-            <div className="text-center">
+            <div className="text-center mt-5">
                 <MainTitle
                     titleText='Experience'
                 />
             </div>
 
             {/* Content: Image left, Text right */}
-            <div className="relative w-full h-full gap-8 flex flex-col lg:flex-row justify-center items-center">
+            <div className="relative w-full h-full lg:gap-8 flex flex-col lg:flex-row justify-center items-center">
                 {/* Image */}
                 <div className="imgSection relative">
                     <EditableImage
                         src={experienceImage}
                         alt="Experience Image"
-                        wrapperClassName="w-full justify-center h-full"
+                        wrapperClassName="w-full justify-center h-full p-6 lg:p-0"
                         imageClassName="w-full h-full object-cover rounded-3xl"
                         isAuthenticated={isAuthenticated}
                         inputIdString="experienceImageUpload"
@@ -85,11 +85,11 @@ export default function ExperienceSection() {
                 </div>
 
                 {/* Text */}
-                <div className="textSection flex-col justify-center h-full w-full text-center">
+                <div className="textSection flex-col justify-center h-full w-full text-center p-5 lg:p-0">
                     <MainTitle 
                         titleText='Profile Summary'
                         underline={false}
-                        className='subHeadingStyle text-center xl:mb-2 2xl:mb-5'
+                        className='subHeadingStyle text-center lg:mb-2 2xl:mb-5'
                     />
                     <EditableText
                         isAuthenticated={isAuthenticated}

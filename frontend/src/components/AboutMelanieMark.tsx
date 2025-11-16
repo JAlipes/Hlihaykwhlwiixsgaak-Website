@@ -56,12 +56,12 @@ export default function AboutMelanieMark() {
 
                 {/* Left Text */}
                 <motion.div
-                    className="textSection flex items-center justify-center lg:px-10 2xl:px-16"
+                    className="textSection flex items-center justify-center px-8 lg:px-10 2xl:px-16"
                     initial={{ opacity: 0}}
                     animate={isInView ? { opacity: 1} : {}}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <div className="text-center max-w-4xl">
+                    <div className="text-center max-w-4xl pt-5 md:pt-0">
                         <motion.div>
                             <MainTitle titleText="About Melanie Mark" />
                         </motion.div>
@@ -90,8 +90,8 @@ export default function AboutMelanieMark() {
                     <EditableImage
                         src={aboutImage}
                         alt="Melanie Mark standing with Canadian and Indigenous flags"
-                        wrapperClassName="w-full h-full"
-                        imageClassName="w-full h-full object-cover rounded-tl-3xl rounded-bl-3xl shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
+                        wrapperClassName="w-full h-full p-6 lg:p-0"
+                        imageClassName="w-full h-full object-cover rounded-3xl lg:rounded-tr-none lg:rounded-br-none lg:rounded-tl-3xl lg:rounded-bl-3xl lg:shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
                         isAuthenticated={isAuthenticated}
                         inputIdString="aboutImageUpload"
                         onChangeFunction={handleAboutImageChange}

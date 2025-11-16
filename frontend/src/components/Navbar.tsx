@@ -119,7 +119,7 @@ function MenuToggle({ isOpen, toggle }: { isOpen: boolean; toggle: () => void })
         <button
             onClick={toggle}
             aria-label="Toggle menu"
-            className="relative h-5 w-7 md:w-20 md:h-8 flex flex-col justify-center items-center focus:outline-none"
+            className="relative pl-7 md:pl-0 h-5 w-7 md:w-20 md:h-8 flex flex-col justify-center items-center focus:outline-none"
         >
             <motion.span
                 className="menuBar"
