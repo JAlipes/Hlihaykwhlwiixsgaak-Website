@@ -146,22 +146,22 @@ export default function ContactForm() {
     };
 
     return (
-        // Mobile-first: allow natural scroll height on small screens, use full viewport height at md+
-        <section id="contact" className="w-full">
-            <div className="flex flex-col md:flex-row w-full min-h-[80vh] md:h-screen">
+        <section id="contact" className="sectionWrapper !min-h-0 !max-h-none">
                 {/* Left: Form */}
-                <div className="w-full md:w-3/5 md:h-full flex md:items-center justify-center px-4 sm:px-6 md:px-12 py-10 md:py-0"> {/* Changed to md:w-3/5 from 1/2 */}
+                <div className="textSection flex items-center justify-center px-8 lg:px-10 2xl:px-16 py-10 lg:py-16">
                     <div className="w-full max-w-lg text-center">
-                        <MainTitle
-                            titleText={<>
-                                Contact Hli Haykwhl Ẃii <u className='decoration-2 underline-offset-4'>X</u>sgaak Consulting
-                            </>}
-                        />
-                        <div className='mb-9'>
-                            <p className='bodyFont 2xl:text-xl'>Reach out to Hli Haykwhl Ẃii <u className="decoration-1">X</u>sgaak Consulting to start our shared journey toward reconciliation and transformative change.</p>
+                        <div className="mb-4 lg:mb-6">
+                            <MainTitle
+                                titleText={<>
+                                    Contact Hli Haykwhl Ẃii <u className='decoration-2 underline-offset-4'>X</u>sgaak Consulting
+                                </>}
+                            />
+                        </div>
+                        <div className='mb-4 lg:mb-6'>
+                            <p className='bodyStyle'>Reach out to Hli Haykwhl Ẃii <u className="decoration-1">X</u>sgaak Consulting to start our shared journey toward reconciliation and transformative change.</p>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="w-full space-y-4 text-left">
+                        <form onSubmit={handleSubmit} className="w-full space-y-3 lg:space-y-4 text-left">
                             {/* Full Name */}
                             <InputField
                                 id="fullName"
@@ -249,20 +249,23 @@ export default function ContactForm() {
                             <button
                                 type="submit"
                                 disabled={status === 'loading' || (USE_CAPTCHA && !captchaSolved)}
-                                className="btnRounding block mx-auto disabled:opacity-60 w-full sm:w-auto"
+                                className="btnRounding block mx-auto disabled:opacity-60"
                             >
-                                {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
+                                {status === 'loading' ? 'Sending...' : "Let's Talk"}
                             </button>
                         </form>
                     </div>
                 </div>
 
-                {/* Right: Decorative image area (full-height, flush right/top/bottom) */}
-                <div
-                    className="hidden md:block w-full md:w-2/5 h-full bg-cover bg-right bg-no-repeat scale-x-[-1]"
-                    style={{ backgroundImage: `url(${feather})` }}
-                /> {/** Changed to md:w-2/5 from 1/2 for better balance */}
-            </div>
+                {/* Right: Decorative image */}
+                <div className="imgSection hidden md:block">
+                    <div className="w-full h-full p-6 lg:p-0">
+                        <div 
+                            className="w-full h-full bg-cover bg-right bg-no-repeat scale-x-[-1] rounded-3xl lg:rounded-tr-none lg:rounded-br-none lg:rounded-tl-3xl lg:rounded-bl-3xl lg:shadow-[rgba(0,0,0,0.3)_-10px_0px_10px_0px]"
+                            style={{ backgroundImage: `url(${feather})` }}
+                        />
+                    </div>
+                </div>
         </section>
     );
 }
