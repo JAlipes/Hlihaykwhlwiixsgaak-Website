@@ -182,10 +182,10 @@ export default function ReconciliationSection() {
     if (totalSlides === 0) return null;
 
     return (
-    <section id="testimonials" className="relative bg-brandRed text-white w-full min-h-screen flex flex-col items-center justify-start px-6 md:px-20 lg:px-32 text-center pt-10 pb-16">
+    <section id="testimonials" className="relative bg-brandRed text-white w-full flex flex-col items-center text-center pt-10 pb-16 lg:sectionHeight lg:justify-center lg:pt-0 lg:pb-0">
             {/* Show different content based on whether it's the add slide or a real slide */}
             {/* Single rendering path: real slide or skeleton draft */}
-            <div className="mb-10 md:mb-14">
+            <div className="mb-10 md:mb-14 lg:mb-5 2xl:mb-10">
                 <MainTitle
                     titleText={
                         <>
@@ -197,10 +197,10 @@ export default function ReconciliationSection() {
                     underlineColor="white"
                 />
             </div>
-            <div className="relative w-full max-w-7xl">
-                <div className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-8 w-full">
+            <div className="relative w-full max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl">
+                <div className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-8 lg:gap-2 xl:gap-4 2xl:gap-8 w-full">
                 {/* Image stage: fixed height per breakpoint to prevent layout shift */}
-                <div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[30rem] 2xl:h-[32rem] flex items-center justify-center">
+                <div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[28rem] 2xl:h-[32rem] flex items-center justify-center">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={`img-${isSkeleton ? 'draft' : current}`}
@@ -290,20 +290,20 @@ export default function ReconciliationSection() {
                     </div>
                 )}
             </div>
-            {/* Navigation Arrows - anchored to fixed image height to prevent shifting */}
+            {/* Navigation Arrows - use testimonialSliderButton utility */}
             {totalSlides > 1 && (
                 <>
                     <button
                         onClick={() => setCurrent((prev) => (prev - 1 + totalSlides) % totalSlides)}
-                        className="hidden lg:inline-flex absolute left-4 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors z-10 lg:top-[calc(10rem+14rem)] xl:top-[calc(10rem+15rem)] 2xl:top-[calc(10rem+16rem)]"
+                        className="testimonialSliderButton lg:left-1 xl:left-2 2xl:left-4"
                     >
-                        <ChevronLeft className="w-6 h-6 text-white" />
+                        <ChevronLeft className="w-4 h-4 lg:w-6 lg:h-6 text-white" />
                     </button>
                     <button
                         onClick={() => setCurrent((prev) => (prev + 1) % totalSlides)}
-                        className="hidden lg:inline-flex absolute right-4 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors z-10 lg:top-[calc(10rem+14rem)] xl:top-[calc(10rem+15rem)] 2xl:top-[calc(10rem+16rem)]"
+                        className="testimonialSliderButton lg:right-1 xl:right-2 2xl:right-4"
                     >
-                        <ChevronRight className="w-6 h-6 text-white" />
+                        <ChevronRight className="w-4 h-4 lg:w-6 lg:h-6 text-white" />
                     </button>
                 </>
             )}
@@ -338,7 +338,7 @@ export default function ReconciliationSection() {
 
             {/* Slide indicator dots */}
             {totalSlides > 1 && (
-                <div className="flex gap-2 mt-8 lg:mt-12">
+                <div className="flex gap-2 mt-8 lg:mt-12 xl:mt-5 2xl:mt-12">
                     {Array.from({ length: totalSlides }).map((_, idx) => (
                         <button
                             key={idx}
