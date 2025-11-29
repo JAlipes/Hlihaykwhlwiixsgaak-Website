@@ -228,6 +228,7 @@ export default function ReconciliationSection() {
                                     onChangeFunction={updateImage}
                                 />
                             ) : (
+                                <div className="h-full w-full px-4 md:px-0">
                                 <div
                                     className="w-full h-full flex items-center justify-center bg-white/20 rounded-3xl border-4 border-dashed border-white/50 cursor-pointer px-10"
                                     onClick={() => {
@@ -249,6 +250,7 @@ export default function ReconciliationSection() {
                                             onChange={updateImage}
                                         />
                                     )}
+                                </div>
                                 </div>
                             )}
                         </motion.div>
