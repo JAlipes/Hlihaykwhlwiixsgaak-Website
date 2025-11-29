@@ -185,6 +185,13 @@ export default function ReconciliationSection() {
     <section id="testimonials" className="relative bg-brandRed text-white w-full flex flex-col items-center text-center pt-10 pb-16 lg:sectionHeight lg:justify-center lg:pt-0 lg:pb-0">
             {/* Show different content based on whether it's the add slide or a real slide */}
             {/* Single rendering path: real slide or skeleton draft */}
+            <motion.div
+                key={`content-${current}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="flex flex-col items-center w-full"
+            >
             <div className="mb-10 md:mb-14 lg:mb-5 2xl:mb-10">
                 <MainTitle
                     titleText={
@@ -207,7 +214,7 @@ export default function ReconciliationSection() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2, ease: 'easeOut' }}
+                            transition={{ duration: 0.2, ease: 'easeOut', delay: 0.15 }}
                             className="w-full h-full flex items-center justify-center"
                         >
                             {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
@@ -259,7 +266,7 @@ export default function ReconciliationSection() {
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.25, ease: 'easeOut' }}
+                        transition={{ duration: 0.25, ease: 'easeOut', delay: 0.2 }}
                         className="flex flex-col justify-center text-left w-full min-h-32 md:min-h-32"
                     >
                         <EditableText
@@ -290,6 +297,7 @@ export default function ReconciliationSection() {
                     </div>
                 )}
             </div>
+            </motion.div>
             {/* Navigation Arrows - use testimonialSliderButton utility */}
             {totalSlides > 1 && (
                 <>
