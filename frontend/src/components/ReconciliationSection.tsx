@@ -186,7 +186,7 @@ export default function ReconciliationSection() {
             {/* Show different content based on whether it's the add slide or a real slide */}
             {/* Single rendering path: real slide or skeleton draft */}
             <motion.div
-                key={`content-${current}`}
+                key={typeof window !== 'undefined' && window.innerWidth >= 1024 ? `content-${current}` : 'content-static'}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
@@ -221,7 +221,7 @@ export default function ReconciliationSection() {
                                 <EditableImage
                                     src={isSkeleton ? (draftSlide.image) : (slides[current]?.image as string)}
                                     alt={"Testimonial image"}
-                                    wrapperClassName="h-full w-full"
+                                    wrapperClassName="h-full w-full px-4 md:px-0"
                                     imageClassName="rounded-3xl shadow-xl w-full h-full object-cover mx-auto cursor-pointer"
                                     isAuthenticated={isAuthenticated}
                                     inputIdString={`reconciliation-image-${current}`}
