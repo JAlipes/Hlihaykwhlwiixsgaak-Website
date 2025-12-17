@@ -182,14 +182,21 @@ export default function ReconciliationSection() {
     if (totalSlides === 0) return null;
 
     return (
-    <section id="testimonials" className="relative bg-brandRed text-white w-screen min-h-[calc(100vh-6rem)] flex flex-col items-center justify-start md:justify-center px-6 md:px-20 lg:px-32 text-center pt-6 pb-10 md:pb-16">
+    <section id="testimonials" className="relative bg-brandRed text-white w-full flex flex-col items-center text-center pt-10 pb-16 lg:sectionHeight lg:justify-center lg:pt-0 lg:pb-0">
             {/* Show different content based on whether it's the add slide or a real slide */}
             {/* Single rendering path: real slide or skeleton draft */}
-            <div className="mb-10 md:mb-14">
+            <motion.div
+                key={typeof window !== 'undefined' && window.innerWidth >= 1024 ? `content-${current}` : 'content-static'}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="flex flex-col items-center w-full"
+            >
+            <div className="mb-10 md:mb-14 lg:mb-5 2xl:mb-10">
                 <MainTitle
                     titleText={
                         <>
-                            <p className="text-white">
+                            <p className="titleStyle text-white">
                                     Reconciliation in Action
                             </p>
                         </>
@@ -197,30 +204,31 @@ export default function ReconciliationSection() {
                     underlineColor="white"
                 />
             </div>
-            <div className="relative w-full max-w-7xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8 w-full">
+            <div className="relative w-full max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl">
+                <div className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-8 lg:gap-2 xl:gap-4 2xl:gap-8 w-full">
                 {/* Image stage: fixed height per breakpoint to prevent layout shift */}
-                <div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[30rem] 2xl:h-[32rem] flex items-center justify-center">
+                <div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[28rem] 2xl:h-[32rem] flex items-center justify-center">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={`img-${isSkeleton ? 'draft' : current}`}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2, ease: 'easeOut' }}
+                            transition={{ duration: 0.2, ease: 'easeOut', delay: 0.15 }}
                             className="w-full h-full flex items-center justify-center"
                         >
                             {(isSkeleton ? draftSlide.image : slides[current]?.image) ? (
                                 <EditableImage
                                     src={isSkeleton ? (draftSlide.image) : (slides[current]?.image as string)}
                                     alt={"Testimonial image"}
-                                    wrapperClassName="h-full w-full"
+                                    wrapperClassName="h-full w-full px-4 md:px-0"
                                     imageClassName="rounded-3xl shadow-xl w-full h-full object-cover mx-auto cursor-pointer"
                                     isAuthenticated={isAuthenticated}
                                     inputIdString={`reconciliation-image-${current}`}
                                     onChangeFunction={updateImage}
                                 />
                             ) : (
+                                <div className="h-full w-full px-4 md:px-0">
                                 <div
                                     className="w-full h-full flex items-center justify-center bg-white/20 rounded-3xl border-4 border-dashed border-white/50 cursor-pointer px-10"
                                     onClick={() => {
@@ -243,6 +251,7 @@ export default function ReconciliationSection() {
                                         />
                                     )}
                                 </div>
+                                </div>
                             )}
                         </motion.div>
                     </AnimatePresence>
@@ -259,7 +268,7 @@ export default function ReconciliationSection() {
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.25, ease: 'easeOut' }}
+                        transition={{ duration: 0.25, ease: 'easeOut', delay: 0.2 }}
                         className="flex flex-col justify-center text-left w-full min-h-32 md:min-h-32"
                     >
                         <EditableText
@@ -274,7 +283,7 @@ export default function ReconciliationSection() {
                 </div>
 
                 {totalSlides > 1 && (
-                    <div className="md:hidden pointer-events-none absolute inset-x-0 top-0 h-72 sm:h-80">
+                    <div className="lg:hidden pointer-events-none absolute inset-x-0 top-0 h-72 sm:h-80 md:h-96">
                         <button
                             onClick={() => setCurrent((prev) => (prev - 1 + totalSlides) % totalSlides)}
                             className="pointer-events-auto absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
@@ -290,20 +299,21 @@ export default function ReconciliationSection() {
                     </div>
                 )}
             </div>
-            {/* Navigation Arrows - show only if there are multiple slides (including add card) */}
+            </motion.div>
+            {/* Navigation Arrows - use testimonialSliderButton utility */}
             {totalSlides > 1 && (
                 <>
                     <button
                         onClick={() => setCurrent((prev) => (prev - 1 + totalSlides) % totalSlides)}
-                        className="hidden md:inline-flex absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
+                        className="testimonialSliderButton lg:left-1 xl:left-2 2xl:left-4"
                     >
-                        <ChevronLeft className="w-6 h-6 text-white" />
+                        <ChevronLeft className="w-4 h-4 lg:w-6 lg:h-6 text-white" />
                     </button>
                     <button
                         onClick={() => setCurrent((prev) => (prev + 1) % totalSlides)}
-                        className="hidden md:inline-flex absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-colors"
+                        className="testimonialSliderButton lg:right-1 xl:right-2 2xl:right-4"
                     >
-                        <ChevronRight className="w-6 h-6 text-white" />
+                        <ChevronRight className="w-4 h-4 lg:w-6 lg:h-6 text-white" />
                     </button>
                 </>
             )}
@@ -338,7 +348,7 @@ export default function ReconciliationSection() {
 
             {/* Slide indicator dots */}
             {totalSlides > 1 && (
-                <div className="flex gap-2 mt-8 md:mt-12">
+                <div className="flex gap-2 mt-8 lg:mt-12 xl:mt-5 2xl:mt-12">
                     {Array.from({ length: totalSlides }).map((_, idx) => (
                         <button
                             key={idx}

@@ -392,6 +392,13 @@
     .btnRounding {
         @apply transition bg-black text-white py-2 px-3 rounded-lg shadow-md hover:bg-white hover:text-brandRed border border-brandRed bodyStyle
     }
+
+    .testimonialSliderButton {
+        @apply hidden lg:inline-flex absolute 
+             bg-black/50 hover:bg-black/70 
+               lg:p-2 2xl:p-3 
+               rounded-full transition-colors z-10
+    }
 }
 
 /* Font Usage */
