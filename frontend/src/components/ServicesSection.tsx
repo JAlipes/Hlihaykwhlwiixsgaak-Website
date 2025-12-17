@@ -1,5 +1,7 @@
+import { useRef } from 'react';
 import { LuYoutube } from 'react-icons/lu';
 import { HiQuestionMarkCircle } from "react-icons/hi";
+import { motion, useInView } from 'framer-motion';
 
 // Import Assets
 import groupImage from '../assets/BCFS_Keynote_Group.jpg'
@@ -16,10 +18,19 @@ import MainTitle from './MainTitle';
 import { serviceAdvisoryText, servicePublicSpeakText, serviceWorkshopText } from '../lang/en/englishText';
 
 export default function ServicesSection() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" }); // trigger slightly
+
     return (
         <section id="services" className="relative w-full pb-16">
             {/* Header */}
-            <div className="relative lg:h-screen pb-4">
+            <motion.div 
+                ref={ sectionRef } 
+                className="relative lg:h-screen pb-4"
+                initial={{ opacity: 0, y: -60 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+            >
                 <img
                     src={groupImage}
                     alt="Group of people together"
@@ -53,7 +64,7 @@ export default function ServicesSection() {
                         className='titleStyle'
                     />
                 </div>
-            </div>
+            </motion.div>
 
             {/* Intro */}
             <div className="max-w-5xl mx-auto mt-10 lg:mt-20 text-center px-6">

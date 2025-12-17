@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect } from 'react';
-
+import { useState, useContext, useEffect, useRef } from 'react';
+import {motion, useInView} from 'framer-motion';
 // Import Assets
 import feather from '../assets/Feather2025-Photoroom.png';
 
@@ -21,6 +21,10 @@ import MainTitle from './MainTitle';
 import { missionText } from '../lang/en/englishText';
 
 export default function MissionSection() {
+    // Animation Trigger
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" }); // trigger slightly
+
     const sectionName: string = `mission`;
     const { isAuthenticated } = useContext(AuthContext);
 
@@ -47,9 +51,15 @@ export default function MissionSection() {
         <section
             id="mission"
             className="sectionWrapper"
+            ref={sectionRef}
         >
             {/* Left Image Hidden during md and mobile designs*/}
-            <div className="hidden lg:block imgSection relative">
+            <motion.div 
+                className="hidden lg:block imgSection relative"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+            >   
                 <EditableImage
                     src={missionImage}
                     alt="Our Mission Image"
@@ -74,22 +84,36 @@ export default function MissionSection() {
                         />
                     </div>
                 )}
-            </div>
+            </motion.div>
 
             {/* Right Text */}
-            <div className="textSection flex items-center justify-center p-8 md:p-16">
+            <motion.div 
+                className="textSection flex items-center justify-center p-8 md:p-16"
+                initial={{ opacity: 0}}
+                animate={isInView ? { opacity: 1} : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 <div className="text-center max-w-3xl">
-                    <MainTitle
-                        titleText='Our Mission'
-                    />
+                    <motion.div>
+                        <MainTitle
+                            titleText='Our Mission'
+                        />
+                    </motion.div>
 
-                    <EditableText
-                        isAuthenticated={isAuthenticated}
-                        setText={setMissionText}
-                        text={missionTextString}
-                    />
+
+                    <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : {}}
+                            transition={{ duration: 0.2, delay: 0.5 }}
+                    >
+                        <EditableText
+                            isAuthenticated={isAuthenticated}
+                            setText={setMissionText}
+                            text={missionTextString}
+                        />
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
 
     );

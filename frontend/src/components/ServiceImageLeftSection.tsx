@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 // Contexts & Utils
 import { AuthContext } from "../contexts/AuthContext";
@@ -16,6 +17,9 @@ import type { MiniServiceSectionProps } from '../../../shared-types/ComponentPro
 import MainTitle from "./MainTitle";
 
 export default function ServiceImageLeftSection({ sectionName, defaultTitle, defaultContent, defaultImage,}: MiniServiceSectionProps) {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" }); // trigger slightly
+
     const { isAuthenticated } = useContext(AuthContext);
 
     const [sectionContent, setSectionContent] = useState(defaultContent);
@@ -36,50 +40,66 @@ export default function ServiceImageLeftSection({ sectionName, defaultTitle, def
     const handleImageChange = HandleImageChangeFactory(setSelectedFile, setSectionImage);
 
     return (
-        <section className="w-full py-14 xl:py-16 bg-white">
+        <section className="w-full py-14 xl:py-16 bg-white" ref={sectionRef}>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 sm:px-8 lg:px-12 xl:px-20">
-                    
-                    {/* Image */}
-                    <div className="flex justify-end">
-                        <EditableImage
-                            src={sectionImage}
-                            alt={`${sectionName} Image`}
-                            wrapperClassName="flex justify-end"
-                            imageClassName="w-full h-auto rounded-3xl shadow-2xl object-cover cursor-pointer"
-                            isAuthenticated={isAuthenticated}
-                            inputIdString={`${sectionName}-image`}
-                            onChangeFunction={handleImageChange}
-                        />
-                    </div>
+                {/* Image */}
+                <motion.div className="flex justify-end"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+                >
+                    <EditableImage
+                        src={sectionImage}
+                        alt={`${sectionName} Image`}
+                        wrapperClassName="flex justify-end"
+                        imageClassName="w-full h-auto rounded-3xl shadow-2xl object-cover cursor-pointer"
+                        isAuthenticated={isAuthenticated}
+                        inputIdString={`${sectionName}-image`}
+                        onChangeFunction={handleImageChange}
+                    />
+                </motion.div>
 
-                    {/* Text */}
-                    <div className="text-gray-800 flex flex-col justify-center" id='ServiceImageLeft'>
+                {/* Text */}
+                <motion.div className="text-gray-800 flex flex-col justify-center" id='ServiceImageLeft'
+                    initial={{ opacity: 0}}
+                    animate={isInView ? { opacity: 1} : {}}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >   
+                    <motion.div>
                         <MainTitle
                             titleText={defaultTitle}
                             underline={false}
                             className={'subHeadingStyle'}
                         />
+                    </motion.div>
 
+                    <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : {}}
+                            transition={{ duration: 0.2, delay: 0.5 }}
+                    >
                         <EditableText
                             isAuthenticated={isAuthenticated}
                             text={sectionContent}
                             setText={setSectionContent}
                         />
+                    </motion.div>
 
-                        {isAuthenticated && (
-                            <div className="mt-6">
-                            <SaveEditsButton
-                                onClickFunction={() =>
-                                HandleSaveSectionData({
-                                    sectionName,
-                                    text: sectionContent,
-                                    image: selectedFile ?? sectionImage,
-                                })
-                                }
-                            />
-                            </div>
-                        )}
-                    </div>
+
+                    {isAuthenticated && (
+                        <div className="mt-6">
+                        <SaveEditsButton
+                            onClickFunction={() =>
+                            HandleSaveSectionData({
+                                sectionName,
+                                text: sectionContent,
+                                image: selectedFile ?? sectionImage,
+                            })
+                            }
+                        />
+                        </div>
+                    )}
+                </motion.div>
             </div>
         </section>
     );

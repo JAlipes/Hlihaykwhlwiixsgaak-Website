@@ -24,7 +24,7 @@ import MainTitle from './MainTitle';
 export default function AboutMelanieMark() {
     // Animation Referance
     const sectionRef = useRef<HTMLDivElement>(null);
-    const isInView = useInView(sectionRef, { once: true, margin: "-200px" }); // trigger slightly
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" }); // trigger slightly
 
     const sectionName: string = `about`;
     const { isAuthenticated } = useContext(AuthContext);
@@ -82,7 +82,7 @@ export default function AboutMelanieMark() {
 
                 {/* Right Image */}
                 <motion.div
-                        className="imgSection"
+                    className="imgSection"
                     initial={{ opacity: 0, x: 50 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}

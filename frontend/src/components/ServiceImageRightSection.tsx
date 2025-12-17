@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 // Contexts & Utils
 import { AuthContext } from "../contexts/AuthContext";
@@ -15,7 +16,10 @@ import SaveEditsButton from "./SaveEditsButton";
 import type { MiniServiceSectionProps } from '../../../shared-types/ComponentPropTypes'
 import MainTitle from "./MainTitle";
 
-export default function ServiceImageRightSection({ sectionName, defaultTitle, defaultContent, defaultImage }: MiniServiceSectionProps) {
+export default function  ServiceImageRightSection({ sectionName, defaultTitle, defaultContent, defaultImage }: MiniServiceSectionProps) {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" }); // trigger slightly
+
     const { isAuthenticated } = useContext(AuthContext);
 
     const [sectionContent, setSectionContent] = useState(defaultContent);
@@ -36,21 +40,34 @@ export default function ServiceImageRightSection({ sectionName, defaultTitle, de
     const handleImageChange = HandleImageChangeFactory(setSelectedFile, setSectionImage);
 
     return (
-        <section className="w-full lg:py-10 xl:py-16 flex bg-white">
+        <section className="w-full lg:py-10 xl:py-16 flex bg-white" ref={sectionRef}>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 sm:px-8 lg:px-12 xl:px-20">
                 {/* Text (Left Side) */}
-                <div className="order-2 md:order-1 text-gray-800 flex flex-col justify-center">
-                    <MainTitle
-                        titleText={defaultTitle}
-                        underline={false}
-                        className={'subHeadingStyle'}
-                    />
+                <motion.div 
+                    className="order-2 md:order-1 text-gray-800 flex flex-col justify-center"
+                    initial={{ opacity: 0}}
+                    animate={isInView ? { opacity: 1} : {}}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    <motion.div>
+                        <MainTitle
+                            titleText={defaultTitle}
+                            underline={false}
+                            className={'subHeadingStyle'}
+                        />                    
+                    </motion.div>
 
-                    <EditableText
-                        isAuthenticated={isAuthenticated}
-                        text={sectionContent}
-                        setText={setSectionContent}
-                    />
+                    <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : {}}
+                            transition={{ duration: 0.2, delay: 0.5 }}
+                    >
+                        <EditableText
+                            isAuthenticated={isAuthenticated}
+                            text={sectionContent}
+                            setText={setSectionContent}
+                        />
+                    </motion.div>
 
                     {isAuthenticated && (
                         <div className="mt-6">
@@ -65,10 +82,15 @@ export default function ServiceImageRightSection({ sectionName, defaultTitle, de
                             />
                         </div>
                     )}
-                </div>
+                </motion.div>
 
                 {/* Image (Right Side) */}
-                <div className="order-1 md:order-2 flex justify-center md:justify-end">
+                <motion.div 
+                    className="order-1 md:order-2 flex justify-center md:justify-end"
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+                >
                     <EditableImage
                         src={sectionImage}
                         alt={`${sectionName} Image`}
@@ -78,7 +100,7 @@ export default function ServiceImageRightSection({ sectionName, defaultTitle, de
                         inputIdString={`${sectionName}ImageUpload`}
                         onChangeFunction={handleImageChange}
                     />
-                </div>
+                </motion.div>
             </div>
         </section>
     );

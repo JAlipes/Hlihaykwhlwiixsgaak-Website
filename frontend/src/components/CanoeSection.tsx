@@ -1,4 +1,5 @@
-import {useState, useContext, useEffect} from 'react'
+import {useState, useContext, useEffect, useRef } from 'react'
+import { motion, useInView } from "framer-motion";
 
 // Import Comopnents
 import EditableImage from "./EditableImage";
@@ -18,6 +19,9 @@ import canoeImageString from "../assets/Cedar Hat red Canoe Journey 2024.jpg";
 
 
 export default function CanoeSection() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" }); // trigger slightly
+
     const sectionName: string = 'canoe';
     const { isAuthenticated } = useContext(AuthContext);
 
@@ -41,9 +45,14 @@ export default function CanoeSection() {
         <section
             id="canoe"
             className="bg-brandRed text-white sectionWrapper"
+            ref={sectionRef}
         >
             {/* Left (text) */}
-            <div className="textSection w-full flex flex-col justify-center px-6 md:px-12 py-8 titleFont">
+            <motion.div className="textSection w-full flex flex-col justify-center px-6 md:px-12 py-8 titleFont"
+                initial={{ opacity: 0}}
+                animate={isInView ? { opacity: 1} : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 {/* Feather Logo */}
                 <img
                     src={featherLogo}
@@ -61,10 +70,14 @@ export default function CanoeSection() {
 
                 <h2 className="risingTideLargeText font-extrabold">PADDLE TOGETHER</h2>
                 <p className="risingTideSmallText mt-4">- HLI HAYKWHL WII <u className='decoration-2'>X</u>SGAAK</p>
-            </div>
+            </motion.div>
 
             {/* Right (image) */}
-            <div className="imgSection w-full flex items-center justify-center lg:pl-5">
+            <motion.div className="imgSection w-full flex items-center justify-center lg:pl-5"
+                initial={{ opacity: 0, x: 50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+            >
                 <EditableImage
                     src={canoeImage}
                     alt="canoe Image"
@@ -89,7 +102,7 @@ export default function CanoeSection() {
                         />
                     </div>
                 )}
-            </div>
+            </motion.div>
         </section>
     );
 }

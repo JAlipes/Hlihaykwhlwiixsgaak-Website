@@ -144,7 +144,7 @@ export const resumeProfileText = `
 `;
 export const resumeExecutiveExpText = `
     <h3><span class='ql-font-montserrat ql-size-30px' style='color: rgb(230, 53,81)'>Executive Experience</span></h3>
-    <strong>Co-Founder & Partner, Aks Wind Energy Corp — Incorporated June 2025</strong>\n
+    <strong>Director Aks Wind Energy Corp — Incorporated June 2025</strong>\n
     <br/>
     <br/>
     <strong>Founder & CEO Hli Haykwhl Ẃii <u>X</u>sgaak Consutling Ltd Incorporated August 2023 </strong>
@@ -220,9 +220,9 @@ export const resumeExecutiveExpText = `
 export const resumeCommunityInvolvementText = `
     <h3><span class='ql-font-montserrat ql-size-30px' style='color: rgb(230, 53,81)'>Community Involvement</span></h3>
     <ul>
-        <li><strong>Partnership and Growth Strategy Advisor</strong></li>
+        <li><strong>Ambassador</strong></li>
     </ul>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hope and Health, British Columbia (2025 - Current)</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Orange Shirt Society	2025 - Current</p>
     <br/>
 
     <ul>

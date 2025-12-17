@@ -17,7 +17,7 @@ import MainTitle from "../components/MainTitle";
 export default function ResumePage() {
     // const navigate = useNavigate();
 
-    // const HandleBackClick = () => {
+    // con~st HandleBackClick = () => {
     //     navigate("/", { state: { scrollTo: "experience" } });    
     // };
 
