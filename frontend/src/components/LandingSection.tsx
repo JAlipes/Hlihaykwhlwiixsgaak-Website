@@ -66,8 +66,7 @@ export default function LandingSection() {
                 <h2 className="titleStyle text-black">Welcome to</h2>
 
                 <h1
-                    className="leading-strict text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl
-                 text-purple-900 md:text-purple-900 lg:text-blue-900 xl:text-blue-500 2xl:text-brandRed"
+                    className="leading-strict text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-brandRed"
                 >
                     Hli Haykwhl Ẃii <u className="underline-offset-[3px] decoration-2">X</u>sgaak
                     <br />

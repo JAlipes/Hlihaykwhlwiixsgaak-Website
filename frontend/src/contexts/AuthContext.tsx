@@ -22,8 +22,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                     method: 'GET',
                     credentials: 'include',
                 });
-
-                setIsAuthenticated(res.ok);
+                
+                const data = await res.json();
+                setIsAuthenticated(data.isAuthenticated === true);
+                
             } catch (err) {
                 console.error('Auth Check Failed', err);
                 setIsAuthenticated(false);

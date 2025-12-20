@@ -4,7 +4,7 @@ import "react-quill/dist/quill.snow.css";
 // Import Types
 import type { EditableTextPropType } from "../../../shared-types/ComponentPropTypes";
 
-export default function EditableText({ isAuthenticated, setText, text, placeholder, colorOption = 'white' }: EditableTextPropType) {
+export default function EditableText({ isAuthenticated, setText, text, placeholder }: EditableTextPropType) {
     const Font = Quill.import("attributors/class/font") as any;
     Font.whitelist = ["overlock-sc", "quicksand", "montserrat", "miniver", "miama"];
     Quill.register(Font, true);
